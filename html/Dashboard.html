@@ -17,6 +17,9 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </head>
 
 <body>
@@ -27,17 +30,18 @@
         <h1>DEMONSTRATOR ALLOCATOR</h1>
       </div>
       <div id="user_container">
-          <div class="dropdown show">
-              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="assets/photo_ph.png" class="user" />
-                </a>
-            
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+        <div id="icon_container">
+            <div class="dropdown">
+                <button onclick="toggle()" class="dropbtn">JD</button>
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="#">Switch Role</a>
+                  <a href="#">My Profile</a>
+                  <a href="#">Settings</a>
+                  <a href="#">Logout</a>
+                </div>
               </div>
-            </div>
+        </div>
+
 
         <div>
         </div>
