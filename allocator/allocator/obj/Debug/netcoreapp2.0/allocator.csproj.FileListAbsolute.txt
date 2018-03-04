@@ -1,0 +1,11 @@
+/Users/sullaviviagmontes/Projects/allocator/allocator/bin/Debug/netcoreapp2.0/allocator.deps.json
+/Users/sullaviviagmontes/Projects/allocator/allocator/bin/Debug/netcoreapp2.0/allocator.runtimeconfig.json
+/Users/sullaviviagmontes/Projects/allocator/allocator/bin/Debug/netcoreapp2.0/allocator.runtimeconfig.dev.json
+/Users/sullaviviagmontes/Projects/allocator/allocator/bin/Debug/netcoreapp2.0/allocator.dll
+/Users/sullaviviagmontes/Projects/allocator/allocator/bin/Debug/netcoreapp2.0/allocator.pdb
+/Users/sullaviviagmontes/Projects/allocator/allocator/obj/Debug/netcoreapp2.0/allocator.csprojResolveAssemblyReference.cache
+/Users/sullaviviagmontes/Projects/allocator/allocator/obj/Debug/netcoreapp2.0/allocator.csproj.CoreCompileInputs.cache
+/Users/sullaviviagmontes/Projects/allocator/allocator/obj/Debug/netcoreapp2.0/allocator.AssemblyInfoInputs.cache
+/Users/sullaviviagmontes/Projects/allocator/allocator/obj/Debug/netcoreapp2.0/allocator.AssemblyInfo.cs
+/Users/sullaviviagmontes/Projects/allocator/allocator/obj/Debug/netcoreapp2.0/allocator.dll
+/Users/sullaviviagmontes/Projects/allocator/allocator/obj/Debug/netcoreapp2.0/allocator.pdb
