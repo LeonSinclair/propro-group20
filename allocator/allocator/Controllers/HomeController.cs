@@ -36,6 +36,12 @@ namespace allocator.Controllers
             return View();
         }
 
+        public IActionResult Lecturer()
+        {
+            ViewData["Message"] = "Lecturer View.";
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
