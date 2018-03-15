@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{41430167-3BFE-424D-88A9-3EE542140D3E}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="allocator/wwwroot/css/site.css">
+    <Files>
+      <File FileName="allocator/Views/Shared/_Layout.cshtml" Line="63" Column="16" />
+      <File FileName="allocator/wwwroot/css/site.css" Line="21" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.allocator PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
