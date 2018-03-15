@@ -1,14 +1,8 @@
 ﻿<Properties StartupConfiguration="{41430167-3BFE-424D-88A9-3EE542140D3E}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="allocator/wwwroot/css/site.css">
     <Files>
-      <File FileName="allocator/Views/Shared/_Layout.cshtml" Line="35" Column="32" />
-      <File FileName="allocator/Views/Home/Index.cshtml" Line="36" Column="23" />
-      <File FileName="allocator/Views/Home/Dashboard.cshtml" Line="3" Column="7" />
-      <File FileName="allocator/Views/Home/About.cshtml" Line="1" Column="1" />
-      <File FileName="allocator/Controllers/HomeController.cs" Line="20" Column="56" />
-      <File FileName="allocator/wwwroot/css/site.css" Line="138" Column="2" />
-      <File FileName="allocator/wwwroot/js/site.js" Line="15" Column="2" />
-      <File FileName="allocator/Program.cs" Line="22" Column="39" />
+      <File FileName="allocator/Views/Shared/_Layout.cshtml" Line="63" Column="16" />
+      <File FileName="allocator/wwwroot/css/site.css" Line="21" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
