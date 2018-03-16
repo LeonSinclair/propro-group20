@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{439B91E0-8BD0-4F6A-8FD7-D7E738C593C1}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Home/Dashboard.cshtml">
+    <Files>
+      <File FileName="Views/Shared/_Layout.cshtml" Line="7" Column="53" />
+      <File FileName="wwwroot/css/site.css" Line="40" Column="21" />
+      <File FileName="Views/Home/Dashboard.cshtml" Line="12" Column="13" />
+      <File FileName="Controllers/HomeController.cs" Line="20" Column="52" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.AllocationApp PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>
