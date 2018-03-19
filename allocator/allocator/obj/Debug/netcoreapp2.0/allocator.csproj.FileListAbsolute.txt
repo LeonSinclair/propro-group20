@@ -31,3 +31,14 @@ C:/Users/Leon/Source/Repos/propro-group20/allocator/allocator/obj/Debug/netcorea
 /Users/sullaviviagmontes/Documents/propro/propro-group20/allocator/allocator/obj/Debug/netcoreapp2.0/allocator.AssemblyInfo.cs
 /Users/sullaviviagmontes/Documents/propro/propro-group20/allocator/allocator/obj/Debug/netcoreapp2.0/allocator.dll
 /Users/sullaviviagmontes/Documents/propro/propro-group20/allocator/allocator/obj/Debug/netcoreapp2.0/allocator.pdb
+D:\Szabi\work\egyetem\final\propro-group20\allocator\allocator\obj\Debug\netcoreapp2.0\allocator.csprojResolveAssemblyReference.cache
+D:\Szabi\work\egyetem\final\propro-group20\allocator\allocator\obj\Debug\netcoreapp2.0\allocator.csproj.CoreCompileInputs.cache
+D:\Szabi\work\egyetem\final\propro-group20\allocator\allocator\obj\Debug\netcoreapp2.0\allocator.AssemblyInfoInputs.cache
+D:\Szabi\work\egyetem\final\propro-group20\allocator\allocator\obj\Debug\netcoreapp2.0\allocator.AssemblyInfo.cs
+D:\Szabi\work\egyetem\final\propro-group20\allocator\allocator\obj\Debug\netcoreapp2.0\allocator.dll
+D:\Szabi\work\egyetem\final\propro-group20\allocator\allocator\obj\Debug\netcoreapp2.0\allocator.pdb
+D:\Szabi\work\egyetem\final\propro-group20\allocator\allocator\bin\Debug\netcoreapp2.0\allocator.deps.json
+D:\Szabi\work\egyetem\final\propro-group20\allocator\allocator\bin\Debug\netcoreapp2.0\allocator.runtimeconfig.json
+D:\Szabi\work\egyetem\final\propro-group20\allocator\allocator\bin\Debug\netcoreapp2.0\allocator.runtimeconfig.dev.json
+D:\Szabi\work\egyetem\final\propro-group20\allocator\allocator\bin\Debug\netcoreapp2.0\allocator.dll
+D:\Szabi\work\egyetem\final\propro-group20\allocator\allocator\bin\Debug\netcoreapp2.0\allocator.pdb
