@@ -23,7 +23,7 @@ namespace AllocationApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AllocationContext>(cfg =>
+            services.AddDbContext<AllocationDBContext>(cfg =>
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("AllocationConnectionString"));
             });

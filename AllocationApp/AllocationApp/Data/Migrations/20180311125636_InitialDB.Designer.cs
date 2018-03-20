@@ -10,7 +10,7 @@ using System;
 
 namespace AllocationApp.Migrations
 {
-    [DbContext(typeof(AllocationContext))]
+    [DbContext(typeof(AllocationDBContext))]
     [Migration("20180311125636_InitialDB")]
     partial class InitialDB
     {

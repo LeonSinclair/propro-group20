@@ -1,7 +1,6 @@
 ﻿using AllocationApp.Data;
 using AllocationApp.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,9 +9,9 @@ namespace AllocationApp.Controllers
 {
     public class SupervisorController : Controller
     {
-        private readonly AllocationContext _context;
+        private readonly AllocationDBContext _context;
         
-        public SupervisorController(AllocationContext context)
+        public SupervisorController(AllocationDBContext context)
         {
             _context = context;
         }

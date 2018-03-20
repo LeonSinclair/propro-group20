@@ -10,7 +10,7 @@ using System;
 
 namespace AllocationApp.Migrations
 {
-    [DbContext(typeof(AllocationContext))]
+    [DbContext(typeof(AllocationDBContext))]
     partial class AllocationContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
