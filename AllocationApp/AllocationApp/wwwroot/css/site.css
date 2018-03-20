@@ -204,6 +204,11 @@ p.role {
   border-bottom: 2px solid #dee2e6
 }
 
+.panel-body {
+    color: #000000;
+    background-color: #E8E8E8;
+    border: 1px solid #DBDBDB;
+}
 
 /* ------------------------------------------- */
 

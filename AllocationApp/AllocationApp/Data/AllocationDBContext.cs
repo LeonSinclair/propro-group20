@@ -19,17 +19,19 @@ namespace AllocationApp.Data
         }
 
         public DbSet<Subordinates> Subordinates { get; set; }
+
         /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL("server=localhost;database=library;user=root;password=1234");
         }*/
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<CourseWork>()
-                .HasKey(s => new { s.CourseId, s.UserId });
-            base.OnModelCreating(modelBuilder);
-        }
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<CourseWork>()
+        //        .HasKey(s => new { s.CourseId, s.UserId });
+        //    base.OnModelCreating(modelBuilder);
+        //}
 
         public DbSet<User> Users { get; set; }
         public DbSet<Course> Courses { get; set; }

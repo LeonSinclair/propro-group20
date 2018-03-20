@@ -13402,30 +13402,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Szabi\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/sullaviviagmontes/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Szabi\\work\\egyetem\\final\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
+      "projectUniqueName": "/Users/sullaviviagmontes/Documents/propro/github/propro-group20/AllocationApp/AllocationApp/AllocationApp.csproj",
       "projectName": "AllocationApp",
-      "projectPath": "D:\\Szabi\\work\\egyetem\\final\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
-      "packagesPath": "C:\\Users\\Szabi\\.nuget\\packages\\",
-      "outputPath": "D:\\Szabi\\work\\egyetem\\final\\propro-group20\\AllocationApp\\AllocationApp\\obj\\",
+      "projectPath": "/Users/sullaviviagmontes/Documents/propro/github/propro-group20/AllocationApp/AllocationApp/AllocationApp.csproj",
+      "packagesPath": "/Users/sullaviviagmontes/.nuget/packages/",
+      "outputPath": "/Users/sullaviviagmontes/Documents/propro/github/propro-group20/AllocationApp/AllocationApp/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Szabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/sullaviviagmontes/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
