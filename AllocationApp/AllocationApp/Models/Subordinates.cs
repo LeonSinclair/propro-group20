@@ -10,6 +10,7 @@ namespace AllocationApp.Models
     public class Subordinates
     {
         [Required]
+       // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [MinLength(3)]
         [Required]

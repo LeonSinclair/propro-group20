@@ -1,5 +1,5 @@
 ﻿{
   "ConnectionStrings": {
-    "AllocationConnectionString": "server=(localdb)\\ProjectsV13;Database=AllocationDB;Integrated Security=true;MultipleActiveResultSets=true;"
+    "AllocationConnectionString": "server=localhost;database=AllocatorData;user=root;password=1234;"
   }
 }

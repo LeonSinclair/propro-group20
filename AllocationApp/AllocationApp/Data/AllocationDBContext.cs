@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using allocator.Models;
 using AllocationApp.Models;
-
+//using MySQL.Data.EntityFrameworkCore.Extensions;
 namespace AllocationApp.Data
 {
     public class AllocationDBContext : DbContext
@@ -14,10 +13,15 @@ namespace AllocationApp.Data
         {
 
         }
+
+        public AllocationDBContext()
+        {
+        }
+
         public DbSet<Subordinates> Subordinates { get; set; }
         /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=localhost;database=AllocatorData;user=root;password=1234");
+            optionsBuilder.UseMySQL("server=localhost;database=library;user=root;password=1234");
         }*/
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

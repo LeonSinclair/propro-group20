@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
 namespace AllocationApp
 {
     public class Startup
@@ -25,7 +24,7 @@ namespace AllocationApp
         {
             services.AddDbContext<AllocationDBContext>(cfg =>
             {
-                cfg.UseSqlServer(Configuration.GetConnectionString("AllocationConnectionString"));
+                cfg.UseMySQL("server=localhost;database=AllocationData;user=root;password=1234");
             });
             services.AddMvc();
         }

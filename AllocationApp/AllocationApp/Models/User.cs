@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace allocator.Models
+namespace AllocationApp.Models
 {
     public class User
     {
