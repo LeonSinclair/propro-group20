@@ -25,8 +25,8 @@ namespace AllocationApp
         {
             services.AddDbContext<AllocationContext>(cfg =>
             {
-                //cfg.UseMySQL("server=localhost;database=AllocationData;user=root;password=1234");
-                cfg.UseSqlServer(Configuration.GetConnectionString("AllocationConnectionString"));
+                cfg.UseMySQL("server=localhost;database=AllocationData;user=root;password=1234");
+                //cfg.UseSqlServer(Configuration.GetConnectionString("AllocationConnectionString"));
             });
             services.AddMvc();
         }
