@@ -7,8 +7,8 @@ namespace AllocationApp.Models
 {
     public class Skill
     {
-        public int Id { get; set; }
-        public String name { get; set; }
+        public int SkillID { get; set; }
+        public String Name { get; set; }
         //public List<User> Users { get; set; }
 
     }

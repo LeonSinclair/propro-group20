@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace AllocationApp.Models
 {
-    public class CourseWork
+    public class CourseUser
     {
-        public int UserId { get; set; }
+        public int UserID { get; set; }
         public String UserName { get; set; }
-
-        [Key]
-        public int CourseId { get; set; }
+        public int CourseID { get; set; }
         public String CourseName { get; set; } 
     }
 }

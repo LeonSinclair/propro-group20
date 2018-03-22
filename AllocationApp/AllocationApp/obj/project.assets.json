@@ -13408,11 +13408,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Szabi\\work\\egyetem\\final\\final2\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
+      "projectUniqueName": "D:\\Szabi\\work\\egyetem\\final\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
       "projectName": "AllocationApp",
-      "projectPath": "D:\\Szabi\\work\\egyetem\\final\\final2\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
+      "projectPath": "D:\\Szabi\\work\\egyetem\\final\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
       "packagesPath": "C:\\Users\\Szabi\\.nuget\\packages\\",
-      "outputPath": "D:\\Szabi\\work\\egyetem\\final\\final2\\propro-group20\\AllocationApp\\AllocationApp\\obj\\",
+      "outputPath": "D:\\Szabi\\work\\egyetem\\final\\propro-group20\\AllocationApp\\AllocationApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

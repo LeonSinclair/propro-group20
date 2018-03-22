@@ -9,9 +9,9 @@ namespace AllocationApp.Controllers
 {
     public class SupervisorController : Controller
     {
-        private readonly AllocationDBContext _context;
+        private readonly AllocationContext _context;
         
-        public SupervisorController(AllocationDBContext context)
+        public SupervisorController(AllocationContext context)
         {
             _context = context;
         }
