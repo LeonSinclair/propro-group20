@@ -50,6 +50,7 @@ namespace AllocationApp
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            
         }
     }
 }

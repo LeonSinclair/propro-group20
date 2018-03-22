@@ -35,6 +35,14 @@ namespace AllocationApp.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<CourseWork> CourseWorks { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CourseWork>()
+                .HasKey(c => new { c.CourseId, c.UserId});
+        }
 
     }
 }

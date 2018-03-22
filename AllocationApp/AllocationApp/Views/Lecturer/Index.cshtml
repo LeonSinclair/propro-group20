@@ -1,4 +1,4 @@
-﻿@model Tuple< IEnumerable<Course>, IEnumerable <User> >
+﻿@model Tuple< List<Course>, List<User> >
 
 @{
     ViewData["Title"] = "Lecturer View";
@@ -12,23 +12,24 @@
         <input type="text" placeholder="Type module and press enter" class="search">
         <input type="button" class="button" value="Apply Filter">
         <!-- /search box -->
-        @foreach (var item in Model.Item1)
-        {
+        <div class="container">
+            @foreach (var item in Model.Item1)
+            {
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-                        <a href="">
-                            <div class="object_box">
-                                @Html.DisplayFor(modelItem => item.Code)
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </div>
-                        </a>
-                    </div>
+
+            <div class="row">
+                <div class="col-sm">
+                    <a href="">
+                        <div class="object_box">
+                            @Html.DisplayFor(modelItem => item.Code)
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </div>
+                    </a>
                 </div>
             </div>
-        }
-        
+
+            }
+        </div>
         <div class="view_all">
             <a href="#">View all modules</a>
         </div>
@@ -41,38 +42,35 @@
         <input type="text" placeholder="Type module and press enter" class="search">
         <input type="button" class="button" value="Apply Filter">
         <!-- /search box -->
-
         <div class="container">
+            @foreach (var item in Model.Item2.Take(5))
+            {
             <div class="row">
                 <div class="col-sm">
                     <a href="">
                         <div class="object_box">
-                            Jane Doe
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                            @Html.DisplayFor(modelItem => item.LastName)
+                            @Html.DisplayFor(modelItem => item.Skills)
                         </div>
-                    </a>
-                </div>
-                <div class="col-sm">
-                    <a href="">
-                        <div class="object_box">
-                            John Doe
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm">
-                    <a href="">
-                        <div class="object_box">
-                            Sam Smith
+                        <div class="propose">
+                            <form action="employee.action" method="post">
+                                <a asp-action="ProposeDemonstrator" asp-route-id="@item.Id">Propose Module</a> |
+                                <a asp-action="DemonstratorDetails" asp-route-id="@item.Id">Details</a>
+                            </form>
+
                         </div>
                     </a>
                 </div>
             </div>
-        </div>
 
-        <div class="view_all">
-            <a href="#">View all demonstrators</a>
+            }
         </div>
+            <div class="view_all">
+                <a href="ModuleDemonstrators">View all demonstrators</a>
+            </div>
 
-    </div>
+        </div>
 </div>
 
 <script language="javascript">

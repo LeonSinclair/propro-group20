@@ -16,6 +16,7 @@ namespace AllocationApp.Controllers
         public LecturerController(AllocationDBContext context)
         {
             _context = context;
+            
         }
 
         public IActionResult Index()
@@ -24,30 +25,42 @@ namespace AllocationApp.Controllers
             return View(tup);
         }
 
+        //TODO this probably isn't accesible during normal usage, but good to have in case something odd happens 
+        [HttpGet("ModuleDemonstrators")]
+        public IActionResult ModuleDemonstrators()
+        {
+            var module = _context.Courses.First();
+            var users = _context.Users.ToList();
+            return View("ModuleDemonstrators", Tuple.Create(module, users));
+        }
+
+        //TODO limit the number of demonstrators it shows
         [HttpPost("ModuleDemonstrators")]
         public IActionResult ModuleDemonstrators(int moduleId)
         {
             var module = _context.Courses
                 .SingleOrDefault(m => m.Id == moduleId);
             var users = _context.Users.ToList().Where(user => user.Courses.Contains(module));
-            return View(Tuple.Create(module,users));
+            return View("ModuleDemonstrators", Tuple.Create(module,users));
         }
         //TODO decide if this is needed
         [HttpGet("ProposeDemonstrator")]
         public IActionResult ProposeDemonstrator()
         {
-            return View("ProposeDemonstrator");
+
+            return View("ProposeDemonstrator", Tuple.Create(_context.Users.First(), _context.Courses.ToList() ) );
         }
 
         [HttpPost("ProposeDemonstrator")]
         //TODO figure out these arguments
-        public async Task<IActionResult> ProposeDemonstrator([Bind("Id,firstname,surname,occupation")]User model)
+        public async Task<IActionResult> ProposeDemonstrator(CourseWork model)
         {
+
             if (ModelState.IsValid)//Server side validation
             {
                 _context.Add(model);
                 await _context.SaveChangesAsync();
-                return View("ProposeDemonstrator", model);
+                return View("ModuleDemonstrators", model);
             }
             //TODO figure out what to pass here, might need model.id
             return View("ModuleDemonstrators", model);

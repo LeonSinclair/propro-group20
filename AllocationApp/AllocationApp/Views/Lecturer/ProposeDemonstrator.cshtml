@@ -1,0 +1,41 @@
+﻿
+@model Tuple<User, List<Course>>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="well">
+            <form method="post">
+                <h3>Propose a demonstrator!</h3>
+                <div asp-validation-summary="ModelOnly"></div>  
+                <div class="form-group">
+                    <label asp-for="Item1.FirstName">First name:</label>
+                    <div>@Model.Item1.FirstName</div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Item1.LastName">Surname:</label>
+                    <div>@Model.Item1.LastName</div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Item1.Skills">Skills:</label>
+                   <div>
+                       @Model.Item1.Skills
+                   </div>
+                </div>
+                <div class=" form-group">
+                    <div>
+                        <label>Module:</label>
+                    </div>
+                    <select>
+                        @foreach (var item in Model.Item2)
+                        {
+                             <option value="@item.Id">@item.Id @item.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Add" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

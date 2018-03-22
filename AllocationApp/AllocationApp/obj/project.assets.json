@@ -13402,28 +13402,36 @@
     ]
   },
   "packageFolders": {
-    "/Users/sullaviviagmontes/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\Leon\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "/Users/sullaviviagmontes/Documents/propro/github/propro-group20/AllocationApp/AllocationApp/AllocationApp.csproj",
+      "projectUniqueName": "C:\\Users\\Leon\\source\\repos\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
       "projectName": "AllocationApp",
-      "projectPath": "/Users/sullaviviagmontes/Documents/propro/github/propro-group20/AllocationApp/AllocationApp/AllocationApp.csproj",
-      "packagesPath": "/Users/sullaviviagmontes/.nuget/packages/",
-      "outputPath": "/Users/sullaviviagmontes/Documents/propro/github/propro-group20/AllocationApp/AllocationApp/obj/",
+      "projectPath": "C:\\Users\\Leon\\source\\repos\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
+      "packagesPath": "C:\\Users\\Leon\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Leon\\source\\repos\\propro-group20\\AllocationApp\\AllocationApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/sullaviviagmontes/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Leon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
