@@ -13401,23 +13401,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Szabi\\.nuget\\packages\\": {},
+    "C:\\Users\\Ciaran\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "D:\\Szabi\\work\\egyetem\\final\\final2\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
+      "projectUniqueName": "C:\\CS3013 - Software Engineering Group Project\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
       "projectName": "AllocationApp",
-      "projectPath": "D:\\Szabi\\work\\egyetem\\final\\final2\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
-      "packagesPath": "C:\\Users\\Szabi\\.nuget\\packages\\",
-      "outputPath": "D:\\Szabi\\work\\egyetem\\final\\final2\\propro-group20\\AllocationApp\\AllocationApp\\obj\\",
+      "projectPath": "C:\\CS3013 - Software Engineering Group Project\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
+      "packagesPath": "C:\\Users\\Ciaran\\.nuget\\packages\\",
+      "outputPath": "C:\\CS3013 - Software Engineering Group Project\\propro-group20\\AllocationApp\\AllocationApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Szabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ciaran\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13441,30 +13444,30 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.All": {
+          "MySql.Data.EntityFrameworkCore": {
             "target": "Package",
-            "version": "[2.0.6, )"
+            "version": "6.10.6"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
-            "version": "[2.0.2, )"
-          },
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "[2.0.0, )",
-            "autoReferenced": true
+            "version": "2.0.2"
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
-            "version": "[2.0.3, )"
+            "version": "2.0.3"
           },
-          "MySql.Data.EntityFrameworkCore": {
+          "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "[6.10.6, )"
+            "version": "2.0",
+            "autoReferenced": true
+          },
+          "Microsoft.AspNetCore.All": {
+            "target": "Package",
+            "version": "2.0.6"
           },
           "MySql.Data.EntityFrameworkCore.Design": {
             "target": "Package",
-            "version": "[6.10.6, )"
+            "version": "6.10.6"
           }
         },
         "imports": [
