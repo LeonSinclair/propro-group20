@@ -10,7 +10,6 @@ namespace AllocationApp.Models
     public class Subordinates
     {
         [Required]
-        [Key]
         public int Id { get; set; }
         [MinLength(3)]
         [Required]

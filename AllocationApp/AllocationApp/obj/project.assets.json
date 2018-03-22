@@ -13402,8 +13402,12 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Leon\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+=======
+    "C:\\Users\\Szabi\\.nuget\\packages\\": {},
+>>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13412,6 +13416,7 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Leon\\source\\repos\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
       "projectName": "AllocationApp",
       "projectPath": "C:\\Users\\Leon\\source\\repos\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
@@ -13426,6 +13431,20 @@
         "C:\\Users\\Leon\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+=======
+      "projectUniqueName": "D:\\Szabi\\work\\egyetem\\final\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
+      "projectName": "AllocationApp",
+      "projectPath": "D:\\Szabi\\work\\egyetem\\final\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
+      "packagesPath": "C:\\Users\\Szabi\\.nuget\\packages\\",
+      "outputPath": "D:\\Szabi\\work\\egyetem\\final\\propro-group20\\AllocationApp\\AllocationApp\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Szabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"

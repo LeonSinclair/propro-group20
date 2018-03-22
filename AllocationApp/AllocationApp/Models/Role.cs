@@ -7,7 +7,7 @@ namespace AllocationApp.Models
 {
     public class Role
     {
-        public int Id { get; set; }
+        public int RoleID { get; set; }
         //public List<User> Users { get; set;}
         // Maybe change it to string later?
         public String RoleName { get; set; }

@@ -10,9 +10,10 @@ using System;
 namespace AllocationApp.Migrations
 {
     [DbContext(typeof(AllocationContext))]
-    partial class AllocationContextModelSnapshot : ModelSnapshot
+    [Migration("20180322151013_InitMySQL")]
+    partial class InitMySQL
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,50 +21,18 @@ namespace AllocationApp.Migrations
 
             modelBuilder.Entity("AllocationApp.Models.Course", b =>
                 {
-<<<<<<< HEAD
-                    b.Property<int>("Id")
-=======
                     b.Property<int>("CourseID")
->>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Code");
 
                     b.Property<string>("Name");
 
-<<<<<<< HEAD
-                    b.Property<int?>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-=======
                     b.HasKey("CourseID");
->>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
 
                     b.ToTable("Courses");
                 });
 
-<<<<<<< HEAD
-            modelBuilder.Entity("AllocationApp.Models.CourseWork", b =>
-                {
-                    b.Property<int>("CourseId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("CourseId1");
-
-                    b.Property<string>("CourseName");
-
-                    b.Property<int>("UserId");
-
-                    b.Property<string>("UserName");
-
-                    b.HasKey("CourseId");
-
-                    b.HasIndex("CourseId1");
-
-                    b.ToTable("CourseWork");
-=======
             modelBuilder.Entity("AllocationApp.Models.CourseUser", b =>
                 {
                     b.Property<int>("CourseID");
@@ -79,21 +48,10 @@ namespace AllocationApp.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("CourseUsers");
->>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
                 });
 
             modelBuilder.Entity("AllocationApp.Models.Hour", b =>
                 {
-<<<<<<< HEAD
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("CourseIdId");
-
-                    b.Property<string>("Date");
-
-                    b.Property<int>("HourType");
-=======
                     b.Property<int>("HourID")
                         .ValueGeneratedOnAdd();
 
@@ -102,23 +60,11 @@ namespace AllocationApp.Migrations
                     b.Property<DateTime>("Date");
 
                     b.Property<string>("HourType");
->>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
 
                     b.Property<bool>("IsApproved");
 
                     b.Property<int>("PayRate");
 
-<<<<<<< HEAD
-                    b.Property<int?>("UserIdId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseIdId");
-
-                    b.HasIndex("UserIdId");
-
-                    b.ToTable("Hour");
-=======
                     b.Property<int>("UserID");
 
                     b.HasKey("HourID");
@@ -126,29 +72,15 @@ namespace AllocationApp.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Hours");
->>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
                 });
 
             modelBuilder.Entity("AllocationApp.Models.Role", b =>
                 {
-<<<<<<< HEAD
-                    b.Property<int>("Id")
-=======
                     b.Property<int>("RoleID")
->>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("RoleName");
 
-<<<<<<< HEAD
-                    b.Property<int?>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Role");
-=======
                     b.Property<int?>("UserID");
 
                     b.HasKey("RoleID");
@@ -156,29 +88,10 @@ namespace AllocationApp.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Roles");
->>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
                 });
 
             modelBuilder.Entity("AllocationApp.Models.Skill", b =>
                 {
-<<<<<<< HEAD
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("CourseId");
-
-                    b.Property<int?>("UserId");
-
-                    b.Property<string>("name");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Skill");
-=======
                     b.Property<int>("SkillID")
                         .ValueGeneratedOnAdd();
 
@@ -195,7 +108,6 @@ namespace AllocationApp.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Skills");
->>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
                 });
 
             modelBuilder.Entity("AllocationApp.Models.Subordinates", b =>
@@ -219,16 +131,6 @@ namespace AllocationApp.Migrations
 
             modelBuilder.Entity("AllocationApp.Models.User", b =>
                 {
-<<<<<<< HEAD
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("LastName");
-
-                    b.HasKey("Id");
-=======
                     b.Property<int>("UserID")
                         .ValueGeneratedOnAdd();
 
@@ -239,25 +141,10 @@ namespace AllocationApp.Migrations
                         .IsRequired();
 
                     b.HasKey("UserID");
->>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
 
                     b.ToTable("Users");
                 });
 
-<<<<<<< HEAD
-            modelBuilder.Entity("AllocationApp.Models.Course", b =>
-                {
-                    b.HasOne("AllocationApp.Models.User")
-                        .WithMany("Courses")
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("AllocationApp.Models.CourseWork", b =>
-                {
-                    b.HasOne("AllocationApp.Models.Course")
-                        .WithMany("Lecturers")
-                        .HasForeignKey("CourseId1");
-=======
             modelBuilder.Entity("AllocationApp.Models.CourseUser", b =>
                 {
                     b.HasOne("AllocationApp.Models.Course")
@@ -269,56 +156,32 @@ namespace AllocationApp.Migrations
                         .WithMany("Courses")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade);
->>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
                 });
 
             modelBuilder.Entity("AllocationApp.Models.Hour", b =>
                 {
-<<<<<<< HEAD
-                    b.HasOne("AllocationApp.Models.Course", "CourseId")
-                        .WithMany()
-                        .HasForeignKey("CourseIdId");
-
-                    b.HasOne("AllocationApp.Models.User", "UserId")
-                        .WithMany("WorkHours")
-                        .HasForeignKey("UserIdId");
-=======
                     b.HasOne("AllocationApp.Models.User")
                         .WithMany("WorkHours")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade);
->>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
                 });
 
             modelBuilder.Entity("AllocationApp.Models.Role", b =>
                 {
                     b.HasOne("AllocationApp.Models.User")
                         .WithMany("RoleType")
-<<<<<<< HEAD
-                        .HasForeignKey("UserId");
-=======
                         .HasForeignKey("UserID");
->>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
                 });
 
             modelBuilder.Entity("AllocationApp.Models.Skill", b =>
                 {
                     b.HasOne("AllocationApp.Models.Course")
-<<<<<<< HEAD
-                        .WithMany("Requirements")
-                        .HasForeignKey("CourseId");
-
-                    b.HasOne("AllocationApp.Models.User")
-                        .WithMany("Skills")
-                        .HasForeignKey("UserId");
-=======
                         .WithMany("SkillRequirements")
                         .HasForeignKey("CourseID");
 
                     b.HasOne("AllocationApp.Models.User")
                         .WithMany("Skills")
                         .HasForeignKey("UserID");
->>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
                 });
 #pragma warning restore 612, 618
         }

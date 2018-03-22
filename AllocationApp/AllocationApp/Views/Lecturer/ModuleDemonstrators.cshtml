@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 ﻿@model Tuple<Course, List<User> >
+=======
+﻿@model Tuple<Course, IEnumerable<User>>
+>>>>>>> 0ab943c0113655112be6d5e10ed4421b7f39fe51
 
 @{
-        ViewData["Title"] = "Module Demonstrators";
+    ViewData["Title"] = "Module Demonstrators";
 }
 
 <div class="well">
@@ -13,7 +17,7 @@
         <thead>
             <tr>
                 <th>
-                   First Name
+                    First Name
                 </th>
                 <th>
                    Last Name
@@ -38,7 +42,7 @@
                         @Html.DisplayFor(modelItem => item.Skills)
                     </td>
                     <td>
-                        <a asp-action="DemonstratorDetails" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="DemonstratorDetails" asp-route-id="@item.UserID">Details</a> |
                     </td>
                 </tr>
             }
@@ -46,6 +50,6 @@
     </table>
 </div>
 <div>
-    
+
     <a asp-action="Index">Back to List</a>
 </div>

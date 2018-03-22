@@ -5,11 +5,9 @@ using System.Threading.Tasks;
 
 namespace AllocationApp.Models
 {
-    public class Skill
+    public class Module
     {
-        public int SkillID { get; set; }
+        public String Id { get; set; }
         public String Name { get; set; }
-        //public List<User> Users { get; set; }
-
     }
 }

@@ -10,10 +10,10 @@ namespace AllocationApp.Controllers
 {
     public class LecturerController : Controller
     {
-        private readonly AllocationDBContext _context;
+        private readonly AllocationContext _context;
 
 
-        public LecturerController(AllocationDBContext context)
+        public LecturerController(AllocationContext context)
         {
             _context = context;
             
@@ -38,8 +38,8 @@ namespace AllocationApp.Controllers
         [HttpPost("ModuleDemonstrators")]
         public IActionResult ModuleDemonstrators(int moduleId)
         {
-            var module = _context.Courses
-                .SingleOrDefault(m => m.Id == moduleId);
+            var module = _context.CourseUsers
+                .SingleOrDefault(m => m.CourseID == moduleId);
             var users = _context.Users.ToList().Where(user => user.Courses.Contains(module));
             return View("ModuleDemonstrators", Tuple.Create(module,users));
         }
@@ -80,7 +80,7 @@ namespace AllocationApp.Controllers
             }
 
             var demonstrator = _context.Users
-                .SingleOrDefault(m => m.Id == id);
+                .SingleOrDefault(m => m.UserID == id);
             if (demonstrator == null)
             {
                 return NotFound();

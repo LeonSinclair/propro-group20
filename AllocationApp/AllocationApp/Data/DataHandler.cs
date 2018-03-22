@@ -10,7 +10,7 @@ namespace AllocationApp.Data
     {
         public static void InsertCourse(Course myCourse)
         {
-            using (var context = new AllocationDBContext())
+            using (var context = new AllocationContext())
             {
                 context.Courses.Add(myCourse);
                 context.SaveChanges();
