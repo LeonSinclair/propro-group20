@@ -74,5 +74,5 @@ Thumbs.db
 # Weird Binaries    #
 #####################
 *obj/
-*debug/
+*Debug/
 >>>>>>> 8e8eb14b82a6ed42d995791a681bf59aba58df81
