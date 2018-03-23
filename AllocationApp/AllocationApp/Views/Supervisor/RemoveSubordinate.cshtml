@@ -24,13 +24,13 @@
                 @Html.DisplayNameFor(model => model.Occupation)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.ccupation)
+                @Html.DisplayFor(model => model.Occupation)
             </dd>
         </dl>
     </div>
 
     <form asp-action="RemoveSubordinate">
-        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ID" />
         <input type="submit" value="Delete" class="btn btn-warning" /> |
         <a asp-action="Index">Back to List</a>
     </form>
