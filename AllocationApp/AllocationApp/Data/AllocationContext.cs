@@ -21,6 +21,7 @@ namespace AllocationApp.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<CourseUser>()
                 .HasKey(s => new { s.CourseID, s.UserID });
             modelBuilder.Entity<CourseUser>()
@@ -32,7 +33,7 @@ namespace AllocationApp.Data
                 .WithMany(ma => ma.Courses)
                 .HasForeignKey(m => m.UserID);
 
-            base.OnModelCreating(modelBuilder);
+            
         }
 
         public DbSet<User> Users { get; set; }
