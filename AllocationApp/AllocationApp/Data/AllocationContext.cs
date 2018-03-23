@@ -23,6 +23,15 @@ namespace AllocationApp.Data
         {
             modelBuilder.Entity<CourseUser>()
                 .HasKey(s => new { s.CourseID, s.UserID });
+            modelBuilder.Entity<CourseUser>()
+                .HasOne(m => m.Course)
+                .WithMany(ma => ma.Users)
+                .HasForeignKey(m => m.CourseID);
+            modelBuilder.Entity<CourseUser>()
+                .HasOne(m => m.User)
+                .WithMany(ma => ma.Courses)
+                .HasForeignKey(m => m.UserID);
+
             base.OnModelCreating(modelBuilder);
         }
 

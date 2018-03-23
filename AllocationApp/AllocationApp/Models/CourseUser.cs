@@ -10,8 +10,8 @@ namespace AllocationApp.Models
     public class CourseUser
     {
         public int UserID { get; set; }
-        public String UserName { get; set; }
+        public User User { get; set; }
         public int CourseID { get; set; }
-        public String CourseName { get; set; } 
+        public Course Course { get; set; } 
     }
 }

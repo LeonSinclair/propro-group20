@@ -12,13 +12,13 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.firstname)
+                    @Html.DisplayNameFor(model => model.Firstname)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.surname)
+                    @Html.DisplayNameFor(model => model.Surname)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.occupation)
+                    @Html.DisplayNameFor(model => model.Occupation)
                 </th>
                 <th></th>
             </tr>
@@ -28,17 +28,17 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.firstname)
+                        @Html.DisplayFor(modelItem => item.Firstname)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.surname)
+                        @Html.DisplayFor(modelItem => item.Surname)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.occupation)
+                        @Html.DisplayFor(modelItem => item.Occupation)
                     </td>
                     <td>
-                        <a asp-action="SubordinateDetails" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="RemoveSubordinate" asp-route-id="@item.Id">Remove</a>
+                        <a asp-action="SubordinateDetails" asp-route-id="@item.ID">Details</a> |
+                        <a asp-action="RemoveSubordinate" asp-route-id="@item.ID">Remove</a>
                     </td>
                 </tr>
             }
