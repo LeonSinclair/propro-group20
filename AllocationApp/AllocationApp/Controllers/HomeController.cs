@@ -42,6 +42,12 @@ namespace AllocationApp.Controllers
             return View();
         }
 
+        public IActionResult BankDetails()
+        {
+            ViewData["Message"] = "Your Bank Details page.";
+            return View();
+        }
+
         public IActionResult Lecturer()
         {
             ViewData["Message"] = "Lecturer View.";

@@ -150,6 +150,25 @@ namespace AllocationApp.Controllers
             return View(user);
         }
 
+        // Bank Details
+
+        [HttpGet("AddBankDetails")]
+        public IActionResult AddBankDetails()
+        {
+            return View("BankDetails");
+        }
+
+        [HttpPost("AddBankDetails")]
+        public async Task<IActionResult> AddBankDetails([Bind("BankName,BankAddress,IBAN,SortCode")]Subordinates model)
+        {
+            if(ModelState.IsValid)//Server side validation
+            {
+                _context.Add(model);
+                await _context.SaveChangesAsync();
+                return View("BankDetails", model);
+            }
+            return View("Subordinates", model);
+        }
 
 
     }

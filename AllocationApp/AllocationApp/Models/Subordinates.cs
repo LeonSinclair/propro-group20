@@ -24,5 +24,18 @@ namespace AllocationApp.Models
         [Required]
         [DisplayName("Occupation")]
         public string Occupation { get; set; }
+
+        // Bank Details
+        [DisplayName("Bank Name")]
+        public string BankName { get; set; }
+
+        [DisplayName("Bank Address")]
+        public string BankAddress { get; set; }
+
+        [DisplayName("IBAN")]
+        public string IBAN { get; set; }
+
+        [DisplayName("Sort Code")]
+        public int SortCode { get; set; }
     }
 }

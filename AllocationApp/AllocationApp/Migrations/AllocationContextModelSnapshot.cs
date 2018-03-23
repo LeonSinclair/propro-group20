@@ -8,13 +8,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.Data.EntityFrameworkCore.Storage.Internal;
 using System;
 
-namespace AllocationApp.Data.Migrations
+namespace AllocationApp.Migrations
 {
     [DbContext(typeof(AllocationContext))]
-    [Migration("20180323021558_InitMySQL")]
-    partial class InitMySQL
+    partial class AllocationContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,10 +38,6 @@ namespace AllocationApp.Data.Migrations
                     b.Property<int>("CourseID");
 
                     b.Property<int>("UserID");
-
-                    b.Property<string>("CourseName");
-
-                    b.Property<string>("UserName");
 
                     b.HasKey("CourseID", "UserID");
 
@@ -116,14 +111,22 @@ namespace AllocationApp.Data.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Firstname")
+                    b.Property<string>("BankAddress");
+
+                    b.Property<string>("BankName");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired();
+
+                    b.Property<string>("IBAN");
+
+                    b.Property<string>("LastName")
                         .IsRequired();
 
                     b.Property<string>("Occupation")
                         .IsRequired();
 
-                    b.Property<string>("Surname")
-                        .IsRequired();
+                    b.Property<int>("SortCode");
 
                     b.HasKey("ID");
 
@@ -148,12 +151,12 @@ namespace AllocationApp.Data.Migrations
 
             modelBuilder.Entity("AllocationApp.Models.CourseUser", b =>
                 {
-                    b.HasOne("AllocationApp.Models.Course")
+                    b.HasOne("AllocationApp.Models.Course", "Course")
                         .WithMany("Users")
                         .HasForeignKey("CourseID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("AllocationApp.Models.User")
+                    b.HasOne("AllocationApp.Models.User", "User")
                         .WithMany("Courses")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade);

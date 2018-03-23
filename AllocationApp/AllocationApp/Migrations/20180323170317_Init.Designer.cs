@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.Data.EntityFrameworkCore.Storage.Internal;
 using System;
 
-namespace AllocationApp.Data.Migrations
+namespace AllocationApp.Migrations
 {
     [DbContext(typeof(AllocationContext))]
-    [Migration("20180323113837_godpleasework")]
-    partial class godpleasework
+    [Migration("20180323170317_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -112,14 +112,22 @@ namespace AllocationApp.Data.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Firstname")
+                    b.Property<string>("BankAddress");
+
+                    b.Property<string>("BankName");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired();
+
+                    b.Property<string>("IBAN");
+
+                    b.Property<string>("LastName")
                         .IsRequired();
 
                     b.Property<string>("Occupation")
                         .IsRequired();
 
-                    b.Property<string>("Surname")
-                        .IsRequired();
+                    b.Property<int>("SortCode");
 
                     b.HasKey("ID");
 

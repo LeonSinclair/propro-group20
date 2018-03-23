@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace AllocationApp.Data.Migrations
+namespace AllocationApp.Migrations
 {
-    public partial class InitMySQL : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,9 +28,13 @@ namespace AllocationApp.Data.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    Firstname = table.Column<string>(nullable: false),
+                    BankAddress = table.Column<string>(nullable: true),
+                    BankName = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: false),
+                    IBAN = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: false),
                     Occupation = table.Column<string>(nullable: false),
-                    Surname = table.Column<string>(nullable: false)
+                    SortCode = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -56,9 +60,7 @@ namespace AllocationApp.Data.Migrations
                 columns: table => new
                 {
                     CourseID = table.Column<int>(nullable: false),
-                    UserID = table.Column<int>(nullable: false),
-                    CourseName = table.Column<string>(nullable: true),
-                    UserName = table.Column<string>(nullable: true)
+                    UserID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
