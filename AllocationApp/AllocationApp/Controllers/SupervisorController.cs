@@ -36,7 +36,7 @@ namespace AllocationApp.Controllers
         }
 
         [HttpPost("AddSubordinates")]
-        public async Task<IActionResult> AddSubordinates([Bind("ID,Firstname,Surname,Occupation")]Subordinates model)
+        public async Task<IActionResult> AddSubordinates([Bind("ID,FirstName,LastName,Occupation")]Subordinates model)
         {
             if(ModelState.IsValid)//Server side validation
             {

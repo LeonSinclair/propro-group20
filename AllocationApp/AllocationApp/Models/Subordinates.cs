@@ -11,13 +11,16 @@ namespace AllocationApp.Models
     {
         [Required]
         public int ID { get; set; }
+
         [MinLength(3)]
         [Required]
         [DisplayName("First Name")]
         public string FirstName { get; set; }
+
         [Required]
         [DisplayName("Last Name")]
         public string LastName { get; set; }
+
         [Required]
         [DisplayName("Occupation")]
         public string Occupation { get; set; }
