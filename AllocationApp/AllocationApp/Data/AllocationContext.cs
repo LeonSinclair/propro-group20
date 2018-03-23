@@ -42,6 +42,6 @@ namespace AllocationApp.Data
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<CourseUser> CourseUsers { get; set; }
-
+        public DbSet<AllocationApp.Models.Module> Module { get; set; }
     }
 }

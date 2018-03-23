@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20180323021302_InitMySQL.cs" />
     <Compile Remove="Data\Migrations\20180323021302_InitMySQL.Designer.cs" />
+    <Compile Remove="Migrations\20180323170317_Init.cs" />
+    <Compile Remove="Migrations\20180323170317_Init.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

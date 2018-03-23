@@ -18,5 +18,8 @@ namespace AllocationApp.Models
         public int ModuleID { get; set; }
         public double HoursAllocated { get; set; }
         public double HoursWorked { get; set; }
+
+        public virtual Subordinates Subordinates { get; set; }
+        public virtual Module Module { get; set; }
     }
 }
