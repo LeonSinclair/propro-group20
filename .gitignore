@@ -59,3 +59,8 @@ TestResults/
 ehthumbs.db
 Icon?
 Thumbs.db
+#####################
+# Weird Binaries    #
+#####################
+*obj/
+*debug/
