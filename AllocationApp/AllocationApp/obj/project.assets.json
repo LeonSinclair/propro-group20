@@ -13403,24 +13403,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Szabi\\.nuget\\packages\\": {},
+    "C:\\Users\\Leon\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "D:\\Szabi\\work\\egyetem\\final\\temp\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
+      "projectUniqueName": "C:\\Users\\Leon\\source\\repos\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
       "projectName": "AllocationApp",
-      "projectPath": "D:\\Szabi\\work\\egyetem\\final\\temp\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
-      "packagesPath": "C:\\Users\\Szabi\\.nuget\\packages\\",
-      "outputPath": "D:\\Szabi\\work\\egyetem\\final\\temp\\propro-group20\\AllocationApp\\AllocationApp\\obj\\",
+      "projectPath": "C:\\Users\\Leon\\source\\repos\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
+      "packagesPath": "C:\\Users\\Leon\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Leon\\source\\repos\\propro-group20\\AllocationApp\\AllocationApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Szabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Leon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"

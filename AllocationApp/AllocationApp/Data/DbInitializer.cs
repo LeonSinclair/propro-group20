@@ -72,7 +72,6 @@ namespace AllocationApp.Data
                 context.CourseUsers.Add(c);
             }
             context.SaveChanges();
-
         }
     }
 }
