@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace AllocationApp.Controllers
 {
@@ -95,6 +96,60 @@ namespace AllocationApp.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Subordinates));
         }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _context.Subordinates
+                .Include(i => i.firstname)
+                .AsNoTracking()
+                .SingleOrDefaultAsync(m => m.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
+
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditUser(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _context.Subordinates
+                .Include(i => i.Firstname)
+                .AsNoTracking()
+                .SingleOrDefaultAsync(m => m.Id == id);
+
+            if (await TryUpdateModelAsync<Subordinates>(
+                user,
+                "",
+                i => i.Firstname, i => i.surname))
+            {
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateException /* ex */)
+                {
+                    //Log the error (uncomment ex variable name and write a log.)
+                    ModelState.AddModelError("", "Unable to save changes. " +
+                        "Try again, and if the problem persists, " +
+                        "see your system administrator.");
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(user);
+        }
+
 
 
     }
