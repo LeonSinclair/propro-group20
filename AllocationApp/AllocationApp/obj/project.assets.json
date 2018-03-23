@@ -7654,10 +7654,10 @@
       "path": "microsoft.netcore.platforms/2.0.0",
       "files": [
         "LICENSE.TXT",
+        "Microsoft.NETCore.Platforms.2.0.0.nupkg.sha512",
+        "Microsoft.NETCore.Platforms.nuspec",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.2.0.0.nupkg.sha512",
-        "microsoft.netcore.platforms.nuspec",
         "runtime.json",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -13403,14 +13403,9 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\Leon\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
-=======
-    "/Users/sullaviviagmontes/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
->>>>>>> 89fc2bfacedae538d713bf07d49eb8b85052527e
   },
   "project": {
     "version": "1.0.0",
@@ -13418,7 +13413,6 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Leon\\source\\repos\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
       "projectName": "AllocationApp",
       "projectPath": "C:\\Users\\Leon\\source\\repos\\propro-group20\\AllocationApp\\AllocationApp\\AllocationApp.csproj",
@@ -13433,24 +13427,12 @@
         "C:\\Users\\Leon\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
-=======
-      "projectUniqueName": "/Users/sullaviviagmontes/Documents/propro-group20/AllocationApp/AllocationApp/AllocationApp.csproj",
-      "projectName": "AllocationApp",
-      "projectPath": "/Users/sullaviviagmontes/Documents/propro-group20/AllocationApp/AllocationApp/AllocationApp.csproj",
-      "packagesPath": "/Users/sullaviviagmontes/.nuget/packages/",
-      "outputPath": "/Users/sullaviviagmontes/Documents/propro-group20/AllocationApp/AllocationApp/obj",
-      "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
-      "configFilePaths": [
-        "/Users/sullaviviagmontes/.config/NuGet/NuGet.Config"
->>>>>>> 89fc2bfacedae538d713bf07d49eb8b85052527e
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -13467,39 +13449,38 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.NETCore.App": {
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "2.0",
-            "autoReferenced": true
-          },
           "Microsoft.AspNetCore.All": {
             "target": "Package",
-            "version": "2.0.6"
+            "version": "[2.0.6, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
-            "version": "2.0.2"
+            "version": "[2.0.2, )"
           },
           "Microsoft.EntityFrameworkCore.Design": {
             "target": "Package",
-            "version": "2.0.2"
+            "version": "[2.0.2, )"
           },
           "Microsoft.EntityFrameworkCore.Tools": {
             "target": "Package",
-            "version": "2.0.2"
+            "version": "[2.0.2, )"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "[2.0.0, )",
+            "autoReferenced": true
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
-            "version": "2.0.3"
+            "version": "[2.0.3, )"
           },
           "MySql.Data.EntityFrameworkCore": {
             "target": "Package",
-            "version": "6.10.6"
+            "version": "[6.10.6, )"
           },
           "MySql.Data.EntityFrameworkCore.Design": {
             "target": "Package",
-            "version": "6.10.6"
+            "version": "[6.10.6, )"
           }
         },
         "imports": [
