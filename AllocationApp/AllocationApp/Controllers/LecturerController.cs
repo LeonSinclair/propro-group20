@@ -25,6 +25,13 @@ namespace AllocationApp.Controllers
             return View(tup);
         }
 
+        public IActionResult LecturerDashboard()
+        {
+            var tup = Tuple.Create(_context.Courses.ToList(), _context.Users.ToList());
+            return View(tup);
+        }
+
+
         //TODO this probably isn't accesible during normal usage, but good to have in case something odd happens 
         [HttpGet("ModuleDemonstrators")]
         public IActionResult ModuleDemonstrators()

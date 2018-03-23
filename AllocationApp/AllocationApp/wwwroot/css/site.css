@@ -66,6 +66,10 @@ h1 {
   margin-top: -6px;
 }
 
+#username_container {
+    text-align: right;
+}
+
 #icon_container {
   float: right;
 }
@@ -79,7 +83,6 @@ img.user {
 h3 {
   font-size: 15px;
   top: 0;
-  text-align: right;
   font-weight: 600;
 }
 
@@ -93,13 +96,13 @@ h4 {
 }
 
 .btn {
-    padding: 15px;
+    padding: 10px 20px 10px 20px;
     border-radius: 0;
-    background-color: #135D91
+    background-color: #135D91;
 }
 
 ul {
-    list-style-type: none
+    list-style-type: none;
 }
 
 p.role {
@@ -164,7 +167,6 @@ p.role {
     position: relative;
     margin: 20px 0 0 0;
     padding: 0;
-    border-top: 1px solid #F5F5F5;
 }
 
 .col-sm {
