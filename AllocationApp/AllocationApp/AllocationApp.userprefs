@@ -1,10 +1,10 @@
 ﻿<Properties StartupConfiguration="{439B91E0-8BD0-4F6A-8FD7-D7E738C593C1}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Home/Dashboard.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Supervisor/AddSubordinate.cshtml">
     <Files>
-      <File FileName="Controllers/SupervisorController.cs" Line="122" Column="28" />
-      <File FileName="Models/Subordinates.cs" Line="6" Column="30" />
+      <File FileName="Controllers/SupervisorController.cs" Line="129" Column="32" />
+      <File FileName="Models/Subordinates.cs" Line="12" Column="19" />
       <File FileName="wwwroot/css/site.css" Line="192" Column="19" />
-      <File FileName="Views/Home/Dashboard.cshtml" Line="88" Column="24" />
+      <File FileName="Views/Supervisor/AddSubordinate.cshtml" Line="30" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

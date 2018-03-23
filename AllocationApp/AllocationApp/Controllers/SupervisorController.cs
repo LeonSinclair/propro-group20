@@ -105,9 +105,9 @@ namespace AllocationApp.Controllers
             }
 
             var user = await _context.Subordinates
-                .Include(i => i.firstname)
+                .Include(i => i.FirstName)
                 .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.Id == id);
+                .SingleOrDefaultAsync(m => m.ID == id);
             if (user == null)
             {
                 return NotFound();
@@ -125,14 +125,14 @@ namespace AllocationApp.Controllers
             }
 
             var user = await _context.Subordinates
-                .Include(i => i.Firstname)
+                .Include(i => i.FirstName)
                 .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.Id == id);
+                .SingleOrDefaultAsync(m => m.ID == id);
 
             if (await TryUpdateModelAsync<Subordinates>(
                 user,
                 "",
-                i => i.Firstname, i => i.surname))
+                i => i.FirstName, i => i.LastName))
             {
                 try
                 {

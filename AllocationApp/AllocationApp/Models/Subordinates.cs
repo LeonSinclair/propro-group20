@@ -14,10 +14,10 @@ namespace AllocationApp.Models
         [MinLength(3)]
         [Required]
         [DisplayName("First Name")]
-        public string Firstname { get; set; }
+        public string FirstName { get; set; }
         [Required]
-        [DisplayName("Surname")]
-        public string Surname { get; set; }
+        [DisplayName("Last Name")]
+        public string LastName { get; set; }
         [Required]
         [DisplayName("Occupation")]
         public string Occupation { get; set; }
