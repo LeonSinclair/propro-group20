@@ -36,7 +36,7 @@ namespace AllocationApp.Controllers
         }
 
         [HttpPost("AddSubordinates")]
-        public async Task<IActionResult> AddSubordinates([Bind("ID,Firstname,Surname,Occupation")]Subordinates model)
+        public async Task<IActionResult> AddSubordinates([Bind("ID,FirstName,LastName,Occupation")]Subordinates model)
         {
             if(ModelState.IsValid)//Server side validation
             {
@@ -105,7 +105,7 @@ namespace AllocationApp.Controllers
             }
 
             var user = await _context.Subordinates
-                .Include(i => i.Firstname)
+                .Include(i => i.FirstName)
                 .AsNoTracking()
                 .SingleOrDefaultAsync(m => m.ID == id);
             if (user == null)
@@ -125,14 +125,14 @@ namespace AllocationApp.Controllers
             }
 
             var user = await _context.Subordinates
-                .Include(i => i.Firstname)
+                .Include(i => i.FirstName)
                 .AsNoTracking()
                 .SingleOrDefaultAsync(m => m.ID == id);
 
             if (await TryUpdateModelAsync<Subordinates>(
                 user,
                 "",
-                i => i.Firstname, i => i.Surname))
+                i => i.FirstName, i => i.LastName))
             {
                 try
                 {

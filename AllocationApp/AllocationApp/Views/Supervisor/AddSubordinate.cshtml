@@ -13,15 +13,15 @@
             <form method="post">
                 <h3>Hello there! Enter new subordinates below!</h3>
                 <div asp-validation-summary="ModelOnly"></div>
-                <label asp-for="Firstname">First name:</label>
+                <label asp-for="FirstName">First name:</label>
                 <div class="form-group">
-                    <input type="text" asp-for="Firstname" class="form-control" />
-                    <span asp-validation-for="Firstname" class="text-danger"></span>
+                    <input type="text" asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Surname">Surname:</label>
-                    <input type="text" asp-for="Surname" class="form-control" />
-                    <span asp-validation-for="Surname" class="text-danger"></span>
+                    <label asp-for="LastName">Surname:</label>
+                    <input type="text" asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Occupation">Occupation:</label>

@@ -10,7 +10,11 @@
 *.dll.config
 *.cache
 *.suo
+<<<<<<< HEAD
+# Include dlls if theyâ€™re in the NuGet packages directory
+=======
 # Include dlls if they’re in the NuGet packages directory
+>>>>>>> 8e8eb14b82a6ed42d995791a681bf59aba58df81
 !/packages/*/lib/*.dll
 !/packages/*/lib/*/*.dll
 # Include dlls if they're in the CommonReferences directory
@@ -38,7 +42,11 @@ TestResults/
 ############
 # Packages #
 ############
+<<<<<<< HEAD
+# itâ€™s better to unpack these files and commit the raw source
+=======
 # it’s better to unpack these files and commit the raw source
+>>>>>>> 8e8eb14b82a6ed42d995791a681bf59aba58df81
 # git has its own built in compression methods
 *.7z
 *.dmg
@@ -58,9 +66,13 @@ TestResults/
 .DS_Store?
 ehthumbs.db
 Icon?
+<<<<<<< HEAD
+Thumbs.db
+=======
 Thumbs.db
 #####################
 # Weird Binaries    #
 #####################
 *obj/
-*debug/
+*Debug/
+>>>>>>> 8e8eb14b82a6ed42d995791a681bf59aba58df81
