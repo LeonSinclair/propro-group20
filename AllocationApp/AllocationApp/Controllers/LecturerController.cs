@@ -53,7 +53,7 @@ namespace AllocationApp.Controllers
 
         [HttpPost("ProposeDemonstrator")]
         //TODO figure out these arguments
-        public async Task<IActionResult> ProposeDemonstrator(CourseWork model)
+        public async Task<IActionResult> ProposeDemonstrator(CourseUser model)
         {
 
             if (ModelState.IsValid)//Server side validation

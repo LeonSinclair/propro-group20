@@ -60,7 +60,7 @@ namespace AllocationApp.Controllers
             }
 
             var subordinate = _context.Subordinates
-                .SingleOrDefault(m => m.Id == id);
+                .SingleOrDefault(m => m.ID == id);
             if (subordinate == null)
             {
                 return NotFound();
@@ -78,7 +78,7 @@ namespace AllocationApp.Controllers
             }
 
             var subordinate = _context.Subordinates
-                .SingleOrDefault(m => m.Id == id);
+                .SingleOrDefault(m => m.ID == id);
             if (subordinate == null)
             {
                 return NotFound();
@@ -90,7 +90,7 @@ namespace AllocationApp.Controllers
         [HttpPost("RemoveSubordinate")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var subordinate = _context.Subordinates.SingleOrDefault(m => m.Id == id);
+            var subordinate = _context.Subordinates.SingleOrDefault(m => m.ID == id);
             _context.Subordinates.Remove(subordinate);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Subordinates));

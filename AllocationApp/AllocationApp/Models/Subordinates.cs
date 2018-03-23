@@ -10,16 +10,16 @@ namespace AllocationApp.Models
     public class Subordinates
     {
         [Required]
-        public int Id { get; set; }
+        public int ID { get; set; }
         [MinLength(3)]
         [Required]
         [DisplayName("First Name")]
-        public string firstname { get; set; }
+        public string Firstname { get; set; }
         [Required]
         [DisplayName("Surname")]
-        public string surname { get; set; }
+        public string Surname { get; set; }
         [Required]
         [DisplayName("Occupation")]
-        public string occupation { get; set; }
+        public string Occupation { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AllocationApp.Migrations
+namespace AllocationApp.Data.Migrations
 {
     public partial class InitMySQL : Migration
     {
@@ -26,15 +26,15 @@ namespace AllocationApp.Migrations
                 name: "Subordinates",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    firstname = table.Column<string>(nullable: false),
-                    occupation = table.Column<string>(nullable: false),
-                    surname = table.Column<string>(nullable: false)
+                    Firstname = table.Column<string>(nullable: false),
+                    Occupation = table.Column<string>(nullable: false),
+                    Surname = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Subordinates", x => x.Id);
+                    table.PrimaryKey("PK_Subordinates", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -107,8 +107,8 @@ namespace AllocationApp.Migrations
                 {
                     RoleID = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    RoleName = table.Column<string>(nullable: true),
-                    UserID = table.Column<int>(nullable: true)
+                    RoleType = table.Column<int>(nullable: false),
+                    UserID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -118,7 +118,7 @@ namespace AllocationApp.Migrations
                         column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "UserID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

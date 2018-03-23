@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,7 +15,9 @@ namespace AllocationApp.Models
         public String HourType { get; set; }
         //which course did he work for?
         public int CourseID { get; set; }
-        //type of date needs to be changed later to a more exact date time
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
         //type needs to be changed to an exact money type
         public int PayRate { get; set; }

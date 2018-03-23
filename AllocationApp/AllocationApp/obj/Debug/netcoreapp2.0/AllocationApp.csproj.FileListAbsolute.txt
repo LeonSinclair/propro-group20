@@ -64,3 +64,14 @@ D:\Szabi\work\egyetem\final\propro-group20\AllocationApp\AllocationApp\obj\Debug
 D:\Szabi\work\egyetem\final\propro-group20\AllocationApp\AllocationApp\obj\Debug\netcoreapp2.0\AllocationApp.dll
 D:\Szabi\work\egyetem\final\propro-group20\AllocationApp\AllocationApp\obj\Debug\netcoreapp2.0\AllocationApp.pdb
 D:\Szabi\work\egyetem\final\propro-group20\AllocationApp\AllocationApp\obj\Debug\netcoreapp2.0\AllocationApp.csprojResolveAssemblyReference.cache
+D:\Szabi\work\egyetem\final\temp\propro-group20\AllocationApp\AllocationApp\bin\Debug\netcoreapp2.0\AllocationApp.deps.json
+D:\Szabi\work\egyetem\final\temp\propro-group20\AllocationApp\AllocationApp\bin\Debug\netcoreapp2.0\AllocationApp.runtimeconfig.json
+D:\Szabi\work\egyetem\final\temp\propro-group20\AllocationApp\AllocationApp\bin\Debug\netcoreapp2.0\AllocationApp.runtimeconfig.dev.json
+D:\Szabi\work\egyetem\final\temp\propro-group20\AllocationApp\AllocationApp\bin\Debug\netcoreapp2.0\AllocationApp.dll
+D:\Szabi\work\egyetem\final\temp\propro-group20\AllocationApp\AllocationApp\bin\Debug\netcoreapp2.0\AllocationApp.pdb
+D:\Szabi\work\egyetem\final\temp\propro-group20\AllocationApp\AllocationApp\obj\Debug\netcoreapp2.0\AllocationApp.csprojResolveAssemblyReference.cache
+D:\Szabi\work\egyetem\final\temp\propro-group20\AllocationApp\AllocationApp\obj\Debug\netcoreapp2.0\AllocationApp.csproj.CoreCompileInputs.cache
+D:\Szabi\work\egyetem\final\temp\propro-group20\AllocationApp\AllocationApp\obj\Debug\netcoreapp2.0\AllocationApp.AssemblyInfoInputs.cache
+D:\Szabi\work\egyetem\final\temp\propro-group20\AllocationApp\AllocationApp\obj\Debug\netcoreapp2.0\AllocationApp.AssemblyInfo.cs
+D:\Szabi\work\egyetem\final\temp\propro-group20\AllocationApp\AllocationApp\obj\Debug\netcoreapp2.0\AllocationApp.dll
+D:\Szabi\work\egyetem\final\temp\propro-group20\AllocationApp\AllocationApp\obj\Debug\netcoreapp2.0\AllocationApp.pdb
