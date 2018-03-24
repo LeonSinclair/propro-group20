@@ -1,4 +1,4 @@
-﻿using AllocationApp.Data;
+using AllocationApp.Data;
 using AllocationApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -61,7 +61,53 @@ namespace AllocationApp.Controllers
                 return NotFound();
             }
 
+            var subordinate = _context.Subordinates
+                .SingleOrDefault(m => m.ID == id);
+            if (subordinate == null)
+            {
+                return NotFound();
+            }
+
+            return View(subordinate);
+        }
+
+        [HttpGet("RemoveSubordinate")]
+        public async Task<IActionResult> RemoveSubordinate(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var subordinate = _context.Subordinates
+                .SingleOrDefault(m => m.ID == id);
+            if (subordinate == null)
+            {
+                return NotFound();
+            }
+
+            return View(subordinate);
+        }
+
+        [HttpPost("RemoveSubordinate")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var subordinate = _context.Subordinates.SingleOrDefault(m => m.ID == id);
+            _context.Subordinates.Remove(subordinate);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Subordinates));
+        }
+
+        
+        public async Task<IActionResult> EditSubordinate(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
             var user = await _context.Subordinates
+                .Include(i => i.SubordinateModules)
                 .AsNoTracking()
                 .SingleOrDefaultAsync(m => m.ID == id);
             
@@ -73,26 +119,30 @@ namespace AllocationApp.Controllers
             return View("Settings");
         }
 
-        [HttpPost, ActionName("Settings")]
+        [HttpPost, ActionName("EditSubordinate")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SettingsPost(int? id)
+        public async Task<IActionResult> EditSubordinate(int? id, Subordinates subordinate)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.Subordinates
-                .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.ID == id);
-            
-            if (await TryUpdateModelAsync<Subordinates>(
-                user,
-                "",
-                i => i.FirstName, i => i.LastName))
-            {
+            //var user = await _context.Subordinates
+            //    .Include(i => i.SubordinateModules)
+            //    .AsNoTracking()
+            //    .SingleOrDefaultAsync(m => m.ID == id);
+
+            //if (await TryUpdateModelAsync<Subordinates>(
+            //    user,
+            //    "",
+            //    i => i.FirstName, i => i.LastName))
+            //{
+            if(ModelState.IsValid)
+            { 
                 try
                 {
+                _context.Subordinates.Update(subordinate);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateException /* ex */)
@@ -102,9 +152,9 @@ namespace AllocationApp.Controllers
                         "Try again, and if the problem persists, " +
                         "see your system administrator.");
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Subordinates));
             }
-            return View(user);
+            return View(subordinate);
         }
 
         public IActionResult BankDetails()
