@@ -13,7 +13,7 @@
                 Profile
             </li>
             <li>
-                <a asp-area="" asp-controller="Home" asp-action="BankDetails">Bank Details</a>
+                <a asp-area="" asp-controller="Supervisor" asp-action="BankDetails">Bank Details</a>
                 </li>
 
         </ul>
@@ -39,6 +39,7 @@
                     <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+                    <input type="hidden" asp-for="ID" />
                     <input type="submit" value="Save" class="btn btn-primary">
                 </div>
             </form>
