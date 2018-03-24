@@ -97,7 +97,8 @@ namespace AllocationApp.Controllers
             return RedirectToAction(nameof(Subordinates));
         }
 
-        public async Task<IActionResult> Edit(int? id)
+        
+        public async Task<IActionResult> EditSubordinate(int? id)
         {
             if (id == null)
             {
@@ -105,7 +106,7 @@ namespace AllocationApp.Controllers
             }
 
             var user = await _context.Subordinates
-                .Include(i => i.FirstName)
+                .Include(i => i.SubordinateModules)
                 .AsNoTracking()
                 .SingleOrDefaultAsync(m => m.ID == id);
             if (user == null)
@@ -115,27 +116,30 @@ namespace AllocationApp.Controllers
             return View(user);
         }
 
-        [HttpPost, ActionName("Edit")]
+        [HttpPost, ActionName("EditSubordinate")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditUser(int? id)
+        public async Task<IActionResult> EditSubordinate(int? id, Subordinates subordinate)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.Subordinates
-                .Include(i => i.FirstName)
-                .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.ID == id);
+            //var user = await _context.Subordinates
+            //    .Include(i => i.SubordinateModules)
+            //    .AsNoTracking()
+            //    .SingleOrDefaultAsync(m => m.ID == id);
 
-            if (await TryUpdateModelAsync<Subordinates>(
-                user,
-                "",
-                i => i.FirstName, i => i.LastName))
-            {
+            //if (await TryUpdateModelAsync<Subordinates>(
+            //    user,
+            //    "",
+            //    i => i.FirstName, i => i.LastName))
+            //{
+            if(ModelState.IsValid)
+            { 
                 try
                 {
+                _context.Subordinates.Update(subordinate);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateException /* ex */)
@@ -145,9 +149,9 @@ namespace AllocationApp.Controllers
                         "Try again, and if the problem persists, " +
                         "see your system administrator.");
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Subordinates));
             }
-            return View(user);
+            return View(subordinate);
         }
 
         // Bank Details

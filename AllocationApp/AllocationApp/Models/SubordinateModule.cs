@@ -7,7 +7,6 @@ namespace AllocationApp.Models
 {
     public class SubordinateModule
     {
-        public int ID { get; set; }
         public int SubordinateID { get; set; }
         public int ModuleID { get; set; }
 

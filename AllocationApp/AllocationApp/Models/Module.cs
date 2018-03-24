@@ -7,7 +7,7 @@ namespace AllocationApp.Models
 {
     public class Module
     {
-        public String Id { get; set; }
+        public int ModuleID { get; set; }
         public String Name { get; set; }
 
         public virtual ICollection<SubordinateModule> SubordinateModules { get; set; }

@@ -70,6 +70,18 @@ namespace AllocationApp.Migrations
                     b.ToTable("Hours");
                 });
 
+            modelBuilder.Entity("AllocationApp.Models.Module", b =>
+                {
+                    b.Property<int>("ModuleID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("ModuleID");
+
+                    b.ToTable("Module");
+                });
+
             modelBuilder.Entity("AllocationApp.Models.Role", b =>
                 {
                     b.Property<int>("RoleID")
@@ -104,6 +116,21 @@ namespace AllocationApp.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Skills");
+                });
+
+            modelBuilder.Entity("AllocationApp.Models.SubordinateModule", b =>
+                {
+                    b.Property<int>("ModuleID");
+
+                    b.Property<int>("SubordinateID");
+
+                    b.Property<int?>("SubordinatesID");
+
+                    b.HasKey("ModuleID", "SubordinateID");
+
+                    b.HasIndex("SubordinatesID");
+
+                    b.ToTable("SubordinateModules");
                 });
 
             modelBuilder.Entity("AllocationApp.Models.Subordinates", b =>
@@ -187,6 +214,18 @@ namespace AllocationApp.Migrations
                     b.HasOne("AllocationApp.Models.User")
                         .WithMany("Skills")
                         .HasForeignKey("UserID");
+                });
+
+            modelBuilder.Entity("AllocationApp.Models.SubordinateModule", b =>
+                {
+                    b.HasOne("AllocationApp.Models.Module", "Module")
+                        .WithMany("SubordinateModules")
+                        .HasForeignKey("ModuleID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AllocationApp.Models.Subordinates", "Subordinates")
+                        .WithMany("SubordinateModules")
+                        .HasForeignKey("SubordinatesID");
                 });
 #pragma warning restore 612, 618
         }
