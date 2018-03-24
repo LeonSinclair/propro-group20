@@ -87,7 +87,8 @@ namespace AllocationApp.Controllers
 
             if (await TryUpdateModelAsync<Subordinates>(userToUpdate,
                 "",
-                c => c.FirstName, c => c.LastName))
+                c => c.FirstName, c => c.LastName, c => c.BankName,
+                c => c.BankAddress, c => c.IBAN, c => c.SortCode))
             {
                 try
                 {

@@ -1,13 +1,13 @@
 ﻿<Properties StartupConfiguration="{439B91E0-8BD0-4F6A-8FD7-D7E738C593C1}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/SupervisorController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/Skill.cs">
     <Files>
       <File FileName="Views/Home/Dashboard.cshtml" Line="15" Column="42" />
       <File FileName="Views/Supervisor/BankDetails.cshtml" Line="10" Column="20" />
-      <File FileName="Views/Supervisor/Settings.cshtml" Line="15" Column="17" />
-      <File FileName="Controllers/SupervisorController.cs" Line="58" Column="50" />
+      <File FileName="Views/Supervisor/Settings.cshtml" Line="30" Column="23" />
+      <File FileName="Controllers/SupervisorController.cs" Line="83" Column="14" />
       <File FileName="Views/Supervisor/RemoveSubordinate.cshtml" Line="31" Column="5" />
       <File FileName="Views/Supervisor/AddSubordinate.cshtml" Line="20" Column="23" />
-      <File FileName="Views/Supervisor/SubordinateDetails.cshtml" Line="56" Column="47" />
+      <File FileName="Views/Supervisor/SubordinateDetails.cshtml" Line="56" Column="54" />
       <File FileName="Views/Supervisor/Modules.cshtml" Line="1" Column="1" />
       <File FileName="Views/Shared/_Layout.cshtml" Line="48" Column="55" />
       <File FileName="Controllers/CoursesController.cs" Line="21" Column="9" />
@@ -18,6 +18,7 @@
       <File FileName="Controllers/UserController.cs" Line="1" Column="1" />
       <File FileName="Models/Subordinates.cs" Line="35" Column="30" />
       <File FileName="Models/CourseUser.cs" Line="1" Column="1" />
+      <File FileName="Models/Skill.cs" Line="11" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
