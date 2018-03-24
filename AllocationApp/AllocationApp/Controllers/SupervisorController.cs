@@ -53,6 +53,7 @@ namespace AllocationApp.Controllers
             return View();
         }
 
+        // Merging Settings and Edit Subordinate //TODO
         [HttpGet("Settings")]
         public async Task<IActionResult> Settings(int? id)
         {
@@ -62,6 +63,7 @@ namespace AllocationApp.Controllers
             }
 
             var subordinate = _context.Subordinates
+                .Include(i => i.SubordinateModules)
                 .SingleOrDefault(m => m.ID == id);
             if (subordinate == null)
             {
@@ -71,6 +73,41 @@ namespace AllocationApp.Controllers
             return View(subordinate);
         }
 
+        [HttpPost("Settings")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SettingsPost(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var userToUpdate = await _context.Subordinates
+                .SingleOrDefaultAsync(c => c.ID == id);
+
+            if (await TryUpdateModelAsync<Subordinates>(userToUpdate,
+                "",
+                c => c.FirstName, c => c.LastName))
+            {
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateException /* ex */)
+                {
+                    //Log the error (uncomment ex variable name and write a log.)
+                    ModelState.AddModelError("", "Unable to save changes. " +
+                        "Try again, and if the problem persists, " +
+                        "see your system administrator.");
+                }
+                return RedirectToAction("SubordinateDetails", new {@id=id});
+            }
+            //PopulateDepartmentsDropDownList(userToUpdate.DepartmentID);
+
+            return View("SubordinateDetails", id);
+        }
+
+        // Remove Subordinate 
         [HttpGet("RemoveSubordinate")]
         public async Task<IActionResult> RemoveSubordinate(int? id)
         {
@@ -98,74 +135,67 @@ namespace AllocationApp.Controllers
             return RedirectToAction(nameof(Subordinates));
         }
 
-        
-        public async Task<IActionResult> EditSubordinate(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        // 
+        //public async Task<IActionResult> EditSubordinate(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var user = await _context.Subordinates
-                .Include(i => i.SubordinateModules)
-                .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.ID == id);
+        //    var user = await _context.Subordinates
+        //        .Include(i => i.SubordinateModules)
+        //        .AsNoTracking()
+        //        .SingleOrDefaultAsync(m => m.ID == id);
             
-            if (user == null)
-            {
-                return NotFound();
-            }
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View("Settings");
-        }
+        //    return View("Settings");
+        //}
 
-        [HttpPost, ActionName("EditSubordinate")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditSubordinate(int? id, Subordinates subordinate)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //[HttpPost, ActionName("EditSubordinate")]
+        //[ValidateAntiForgeryToken]
+        //private async Task<IActionResult> EditSubordinate(int? id, Subordinates subordinate)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            //var user = await _context.Subordinates
-            //    .Include(i => i.SubordinateModules)
-            //    .AsNoTracking()
-            //    .SingleOrDefaultAsync(m => m.ID == id);
+        //    var user = await _context.Subordinates
+        //        .Include(i => i.SubordinateModules)
+        //        .AsNoTracking()
+        //        .SingleOrDefaultAsync(m => m.ID == id);
 
-            //if (await TryUpdateModelAsync<Subordinates>(
-            //    user,
-            //    "",
-            //    i => i.FirstName, i => i.LastName))
-            //{
-            if(ModelState.IsValid)
-            { 
-                try
-                {
-                _context.Subordinates.Update(subordinate);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateException /* ex */)
-                {
-                    //Log the error (uncomment ex variable name and write a log.)
-                    ModelState.AddModelError("", "Unable to save changes. " +
-                        "Try again, and if the problem persists, " +
-                        "see your system administrator.");
-                }
-                return RedirectToAction(nameof(Subordinates));
-            }
-            return View(subordinate);
-        }
+        //    if (await TryUpdateModelAsync<Subordinates>(
+        //        user,
+        //        "",
+        //        i => i.FirstName, i => i.LastName))
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            try
+        //            {
+        //                _context.Subordinates.Update(subordinate);
+        //                await _context.SaveChangesAsync();
+        //            }
+        //            catch (DbUpdateException /* ex */)
+        //            {
+        //                //Log the error (uncomment ex variable name and write a log.)
+        //                ModelState.AddModelError("", "Unable to save changes. " +
+        //                    "Try again, and if the problem persists, " +
+        //                    "see your system administrator.");
+        //            }
+        //            return RedirectToAction(nameof(Subordinates));
+        //        }
+        //        return View(subordinate);
+        //    }
+        //}
 
-        public IActionResult BankDetails()
-        {
-            ViewData["Message"] = "Your Dashboard page.";
-
-            return View();
-        }
-
-
-
+        // Subordinate Details
         public async Task<IActionResult> SubordinateDetails(int? id)
         {
             if (id == null)
@@ -183,35 +213,8 @@ namespace AllocationApp.Controllers
             return View(subordinate);
         }
 
-        [HttpGet("RemoveSubordinate")]
-        public async Task<IActionResult> RemoveSubordinate(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var subordinate = _context.Subordinates
-                .SingleOrDefault(m => m.ID == id);
-            if (subordinate == null)
-            {
-                return NotFound();
-            }
-
-            return View(subordinate);
-        }
-
-        [HttpPost("RemoveSubordinate")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var subordinate = _context.Subordinates.SingleOrDefault(m => m.ID == id);
-            _context.Subordinates.Remove(subordinate);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Subordinates));
-        }
-
-        // Bank Details - NOT WORKING YET
-
+        // Bank Details //TODO
         [HttpGet("AddBankDetails")]
         public IActionResult BankDetails(int? id)
         {
