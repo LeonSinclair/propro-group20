@@ -38,6 +38,8 @@ namespace AllocationApp.Models
         [DisplayName("Sort Code")]
         public int SortCode { get; set; }
 
+        public virtual ICollection<CheckboxViewModel> Modules { get; set; }
+
         public virtual ICollection<SubordinateModule> SubordinateModules { get; set; }
     }
 }

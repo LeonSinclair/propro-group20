@@ -49,6 +49,13 @@
                 <span asp-validation-for="SortCode" class="text-danger"></span>
             </div>
             <div class="form-group">
+                @foreach (var module in Model.Modules)
+                {
+                    @Html.DisplayFor(modelItem => module.ModuleName)
+                    @Html.EditorFor(modelItem => module.Checked)
+                }
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>

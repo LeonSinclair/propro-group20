@@ -97,7 +97,7 @@ namespace AllocationApp.Controllers
             return RedirectToAction(nameof(Subordinates));
         }
 
-        
+        [HttpGet]
         public async Task<IActionResult> EditSubordinate(int? id)
         {
             if (id == null)
@@ -109,11 +109,36 @@ namespace AllocationApp.Controllers
                 .Include(i => i.SubordinateModules)
                 .AsNoTracking()
                 .SingleOrDefaultAsync(m => m.ID == id);
+
+            var modules = from m in _context.Module
+                          select new
+                          {
+                              m.ModuleID,
+                              m.Name,
+                              Checked = ((from sb in _context.SubordinateModules
+                                          where (sb.SubordinateID == id) & (sb.ModuleID == m.ModuleID)
+                                          select sb).Count() > 0)
+                          };
+
+            var subordinate = new Subordinates();
+            subordinate.ID = id.Value;
+            subordinate.FirstName = user.FirstName;
+            subordinate.LastName = user.LastName;
+
+            var CheckboxList = new List<CheckboxViewModel>();
+            foreach(var module in modules)
+            {
+                CheckboxList.Add(new CheckboxViewModel { ID = module.ModuleID, ModuleName = module.Name, Checked = module.Checked});
+            }
+
+            subordinate.Modules = CheckboxList;
+
             if (user == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(subordinate);
+            // (user)
         }
 
         [HttpPost, ActionName("EditSubordinate")]
@@ -139,8 +164,16 @@ namespace AllocationApp.Controllers
             { 
                 try
                 {
-                _context.Subordinates.Update(subordinate);
+                    _context.Subordinates.Update(subordinate);
                     await _context.SaveChangesAsync();
+
+                    foreach(var item in _context.SubordinateModules)
+                    {
+                        if (item.SubordinateID == subordinate.ID)
+                        {
+                            //_context.Entry(item).State = System.Data.Ent
+                        }
+                    }
                 }
                 catch (DbUpdateException /* ex */)
                 {
