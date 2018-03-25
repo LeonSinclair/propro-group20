@@ -1,3 +1,9 @@
 ﻿@{
-    Layout = "_Layout";
+    bool loggedin = true;
+
+    if (loggedin) {
+        Layout = "_Layout";
+    } else {
+        Layout = "_NotLogged";
+    }
 }

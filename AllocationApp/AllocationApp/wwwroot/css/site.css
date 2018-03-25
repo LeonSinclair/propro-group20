@@ -7,6 +7,29 @@
   padding: 0;
 }
 
+#background {
+    height: 100vh;
+    width: 100%;
+    background-image: url("/images/longroom.jpg");
+    background-position: center;
+    padding-top: 1px;
+    margin-top: 0px;
+    vertical-align: middle;}
+
+.login_section {
+    text-align: center;
+    max-width: 400px;
+    max-height: 350px;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    overflow: auto;
+}
+
 a:link, a:visited, a:hover, a:active {
   color: #000000;
 }
@@ -18,6 +41,21 @@ a:link, a:visited, a:hover, a:active {
   width: 100%;
   height: 100px;
   color: #FFFFFF;
+}
+
+#login_hb {
+    position: static;
+    margin: auto;
+    background-color: #0E72B9;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+    color: #FFFFFF;
+}
+
+#login_hb a {
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
 #header_container {
@@ -33,6 +71,14 @@ a:link, a:visited, a:hover, a:active {
   margin-top: 22px;
   height: 60px;
   width: auto;
+}
+
+#login_hc {
+    position: absolute;
+    text-align: center;
+    margin-top: 6%;
+    height: 60px;
+    width: 100%;
 }
 
 #heading_container a {

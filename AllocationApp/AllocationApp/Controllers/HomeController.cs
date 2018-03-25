@@ -5,11 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AllocationApp.Models;
+using AllocationApp.Data;
 
 namespace AllocationApp.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly AllocationContext _context;
+
+        public HomeController(AllocationContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -29,17 +37,17 @@ namespace AllocationApp.Controllers
             return View();
         }
 
-        public IActionResult Dashboard()
-        {
-            ViewData["Message"] = "Your Dashboard page.";
-
-            return View();
-        }
-
         public IActionResult Lecturer()
         {
             ViewData["Message"] = "Lecturer View.";
             return View();
+        }
+
+        [HttpGet("Dashboard")]
+        public IActionResult Dashboard()
+        {
+            var results = _context.Subordinates.ToList();
+            return View(results);
         }
 
         public IActionResult Error()

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<AllocationApp.Models.Subordinates>
+
+@{
     ViewData["Title"] = "Dashboard";
 }
 
@@ -96,6 +98,21 @@
                   </tr>
                 </thead>
                 <tbody>
+                    @foreach (var item in Model) {
+                      if (item.Occupation == "Demonstrator") {
+                        <tr>         
+                        <th scope="row">
+                        @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
+                        </th>
+                        <td>
+                        @Html.DisplayFor(modelItem => item.Occupation)
+                        </td>
+                        <td></td>
+                        <td><img class="modify_image"></td>   
+                        </tr>         
+
+                        }
+                    }
                   <tr>
                     <th scope="row">John Doe</th>
                     <td>Java, Assembly, C, C++, Go</td>

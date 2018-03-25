@@ -15,6 +15,7 @@ namespace AllocationApp.Models
         [Required]
         [DisplayName("Last name")]
         public string LastName { get; set; }
+
         public List<Role> RoleType { get; set; }
         public List<CourseUser> Courses { get; set; }
         public List<Hour> WorkHours { get; set; }
