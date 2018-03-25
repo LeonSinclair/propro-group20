@@ -71,23 +71,30 @@ namespace AllocationApp.Controllers
 
         [HttpPost("ProposeDemonstrator")]
         //TODO figure out these arguments
-        public async Task<IActionResult> ProposeDemonstrator(User user, Course course, int userID, int courseID)
+        //just get the IDs and query the DB then
+        public async Task<IActionResult> ProposeDemonstrator(int userID, int courseID)
         {
-            CourseUser courseUser = new CourseUser();
-            courseUser.Course = course;
-            courseUser.CourseID = courseID;
-            courseUser.User = user;
-            courseUser.UserID = userID;
-            var tup = Tuple.Create(course, _context.Users.ToList());
+
+            var course = from courses in _context.Courses
+                         where courses.CourseID == courseID
+                         select courses;
+            var user = from users in _context.Users
+                         where users.UserID == userID+1
+                         select users;
+            User tmpUser = user.Single();
+            Course tmpCourse = course.Single();
+            CourseUser courseUser = new CourseUser(userID, tmpUser, courseID, tmpCourse);
+
+            var tmp = Request.Form;
             if (ModelState.IsValid)//Server side validation
             {
-                
+                //TODO set this to send you to the module demonstrators page
+                //for now it sends you back to the index
                 _context.Add(courseUser);
                 await _context.SaveChangesAsync();
-                return View("ModuleDemonstrators", tup);
+                return View();
             }
-            //TODO figure out what to pass here, might need model.id
-            return View("ModuleDemonstrators", tup);
+            return View();
         }
 
         [HttpGet("Modules")]
