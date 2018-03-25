@@ -36,12 +36,6 @@ namespace AllocationApp.Controllers
             return View();
         }
 
-        public IActionResult Settings()
-        {
-            ViewData["Message"] = "Your Settings page.";
-            return View();
-        }
-
         public IActionResult Lecturer()
         {
             ViewData["Message"] = "Lecturer View.";

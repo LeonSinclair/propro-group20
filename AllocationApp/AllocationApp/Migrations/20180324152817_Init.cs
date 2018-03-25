@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace AllocationApp.Data.Migrations
+namespace AllocationApp.Migrations
 {
-    public partial class InitMySQL : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,14 +23,31 @@ namespace AllocationApp.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Module",
+                columns: table => new
+                {
+                    ModuleID = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Module", x => x.ModuleID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Subordinates",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    Firstname = table.Column<string>(nullable: false),
+                    BankAddress = table.Column<string>(nullable: true),
+                    BankName = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: false),
+                    IBAN = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: false),
                     Occupation = table.Column<string>(nullable: false),
-                    Surname = table.Column<string>(nullable: false)
+                    SortCode = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -52,13 +69,36 @@ namespace AllocationApp.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SubordinateModules",
+                columns: table => new
+                {
+                    ModuleID = table.Column<int>(nullable: false),
+                    SubordinateID = table.Column<int>(nullable: false),
+                    SubordinatesID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubordinateModules", x => new { x.ModuleID, x.SubordinateID });
+                    table.ForeignKey(
+                        name: "FK_SubordinateModules_Module_ModuleID",
+                        column: x => x.ModuleID,
+                        principalTable: "Module",
+                        principalColumn: "ModuleID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SubordinateModules_Subordinates_SubordinatesID",
+                        column: x => x.SubordinatesID,
+                        principalTable: "Subordinates",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CourseUsers",
                 columns: table => new
                 {
                     CourseID = table.Column<int>(nullable: false),
-                    UserID = table.Column<int>(nullable: false),
-                    CourseName = table.Column<string>(nullable: true),
-                    UserName = table.Column<string>(nullable: true)
+                    UserID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -172,6 +212,11 @@ namespace AllocationApp.Data.Migrations
                 name: "IX_Skills_UserID",
                 table: "Skills",
                 column: "UserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SubordinateModules_SubordinatesID",
+                table: "SubordinateModules",
+                column: "SubordinatesID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -189,13 +234,19 @@ namespace AllocationApp.Data.Migrations
                 name: "Skills");
 
             migrationBuilder.DropTable(
-                name: "Subordinates");
+                name: "SubordinateModules");
 
             migrationBuilder.DropTable(
                 name: "Courses");
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Module");
+
+            migrationBuilder.DropTable(
+                name: "Subordinates");
         }
     }
 }

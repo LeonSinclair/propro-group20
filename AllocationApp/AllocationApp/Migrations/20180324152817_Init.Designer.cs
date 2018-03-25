@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.Data.EntityFrameworkCore.Storage.Internal;
 using System;
 
-namespace AllocationApp.Data.Migrations
+namespace AllocationApp.Migrations
 {
     [DbContext(typeof(AllocationContext))]
-    [Migration("20180323113837_godpleasework")]
-    partial class godpleasework
+    [Migration("20180324152817_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -71,6 +71,18 @@ namespace AllocationApp.Data.Migrations
                     b.ToTable("Hours");
                 });
 
+            modelBuilder.Entity("AllocationApp.Models.Module", b =>
+                {
+                    b.Property<int>("ModuleID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("ModuleID");
+
+                    b.ToTable("Module");
+                });
+
             modelBuilder.Entity("AllocationApp.Models.Role", b =>
                 {
                     b.Property<int>("RoleID")
@@ -107,19 +119,42 @@ namespace AllocationApp.Data.Migrations
                     b.ToTable("Skills");
                 });
 
+            modelBuilder.Entity("AllocationApp.Models.SubordinateModule", b =>
+                {
+                    b.Property<int>("ModuleID");
+
+                    b.Property<int>("SubordinateID");
+
+                    b.Property<int?>("SubordinatesID");
+
+                    b.HasKey("ModuleID", "SubordinateID");
+
+                    b.HasIndex("SubordinatesID");
+
+                    b.ToTable("SubordinateModules");
+                });
+
             modelBuilder.Entity("AllocationApp.Models.Subordinates", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Firstname")
+                    b.Property<string>("BankAddress");
+
+                    b.Property<string>("BankName");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired();
+
+                    b.Property<string>("IBAN");
+
+                    b.Property<string>("LastName")
                         .IsRequired();
 
                     b.Property<string>("Occupation")
                         .IsRequired();
 
-                    b.Property<string>("Surname")
-                        .IsRequired();
+                    b.Property<int>("SortCode");
 
                     b.HasKey("ID");
 
@@ -180,6 +215,18 @@ namespace AllocationApp.Data.Migrations
                     b.HasOne("AllocationApp.Models.User")
                         .WithMany("Skills")
                         .HasForeignKey("UserID");
+                });
+
+            modelBuilder.Entity("AllocationApp.Models.SubordinateModule", b =>
+                {
+                    b.HasOne("AllocationApp.Models.Module", "Module")
+                        .WithMany("SubordinateModules")
+                        .HasForeignKey("ModuleID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AllocationApp.Models.Subordinates", "Subordinates")
+                        .WithMany("SubordinateModules")
+                        .HasForeignKey("SubordinatesID");
                 });
 #pragma warning restore 612, 618
         }

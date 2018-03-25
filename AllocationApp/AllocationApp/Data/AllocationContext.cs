@@ -32,8 +32,9 @@ namespace AllocationApp.Data
                 .HasOne(m => m.User)
                 .WithMany(ma => ma.Courses)
                 .HasForeignKey(m => m.UserID);
+            modelBuilder.Entity<SubordinateModule>()
+                .HasKey(s => new { s.ModuleID, s.SubordinateID });
 
-            
         }
 
         public DbSet<User> Users { get; set; }
@@ -42,6 +43,7 @@ namespace AllocationApp.Data
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<CourseUser> CourseUsers { get; set; }
-
+        public DbSet<Module> Module { get; set; }
+        public DbSet<SubordinateModule> SubordinateModules { get; set; }
     }
 }

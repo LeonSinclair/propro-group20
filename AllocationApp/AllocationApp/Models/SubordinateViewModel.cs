@@ -9,5 +9,6 @@ namespace AllocationApp.Models
 {
     public class SubordinateView
     {
+
     }
 }
