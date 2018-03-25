@@ -1,4 +1,4 @@
-﻿@model Subordinates
+@model Subordinates
 
 @{
     ViewData["Title"] = "Subordinate Details";
@@ -53,6 +53,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="EditSubordinate" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Settings" asp-route-id="@Model.ID">Edit</a> |
     <a asp-action="Subordinates">Back to List</a>
 </div>

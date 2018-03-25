@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -41,5 +42,7 @@ namespace AllocationApp.Models
         public virtual ICollection<CheckboxViewModel> Modules { get; set; }
 
         public virtual ICollection<SubordinateModule> SubordinateModules { get; set; }
+
+
     }
 }
