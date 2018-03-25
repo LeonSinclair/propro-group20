@@ -60,18 +60,23 @@ namespace AllocationApp.Controllers
 
         [HttpPost("ProposeDemonstrator")]
         //TODO figure out these arguments
-        public async Task<IActionResult> ProposeDemonstrator(CourseUser model)
+        public async Task<IActionResult> ProposeDemonstrator(User user, Course course, int userID, int courseID)
         {
-            var tup = Tuple.Create(model.Course, _context.Users.ToList());
+            CourseUser courseUser = new CourseUser();
+            courseUser.Course = course;
+            courseUser.CourseID = courseID;
+            courseUser.User = user;
+            courseUser.UserID = userID;
+            var tup = Tuple.Create(course, _context.Users.ToList());
             if (ModelState.IsValid)//Server side validation
             {
-                _context.Add(model);
+                _context.Add(courseUser);
                 await _context.SaveChangesAsync();
                 
-                return View("ModuleDemonstrators", tup);
+                return View("ModuleDemonstrators", courseID);
             }
             //TODO figure out what to pass here, might need model.id
-            return View("ModuleDemonstrators", tup);
+            return View("ModuleDemonstrators", courseID);
         }
 
         [HttpGet("Modules")]

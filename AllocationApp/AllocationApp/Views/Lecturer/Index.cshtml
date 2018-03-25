@@ -1,7 +1,7 @@
-﻿@model Tuple< List<Course>, List<User> >
+﻿@model Tuple<List<Course>, List<User>>
 
 @{
-    ViewData["Title"] = "Lecturer View";
+    ViewData["Title"] = "Lecturer Dashboard";
 }
 <div id="body_container">
 
@@ -10,26 +10,22 @@
 
         <!-- search box -->
         <input type="text" placeholder="Type module and press enter" class="search">
-        <input type="button" class="button" value="Apply Filter">
         <!-- /search box -->
+
         <div class="container">
-            @foreach (var item in Model.Item1)
-            {
-
-
-            <div class="row">
-                <div class="col-sm">
-                    <a href="">
-                        <div class="object_box">
+            <div class="object_box">
+                <div class="list-group list-group-flush">
+                    @foreach (var item in Model.Item1)
+                    {
+                        <a href="#" class="list-group-item list-group-item-action">
                             @Html.DisplayFor(modelItem => item.Code)
                             @Html.DisplayFor(modelItem => item.Name)
-                        </div>
-                    </a>
+                        </a>
+                    }
                 </div>
             </div>
-
-            }
         </div>
+
         <div class="view_all">
             <a href="#">View all modules</a>
         </div>
@@ -40,44 +36,44 @@
         <h4>Demonstrators</h4>
         <!-- search box -->
         <input type="text" placeholder="Type module and press enter" class="search">
-        <input type="button" class="button" value="Apply Filter">
         <!-- /search box -->
+
         <div class="container">
-            @foreach (var item in Model.Item2.Take(5))
-            {
-            <div class="row">
-                <div class="col-sm">
-                    <a href="">
-                        <div class="object_box">
-                            @Html.DisplayFor(modelItem => item.FirstName)
-                            @Html.DisplayFor(modelItem => item.LastName)
-                            @Html.DisplayFor(modelItem => item.Skills)
-                        </div>
-                        <div class="propose">
-                            <form action="employee.action" method="post">
-                                <a asp-action="ProposeDemonstrator" asp-route-id="@item.UserID">Propose Module</a> |
-                                <a asp-action="DemonstratorDetails" asp-route-id="@item.UserID">Details</a>
-                            </form>
+            <div class="object_box">
 
-                        </div>
-                    </a>
-                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">NAME</th>
+                            <th scope="col">SKILLS</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model.Item2.Take(5))
+                        {
+
+                            <tr>
+                                <th scope="row">@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</th>
+                                <td>@Html.DisplayFor(modelItem => item.Skills)</td>
+                                <td><a asp-action="ProposeDemonstrator" asp-route-id="@item.UserID">Propose Module</a></td>
+                                <td><a asp-action="DemonstratorDetails" asp-route-id="@item.UserID">Details</a></td>
+                            </tr>
+
+                        }
+                    </tbody>
+
+                </table>
             </div>
-
-            }
         </div>
-            <div class="view_all">
-                <a href="ModuleDemonstrators">View all demonstrators</a>
-            </div>
 
-        </div>
+
+    </div>
+    <div class="view_all">
+        <a href="ModuleDemonstrators">View all demonstrators</a>
+    </div>
+
 </div>
-
-<script language="javascript">
-
-
-    function DoPost() {
-        $.post("ModuleDemonstrators", { moduleId: "2041" });  //Your values here..
-    }
-
-</script>
+</div>

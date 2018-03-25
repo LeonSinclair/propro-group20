@@ -54,23 +54,29 @@ namespace AllocationApp.Data
             context.SaveChanges();
             var courseusers = new CourseUser[]
             {
-            new CourseUser{UserID=1,CourseID=1050},            
-            new CourseUser{UserID=1,CourseID=4022},
-            new CourseUser{UserID=1,CourseID=4041},
-            new CourseUser{UserID=2,CourseID=1045},
-            new CourseUser{UserID=2,CourseID=3141},
-            new CourseUser{UserID=2,CourseID=2021},
-            new CourseUser{UserID=3,CourseID=1050},
-            new CourseUser{UserID=4,CourseID=1050},
-            new CourseUser{UserID=4,CourseID=4022},
-            new CourseUser{UserID=5,CourseID=4041},
-            new CourseUser{UserID=6,CourseID=1045},
-            new CourseUser{UserID=7,CourseID=3141},
+                         
+                new CourseUser{UserID=1,CourseID=4022},
+                new CourseUser{UserID=1,CourseID=4041},
+                new CourseUser{UserID=2,CourseID=1045},
+                new CourseUser{UserID=2,CourseID=3141},
+                new CourseUser{UserID=2,CourseID=2021},
+                new CourseUser{UserID=3,CourseID=1050},
+                new CourseUser{UserID=4,CourseID=1050},
+                new CourseUser{UserID=4,CourseID=4022},
+                new CourseUser{UserID=5,CourseID=4041},
+                new CourseUser{UserID=6,CourseID=1045},
+                new CourseUser{UserID=7,CourseID=3141},
             };
+            CourseUser courseUser = new CourseUser();
+            courseUser.UserID = 1;
+            courseUser.CourseID = 1050;
+            context.CourseUsers.Add(courseUser);
+            
             foreach (CourseUser c in courseusers)
             {
                 context.CourseUsers.Add(c);
             }
+            
             context.SaveChanges();
         }
     }
