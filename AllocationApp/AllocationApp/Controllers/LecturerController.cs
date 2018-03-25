@@ -28,11 +28,14 @@ namespace AllocationApp.Controllers
         public IActionResult LecturerDashboard()
         {
             var tup = Tuple.Create(_context.Courses.ToList(), _context.Users.ToList());
-            return View(tup);
+            return View("Index",tup);
         }
 
 
         //TODO this probably isn't accesible during normal usage, but good to have in case something odd happens 
+        
+        
+        /*
         [HttpGet("ModuleDemonstrators")]
         public IActionResult ModuleDemonstrators()
         {
@@ -42,13 +45,21 @@ namespace AllocationApp.Controllers
         }
 
         //TODO limit the number of demonstrators it shows
-        [HttpPost("ModuleDemonstrators")]
-        public IActionResult ModuleDemonstrators(int moduleId)
+        [HttpPost("ModuleDemonstrators")] 
+        */
+        public IActionResult ModuleDemonstrators(int moduleID)
         {
-            var module = _context.CourseUsers
-                .SingleOrDefault(m => m.CourseID == moduleId);
-            var users = _context.Users.ToList().Where(user => user.Courses.Contains(module));
-            return View("ModuleDemonstrators", Tuple.Create(module,users));
+            var module = _context.Courses
+                .SingleOrDefault(m => m.CourseID == moduleID);
+            //Select from Users where userID is contained in (Select courses
+            //take all users where their userid is in course user and has the right course number
+            //basically select all users that have the right courseID
+            var query = from user in _context.CourseUsers
+                        where user.CourseID == moduleID
+                        select user.User;
+            
+
+            return View("ModuleDemonstrators", Tuple.Create(module,query.ToList()));
         }
         //TODO decide if this is needed
         [HttpGet("ProposeDemonstrator")]
@@ -70,13 +81,13 @@ namespace AllocationApp.Controllers
             var tup = Tuple.Create(course, _context.Users.ToList());
             if (ModelState.IsValid)//Server side validation
             {
+                
                 _context.Add(courseUser);
                 await _context.SaveChangesAsync();
-                
-                return View("ModuleDemonstrators", courseID);
+                return View("ModuleDemonstrators", tup);
             }
             //TODO figure out what to pass here, might need model.id
-            return View("ModuleDemonstrators", courseID);
+            return View("ModuleDemonstrators", tup);
         }
 
         [HttpGet("Modules")]

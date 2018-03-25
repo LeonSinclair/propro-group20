@@ -17,10 +17,9 @@
                 <div class="list-group list-group-flush">
                     @foreach (var item in Model.Item1)
                     {
-                        <a href="#" class="list-group-item list-group-item-action">
-                            @Html.DisplayFor(modelItem => item.Code)
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </a>
+                        <div class="list-group-item list-group-item-action">
+                            @Html.ActionLink(@item.Code + " " +@item.Name, "ModuleDemonstrators", "Lecturer", new { moduleID = item.CourseID }, null) 
+                        </div>
                     }
                 </div>
             </div>
