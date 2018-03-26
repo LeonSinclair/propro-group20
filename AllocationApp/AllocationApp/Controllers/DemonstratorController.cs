@@ -26,6 +26,16 @@ namespace AllocationApp.Controllers
             return View(courses);
         }
 
+        // GET: /Demonstrator/LogHours/ 
+        // Requires using System.Text.Encodings.Web
+        public IActionResult LogHours()
+        {
+            var hour = _context.Hours;
+            var courseList = _context.Courses.ToList();
+
+            return View(Tuple.Create(hour, courseList));
+        }
+
         // GET: /Demonstrator/Welcome/ 
         // Requires using System.Text.Encodings.Web
         public IActionResult Welcome(string name, int numTimes = 1)
