@@ -16,18 +16,15 @@ namespace AllocationApp.Controllers
         {
             _context = context;
         }
-
-        // 
-        // GET: /Demonstrator/
+        
         public IActionResult Index()
         {
-            ViewData["Message"] = _context;
-            var courses = _context.Courses.ToList();
-            return View(courses);
+            var courseList = _context.Courses.ToList();
+
+            return View(courseList);
         }
 
-        // GET: /Demonstrator/LogHours/ 
-        // Requires using System.Text.Encodings.Web
+        [HttpPost("LogHours")]
         public IActionResult LogHours()
         {
             var hour = _context.Hours;
@@ -37,8 +34,8 @@ namespace AllocationApp.Controllers
             return View(Tuple.Create(hour, userList, courseList));
         }
 
-        // GET: /Demonstrator/Welcome/ 
-        // Requires using System.Text.Encodings.Web
+        //welcome() method should be deleted from final version of project
+        [HttpPost("Welcome")]
         public IActionResult Welcome(string name, int numTimes = 1)
         {
             ViewData["Message"] = "Hello " + name;
