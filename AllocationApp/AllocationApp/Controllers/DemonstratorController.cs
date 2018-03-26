@@ -24,12 +24,5 @@ namespace MvcMovie.Controllers
             ViewData["NumTimes"] = numTimes;
             return View();
         }
-
-        // 
-        // GET: /Demonstrator/Rage/ 
-        public string Rage()
-        {
-            return "Fuck everything.";
-        }
     }
 }
