@@ -31,9 +31,10 @@ namespace AllocationApp.Controllers
         public IActionResult LogHours()
         {
             var hour = _context.Hours;
+            var userList = _context.Users;
             var courseList = _context.Courses.ToList();
 
-            return View(Tuple.Create(hour, courseList));
+            return View(Tuple.Create(hour, userList, courseList));
         }
 
         // GET: /Demonstrator/Welcome/ 

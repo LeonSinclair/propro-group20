@@ -1,4 +1,4 @@
-﻿@model Tuple<Hour, IEnumerable<Course>>
+﻿@model Tuple<Hour, IEnumerable<User>, IEnumerable<Course>>
 
 
 @{
@@ -12,13 +12,9 @@
             <div class="form-group">
                 <label asp-for="Item1.UserID" class="control-label">User ID</label>
                 <select asp-for="Item1.UserID" class ="form-control" asp-items="ViewBag.UserID">
-                    @{
-                        foreach (Course c in Model.Item2)
-                        {
-
-                            <!-- need to enumerate user ids -->
-
-                        }
+                    @foreach (User u in Model.Item2)
+                    {
+                        <option value="@u.ID">@u.ID @u.FirstName @u.LastName</option>
                     }
                 </select>
             </div>
@@ -30,8 +26,9 @@
             <div class="form-group">
                 <label asp-for="Item1.CourseID" class="control-label"></label>
                 <select asp-for="Item1.CourseID" class="form-control" asp-items="ViewBag.CourseID">
-                    @{
-                        <!-- need to enumerate course ids -->
+                    @foreach (Course c in Model.Item3)
+                    {
+                        <option value="@c.CourseID">@c.Code @c.Name</option>
                     }
                 </select>
                 <span asp-validation-for="Item1.CourseID" class="text-danger"></span>
