@@ -1,7 +1,48 @@
-﻿@{
-    ViewData["Title"] = "Index";
+﻿@model IEnumerable<Course>
+
+@{
+    ViewData["Title"] = "Demonstrator View";
 }
+<div id="body_container">
 
-<h2>Index</h2>
+    <div class="section" id="module">
 
-<p>Barebones to begin with I admit</p>
+        <h4>Modules</h4>
+
+        <!-- search box -->
+        <input type="text" placeholder="Type module and press enter" class="search">
+        <input type="button" class="button" value="Apply Filter">
+        <!-- /search box -->
+
+        @foreach (var item in Model)
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <a href="">
+                            <div class="object_box">
+                                @Html.DisplayFor(modelItem => item.Code)
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <p>@ViewData["Message"];</p>
+
+        <div class="view_all">
+            <a href="#">View all modules</a>
+        </div>
+
+    </div>
+</div>
+
+<script language="javascript">
+
+    function DoPost() {
+        $.post("ModuleDemonstrators", { moduleId: "2041" });  //Your values here..
+    }
+
+</script>
