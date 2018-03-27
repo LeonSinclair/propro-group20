@@ -107,12 +107,8 @@ namespace AllocationApp.Controllers
             }
             return View("Index", Tuple.Create(_context.Courses.ToList(), _context.Users.ToList()));
         }
+        
 
-        [HttpGet("Modules")]
-        public IActionResult Modules()
-        {
-            return View();
-        }
 
         public async Task<IActionResult> DemonstratorDetails(int? id)
         {
