@@ -1,26 +1,39 @@
 ﻿
-@model Tuple<User, List<Course>>
+@model User
 
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <div class="well">
-            @using (Html.BeginForm())
-            {
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.Item1.UserID)
+            <form  method="post">
+                <div class="form-group">
+                    <input type="hidden" value="@Model.UserID" name="UserID" />
                 </div>
-                <div class="editor-text">
-                    @Html.TextBoxFor(model => model.Item1.UserID)
+                <div class="form-group">
+                    <label asp-for="FirstName">@Model.FirstName</label>
+                    <display asp-for="FirstName" />
+                    <span asp-validation-for="FirstName"></span>
                 </div>
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.Item2.First().CourseID)
+                <div class="form-group">
+                    <label asp-for="LastName">@Model.LastName</label>
+                    <display asp-for="LastName" />
+                    <span asp-validation-for="LastName"></span>
                 </div>
-                <div class="editor-text">
-                    @Html.TextBoxFor(model => model.Item2.First().CourseID)
-                </div>
-                <input type ="submit" value="Assign User to Course" />
-            }
+                <div class="form-group">
 
+                    <select name="CourseID">
+                        @foreach (var course in ViewBag.courses)
+                        {
+                            <option value="@course.CourseID" name="CourseID">@course.CourseID @course.Name</option>
+
+                        }
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Add" class="btn btn-primary">
+                </div>
+            </form>
+            
         </div>
     </div>
 </div>

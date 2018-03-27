@@ -63,27 +63,38 @@ namespace AllocationApp.Controllers
         }
         //TODO decide if this is needed
         [HttpGet("ProposeDemonstrator")]
-        public IActionResult ProposeDemonstrator()
+        public IActionResult ProposeDemonstrator(int id)
         {
-
-            return View("ProposeDemonstrator", Tuple.Create(_context.Users.First(), _context.Courses.ToList() ) );
-        }
-
-        [HttpPost("ProposeDemonstrator")]
-        //TODO figure out these arguments
-        //just get the IDs and query the DB then
-        public async Task<IActionResult> ProposeDemonstrator(int userID, int courseID)
-        {
+            var req = Request.Query["id"];
 
             var course = from courses in _context.Courses
-                         where courses.CourseID == courseID
                          select courses;
             var user = from users in _context.Users
-                         where users.UserID == userID+1
+                             where users.UserID == id
+                             select users;
+
+            ViewBag.courses = course.ToList();
+            
+            return View("ProposeDemonstrator", user.Single() );
+        }
+
+        
+        //TODO figure out these arguments
+        //just get the IDs and query the DB then
+        [HttpPost("ProposeDemonstrator")]
+        public async Task<IActionResult> ProposeDemonstrator(int UserID, int CourseID)
+        {
+            var req = Request.Query;
+            var reqForm = Request.Form;
+            var course = from courses in _context.Courses
+                         where courses.CourseID == CourseID
+                         select courses;
+            var user = from users in _context.Users
+                         where users.UserID == UserID
                          select users;
             User tmpUser = user.Single();
             Course tmpCourse = course.Single();
-            CourseUser courseUser = new CourseUser(userID, tmpUser, courseID, tmpCourse);
+            CourseUser courseUser = new CourseUser(UserID, tmpUser, CourseID, tmpCourse);
 
             var tmp = Request.Form;
             if (ModelState.IsValid)//Server side validation
@@ -92,9 +103,9 @@ namespace AllocationApp.Controllers
                 //for now it sends you back to the index
                 _context.Add(courseUser);
                 await _context.SaveChangesAsync();
-                return View();
+                return View("Index", Tuple.Create(_context.Courses.ToList(), _context.Users.ToList()));
             }
-            return View();
+            return View("Index", Tuple.Create(_context.Courses.ToList(), _context.Users.ToList()));
         }
 
         [HttpGet("Modules")]
