@@ -8,6 +8,12 @@ using System.Threading.Tasks;
 
 namespace AllocationApp.Controllers
 {
+
+    //TODO implement All Demonstrators button
+    //TODO implement All Modules Button
+    //TODO fix names and make proposals look pretty
+    //TODO create proposals that can be rejected or denied
+    //TODO search function
     public class LecturerController : Controller
     {
         private readonly AllocationContext _context;
@@ -31,29 +37,13 @@ namespace AllocationApp.Controllers
             return View("Index",tup);
         }
 
-
-        //TODO this probably isn't accesible during normal usage, but good to have in case something odd happens 
         
         
-        /*
-        [HttpGet("ModuleDemonstrators")]
-        public IActionResult ModuleDemonstrators()
-        {
-            var module = _context.Courses.First();
-            var users = _context.Users.ToList();
-            return View("ModuleDemonstrators", Tuple.Create(module, users));
-        }
-
-        //TODO limit the number of demonstrators it shows
-        [HttpPost("ModuleDemonstrators")] 
-        */
+       
         public IActionResult ModuleDemonstrators(int moduleID)
         {
             var module = _context.Courses
                 .SingleOrDefault(m => m.CourseID == moduleID);
-            //Select from Users where userID is contained in (Select courses
-            //take all users where their userid is in course user and has the right course number
-            //basically select all users that have the right courseID
             var query = from user in _context.CourseUsers
                         where user.CourseID == moduleID
                         select user.User;
@@ -79,35 +69,56 @@ namespace AllocationApp.Controllers
         }
 
         
-        //TODO figure out these arguments
-        //just get the IDs and query the DB then
         [HttpPost("ProposeDemonstrator")]
         public async Task<IActionResult> ProposeDemonstrator(int UserID, int CourseID)
         {
-            var req = Request.Query;
-            var reqForm = Request.Form;
             var course = from courses in _context.Courses
                          where courses.CourseID == CourseID
                          select courses;
             var user = from users in _context.Users
                          where users.UserID == UserID
                          select users;
-            User tmpUser = user.Single();
-            Course tmpCourse = course.Single();
-            CourseUser courseUser = new CourseUser(UserID, tmpUser, CourseID, tmpCourse);
-
-            var tmp = Request.Form;
-            if (ModelState.IsValid)//Server side validation
+            
+            Proposal proposal = new Proposal(UserID, user.Single(), CourseID, course.Single(), false);
+            //TODO catch exception from them already demoing for the module
+            if (ModelState.IsValid)
             {
                 //TODO set this to send you to the module demonstrators page
                 //for now it sends you back to the index
+                _context.Add(proposal);
+                await _context.SaveChangesAsync();
+                //TODO query to find correct users
+                return View("ModuleDemonstrators", Tuple.Create(course.Single(), _context.Users.ToList()));
+            }
+            return View("ModuleDemonstrators", Tuple.Create(course.Single(), _context.Users.ToList()));
+        }
+
+
+        public async Task<IActionResult> ConfirmProposal(int UserID, int CourseID)
+        {
+            //TODO check input data here
+            var proposal = from proposals in _context.Proposal
+                           where proposals.UserID == UserID && proposals.CourseID == CourseID
+                           select proposals;
+
+            Proposal tmpProposal = proposal.Single();
+            tmpProposal.Approved = true;
+            User tmpUser = tmpProposal.User;
+            Course tmpCourse = tmpProposal.Course;
+            CourseUser courseUser = new CourseUser(UserID, tmpUser, CourseID, tmpCourse);
+            //TODO catch exception from them already demoing for the module
+            if (ModelState.IsValid)
+            {
+                //TODO set this to send you to the module demonstrators page
+                //for now it sends you back to the index
+
+                _context.Remove(proposal);
                 _context.Add(courseUser);
                 await _context.SaveChangesAsync();
-                return View("Index", Tuple.Create(_context.Courses.ToList(), _context.Users.ToList()));
+                return View("ModuleDemonstrators", Tuple.Create(tmpCourse, _context.Users.ToList()));
             }
-            return View("Index", Tuple.Create(_context.Courses.ToList(), _context.Users.ToList()));
+            return View("ModuleDemonstrators", Tuple.Create(tmpCourse, _context.Users.ToList()));
         }
-        
 
 
         public async Task<IActionResult> DemonstratorDetails(int? id)
@@ -127,6 +138,24 @@ namespace AllocationApp.Controllers
             return View(demonstrator);
         }
 
+        //TODO when clicked these should return a link to the appropriate module or demonstrator page
+        public IActionResult AllModules()
+        {
+
+            return View(_context.Courses.ToList());
+        }
+
+        public IActionResult AllDemonstrators()
+        {
+
+            return View(_context.Users.ToList());
+        }
+
+        public IActionResult ViewProposals()
+        {
+
+            return View(_context.Proposal.ToList());
+        }
 
     }
 }

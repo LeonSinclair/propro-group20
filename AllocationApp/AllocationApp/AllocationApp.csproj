@@ -7,11 +7,6 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20180323021302_InitMySQL.cs" />
     <Compile Remove="Data\Migrations\20180323021302_InitMySQL.Designer.cs" />
-    <Compile Remove="Models\DemonstratorProposal.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Models\DemonstratorProposal.cs" />
   </ItemGroup>
 
   <ItemGroup>

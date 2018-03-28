@@ -1,0 +1,18 @@
+﻿@model List<User>
+
+@{
+    ViewData["Title"] = "Demonstrator List";
+}
+
+<div class="container">
+    <div class="object_box">
+        <div class="list-group list-group-flush">
+            @foreach (var item in Model)
+            {
+                <div class="list-group-item list-group-item-action">
+                    @Html.ActionLink(@item.FirstName + " " + @item.LastName, "ModuleDemonstrators", "Lecturer", new { userID = item.UserID }, null)
+                </div>
+            }
+        </div>
+    </div>
+</div>
