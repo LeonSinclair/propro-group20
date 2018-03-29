@@ -1,6 +1,5 @@
 ﻿@model Tuple<Hour, IEnumerable<User>, IEnumerable<Course>>
 
-
 @{
     ViewData["Title"] = "Log Hours";
 }
@@ -12,7 +11,7 @@
             <div class="form-group">
                 <label asp-for="Item1.UserID" class="control-label">User ID</label>
                 <select asp-for="Item1.UserID" class ="form-control" asp-items="ViewBag.UserID">
-                    @foreach (User u in Model.Item2)
+                    @foreach (var u in Model.Item2)
                     {
                         <option value="@u.ID">@u.ID @u.FirstName @u.LastName</option>
                     }
@@ -26,7 +25,7 @@
             <div class="form-group">
                 <label asp-for="Item1.CourseID" class="control-label"></label>
                 <select asp-for="Item1.CourseID" class="form-control" asp-items="ViewBag.CourseID">
-                    @foreach (Course c in Model.Item3)
+                    @foreach (var c in Model.Item3)
                     {
                         <option value="@c.CourseID">@c.Code @c.Name</option>
                     }

@@ -23,19 +23,19 @@ namespace AllocationApp.Controllers
 
             return View(courseList);
         }
-
-        [HttpPost("LogHours")]
+        
+        // GET: Demonstrator/LogHours
         public IActionResult LogHours()
         {
             var hour = _context.Hours;
-            var userList = _context.Users;
+            var userList = _context.Users.ToList();
             var courseList = _context.Courses.ToList();
 
             return View(Tuple.Create(hour, userList, courseList));
         }
 
         //welcome() method should be deleted from final version of project
-        [HttpPost("Welcome")]
+        // GET: Demonstrator/Welcome
         public IActionResult Welcome(string name, int numTimes = 1)
         {
             ViewData["Message"] = "Hello " + name;
