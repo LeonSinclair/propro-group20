@@ -38,11 +38,8 @@ namespace AllocationApp.Controllers
         public IActionResult LecturerDashboard()
         {
             var tup = Tuple.Create(_context.Courses.ToList(), _context.Users.ToList());
-            return View("Index",tup);
+            return View("Index", tup);
         }
-
-        
-        
        
         public IActionResult ModuleDemonstrators(int moduleID)
         {

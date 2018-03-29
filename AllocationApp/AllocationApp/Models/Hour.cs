@@ -14,7 +14,7 @@ namespace AllocationApp.Models
         //what type of work did the user do?
         public String HourType { get; set; }
         //which course did he work for?
-        public int CourseID { get; set; }
+        public int ModuleID { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

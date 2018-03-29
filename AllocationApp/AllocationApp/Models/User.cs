@@ -17,7 +17,7 @@ namespace AllocationApp.Models
         public string LastName { get; set; }
 
         public List<Role> RoleType { get; set; }
-        public List<CourseUser> Courses { get; set; }
+        public List<ModuleUser> Modules { get; set; }
         public List<Hour> WorkHours { get; set; }
         public List<Skill> Skills { get; set; }
         //todo payslip
