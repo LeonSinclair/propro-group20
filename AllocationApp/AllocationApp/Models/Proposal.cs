@@ -14,17 +14,17 @@ namespace AllocationApp.Models
         {
 
         }
-        public Proposal(int userID, User user, int courseID, Course course, bool approved)
+        public Proposal(int userID, User user, int moduleID, Module module, bool approved)
         {
             UserID = userID;
             this.User = user;
-            CourseID = courseID;
-            this.Course = course;
+            ModuleID = moduleID;
+            this.Module = module;
             this.Approved = approved;
         }
 
-        public int CourseID { get; set; }
-        public virtual Course Course { get; set; } 
+        public int ModuleID { get; set; }
+        public virtual Module Module { get; set; } 
         public int UserID { get; set; }
         public virtual User User { get; set; }
         public bool Approved { get; set; }
