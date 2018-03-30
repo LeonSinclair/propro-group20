@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -17,11 +17,16 @@ namespace AllocationApp.Models
         [DisplayName("Last name")]
         public string LastName { get; set; }
 
+<<<<<<< HEAD
         [DisplayName("Roles")]
         public List<Role> Roles { get; set; }
 
         public List<CourseUser> Courses { get; set; }
 
+=======
+        public List<Role> RoleType { get; set; }
+        public List<ModuleUser> Modules { get; set; }
+>>>>>>> 76595409db9115d8a20086452b469d0ba417b3b3
         public List<Hour> WorkHours { get; set; }
 
         public List<Skill> Skills { get; set; }

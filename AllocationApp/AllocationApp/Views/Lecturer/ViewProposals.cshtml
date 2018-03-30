@@ -17,14 +17,19 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    @if (!item.Approved)
+                    {
+                        <tr>
 
-                <tr>
-                    <th scope="row">@Html.Display(item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)</th>
-                    <td scope="row">@Html.Display(item.Course.Code) @Html.DisplayFor(modelItem => item.Course.Name)</td>
-                    <td><a asp-action="ConfirmProposal" asp-route-userid="@item.UserID" asp-route-courseid = "@item.CourseID">Confirm Proposal</a></td>
-                    <td><a asp-action="DemonstratorDetails" asp-route-id="@item.UserID">Demonstrator Details</a></td>
-                    <td><a asp-action="ModuleDetails" asp-route-id="@item.CourseID">Module Details</a></td>
-                </tr>
+                            <th scope="row">@Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)</th>
+                            <td scope="row">@Html.DisplayFor(modelItem => item.Course.Code) @Html.DisplayFor(modelItem => item.Course.Name)</td>
+                            <td><a asp-action="ConfirmProposal" asp-route-userid="@item.UserID" asp-route-courseid="@item.CourseID">Confirm Proposal</a></td>
+                            <td><a asp-action="DemonstratorDetails" asp-route-id="@item.UserID">Demonstrator Details</a></td>
+                            <td><a asp-action="ModuleDetails" asp-route-id="@item.CourseID">Module Details</a></td>
+                        </tr>
+
+                    }
+
 
                 }
             </tbody>

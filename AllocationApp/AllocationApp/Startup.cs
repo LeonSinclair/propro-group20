@@ -26,7 +26,9 @@ namespace AllocationApp
             {
                 //cfg.UseSqlServer(Configuration.GetConnectionString("AllocationConnectionString"));
                 cfg.UseMySQL(Configuration.GetConnectionString("AllocationConnectionString"));
+                
             });
+
             services.AddMvc();
         }
 

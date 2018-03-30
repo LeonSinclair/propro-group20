@@ -7,22 +7,22 @@ using System.Threading.Tasks;
 
 namespace AllocationApp.Models
 {
-    public class CourseUser
+    public class ModuleUser
     {
-        public CourseUser()
+        public ModuleUser()
         {
         }
-        public CourseUser(int userID, User user, int courseID, Course course)
+        public ModuleUser(int userID, User user, int moduleID, Module module)
         {
             UserID = userID;
             this.User = user;
-            CourseID = courseID;
-            this.Course = course;
+            ModuleID = moduleID;
+            this.Module = module;
         }
 
         public int UserID { get; set; }
-        public User User { get; set; }
-        public int CourseID { get; set; }
-        public Course Course { get; set; } 
+        public virtual User User { get; set; }
+        public int ModuleID { get; set; }
+        public virtual Module Module { get; set; } 
     }
 }

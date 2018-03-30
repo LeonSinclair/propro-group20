@@ -1,6 +1,7 @@
 ﻿using AllocationApp.Data;
 using AllocationApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,12 @@ namespace AllocationApp.Controllers
 
     //TODO implement All Demonstrators button
     //TODO implement All Modules Button
-    //TODO fix names and make proposals look pretty
-    //TODO create proposals that can be rejected or denied
     //TODO search function
+    //TODO fix module demonstrator book
+    //TODO fix names
+    //TODO delete proposals or set them as not approved and not query for them
+    //TODO query users for role
+    //TODO delete Module, rename course to Module, fix everything
     public class LecturerController : Controller
     {
         private readonly AllocationContext _context;
@@ -34,11 +38,8 @@ namespace AllocationApp.Controllers
         public IActionResult LecturerDashboard()
         {
             var tup = Tuple.Create(_context.Courses.ToList(), _context.Users.ToList());
-            return View("Index",tup);
+            return View("Index", tup);
         }
-
-        
-        
        
         public IActionResult ModuleDemonstrators(int moduleID)
         {
@@ -78,19 +79,22 @@ namespace AllocationApp.Controllers
             var user = from users in _context.Users
                          where users.UserID == UserID
                          select users;
-            
-            Proposal proposal = new Proposal(UserID, user.Single(), CourseID, course.Single(), false);
+            Proposal proposal = new Proposal();
+            proposal.UserID = UserID;
+            proposal.User = _context.Users.Find(UserID);
+            proposal.CourseID = CourseID;
+            proposal.Course = _context.Courses.Find(CourseID);
+            proposal.Approved = false;
+            _context.Entry(proposal).State = EntityState.Added;
             //TODO catch exception from them already demoing for the module
             if (ModelState.IsValid)
             {
-                //TODO set this to send you to the module demonstrators page
-                //for now it sends you back to the index
-                _context.Add(proposal);
+                _context.Proposal.Add(proposal);
                 await _context.SaveChangesAsync();
                 //TODO query to find correct users
-                return View("ModuleDemonstrators", Tuple.Create(course.Single(), _context.Users.ToList()));
+                return View("ModuleDemonstrators", Tuple.Create(_context.Courses.Find(CourseID), _context.Users.ToList()));
             }
-            return View("ModuleDemonstrators", Tuple.Create(course.Single(), _context.Users.ToList()));
+            return View("ModuleDemonstrators", Tuple.Create(_context.Courses.Find(CourseID), _context.Users.ToList()));
         }
 
 
@@ -103,8 +107,8 @@ namespace AllocationApp.Controllers
 
             Proposal tmpProposal = proposal.Single();
             tmpProposal.Approved = true;
-            User tmpUser = tmpProposal.User;
-            Course tmpCourse = tmpProposal.Course;
+            User tmpUser = _context.Users.Find(tmpProposal.UserID);
+            Course tmpCourse = _context.Courses.Find(tmpProposal.CourseID);
             CourseUser courseUser = new CourseUser(UserID, tmpUser, CourseID, tmpCourse);
             //TODO catch exception from them already demoing for the module
             if (ModelState.IsValid)
@@ -112,8 +116,7 @@ namespace AllocationApp.Controllers
                 //TODO set this to send you to the module demonstrators page
                 //for now it sends you back to the index
 
-                _context.Remove(proposal);
-                _context.Add(courseUser);
+                _context.CourseUsers.Add(courseUser);
                 await _context.SaveChangesAsync();
                 return View("ModuleDemonstrators", Tuple.Create(tmpCourse, _context.Users.ToList()));
             }
@@ -153,6 +156,7 @@ namespace AllocationApp.Controllers
 
         public IActionResult ViewProposals()
         {
+
 
             return View(_context.Proposal.ToList());
         }
