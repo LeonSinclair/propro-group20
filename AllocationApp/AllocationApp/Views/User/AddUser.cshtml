@@ -1,6 +1,6 @@
 ﻿@model User
 @{
-    ViewData["Title"] = "Users";
+    ViewData["Title"] = "User";
 }
 
 @section scripts {
@@ -22,11 +22,6 @@
                     <label asp-for="LastName">Surname:</label>
                     <input type="text" asp-for="LastName" class="form-control" />
                     <span asp-validation-for="LastName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Roles">Roles:</label>
-                    <input type="text" asp-for="Roles" class="form-control" />
-                    <span asp-validation-for="Roles" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Add" class="btn btn-primary">

@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20180323021302_InitMySQL.cs" />
     <Compile Remove="Data\Migrations\20180323021302_InitMySQL.Designer.cs" />
+    <Compile Remove="Controllers\SupervisorController.cs" />
+    <Compile Remove="Models\Subordinates.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,4 +29,18 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Views\Supervisor\.DS_Store" />
+    <None Remove="Models\Subordinates.cs.orig" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Supervisor\AddSubordinate.cshtml" />
+    <Content Remove="Views\Supervisor\BankDetails.cshtml" />
+    <Content Remove="Views\Supervisor\EditSubordinate.cshtml" />
+    <Content Remove="Views\Supervisor\Index.cshtml" />
+    <Content Remove="Views\Supervisor\Modules.cshtml" />
+    <Content Remove="Views\Supervisor\RemoveSubordinate.cshtml" />
+    <Content Remove="Views\Supervisor\SubordinateDetails.cshtml" />
+    <Content Remove="Views\Supervisor\Subordinates.cshtml" />
+  </ItemGroup>
 </Project>

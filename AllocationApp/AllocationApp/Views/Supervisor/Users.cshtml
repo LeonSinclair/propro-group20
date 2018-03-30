@@ -1,11 +1,11 @@
-﻿@model IEnumerable<AllocationApp.Models.Subordinates>
+﻿@model IEnumerable<AllocationApp.Models.Users>
 
 @{
-    ViewData["Title"] = "Subordinates";
+    ViewData["Title"] = "Users";
 }
 
 <p>
-    <input type="button" onclick="location.href='@Url.Action("AddSubordinates", "Supervisor")'" value="Add new subordinate" class="btn btn-primary">
+    <input type="button" onclick="location.href='@Url.Action("AddUser", "User")'" value="Add new subordinate" class="btn btn-primary">
 </p>
 <div class="well">
     <table class="table">

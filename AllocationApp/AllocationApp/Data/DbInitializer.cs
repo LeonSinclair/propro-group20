@@ -78,6 +78,14 @@ namespace AllocationApp.Data
             }
             
             context.SaveChanges();
+            var skills = new Skill[]
+            {
+                new Skill(0, "Java"),
+                new Skill(1, "C"),
+                new Skill(2, "C++"),
+                new Skill(3, "ARM Assembly"),
+                new Skill(4, "Go"),
+            };
         }
     }
 }
