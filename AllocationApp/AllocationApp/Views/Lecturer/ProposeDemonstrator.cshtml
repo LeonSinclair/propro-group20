@@ -38,10 +38,10 @@
                 </div>
                 <div class="form-group">
 
-                    <select name="CourseID">
-                        @foreach (var course in ViewBag.courses)
+                    <select name="ModuleID">
+                        @foreach (var module in ViewBag.modules)
                         {
-                            <option value="@course.CourseID" name="CourseID">@course.CourseID @course.Name</option>
+                            <option value="@module.ModuleID" name="ModuleID">@module.ModuleID @module.Name</option>
 
                         }
                     </select>

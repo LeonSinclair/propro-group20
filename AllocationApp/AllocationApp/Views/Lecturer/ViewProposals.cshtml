@@ -6,9 +6,8 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col">NAME</th>
-                    <th scope="col">Course</th>
-
+                    <th scope="col">Name</th>
+                    <th scope="col">Module</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
@@ -22,10 +21,10 @@
                         <tr>
 
                             <th scope="row">@Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)</th>
-                            <td scope="row">@Html.DisplayFor(modelItem => item.Course.Code) @Html.DisplayFor(modelItem => item.Course.Name)</td>
-                            <td><a asp-action="ConfirmProposal" asp-route-userid="@item.UserID" asp-route-courseid="@item.CourseID">Confirm Proposal</a></td>
+                            <td scope="row">@Html.DisplayFor(modelItem => item.Module.Code) @Html.DisplayFor(modelItem => item.Module.Name)</td>
+                            <td><a asp-action="ConfirmProposal" asp-route-userid="@item.UserID" asp-route-courseid="@item.ModuleID">Confirm Proposal</a></td>
                             <td><a asp-action="DemonstratorDetails" asp-route-id="@item.UserID">Demonstrator Details</a></td>
-                            <td><a asp-action="ModuleDetails" asp-route-id="@item.CourseID">Module Details</a></td>
+                            <td><a asp-action="ModuleDetails" asp-route-id="@item.ModuleID">Module Details</a></td>
                         </tr>
 
                     }

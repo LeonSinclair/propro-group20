@@ -8,11 +8,11 @@ namespace AllocationApp.Data
 {
     public class DataHandler
     {
-        public static void InsertCourse(Course myCourse)
+        public static void InsertCourse(Module myModule)
         {
             using (var context = new AllocationContext())
             {
-                context.Courses.Add(myCourse);
+                context.Modules.Add(myModule);
                 context.SaveChanges();
             }
         }

@@ -37,44 +37,44 @@ namespace AllocationApp.Data
                 context.Users.Add(u);
             }
             context.SaveChanges();
-            var courses = new Course[]
+            var Modules = new Module[]
             {
-            new Course{CourseID=1050,Name="Chemistry"},
-            new Course{CourseID=4022,Name="Microeconomics"},
-            new Course{CourseID=4041,Name="Macroeconomics"},
-            new Course{CourseID=1045,Name="Calculus"},
-            new Course{CourseID=3141,Name="Trigonometry"},
-            new Course{CourseID=2021,Name="Composition"},
-            new Course{CourseID=2042,Name="Literature"}
+            new Module{ModuleID=1050,Name="Chemistry"},
+            new Module{ModuleID=4022,Name="Microeconomics"},
+            new Module{ModuleID=4041,Name="Macroeconomics"},
+            new Module{ModuleID=1045,Name="Calculus"},
+            new Module{ModuleID=3141,Name="Trigonometry"},
+            new Module{ModuleID=2021,Name="Composition"},
+            new Module{ModuleID=2042,Name="Literature"}
             };
-            foreach (Course c in courses)
+            foreach (Module c in Modules)
             {
-                context.Courses.Add(c);
+                context.Modules.Add(c);
             }
             context.SaveChanges();
-            var courseusers = new CourseUser[]
+            var Moduleusers = new ModuleUser[]
             {
                          
-                new CourseUser{UserID=1,CourseID=4022},
-                new CourseUser{UserID=1,CourseID=4041},
-                new CourseUser{UserID=2,CourseID=1045},
-                new CourseUser{UserID=2,CourseID=3141},
-                new CourseUser{UserID=2,CourseID=2021},
-                new CourseUser{UserID=3,CourseID=1050},
-                new CourseUser{UserID=4,CourseID=1050},
-                new CourseUser{UserID=4,CourseID=4022},
-                new CourseUser{UserID=5,CourseID=4041},
-                new CourseUser{UserID=6,CourseID=1045},
-                new CourseUser{UserID=7,CourseID=3141},
+                new ModuleUser{UserID=1,ModuleID=4022},
+                new ModuleUser{UserID=1,ModuleID=4041},
+                new ModuleUser{UserID=2,ModuleID=1045},
+                new ModuleUser{UserID=2,ModuleID=3141},
+                new ModuleUser{UserID=2,ModuleID=2021},
+                new ModuleUser{UserID=3,ModuleID=1050},
+                new ModuleUser{UserID=4,ModuleID=1050},
+                new ModuleUser{UserID=4,ModuleID=4022},
+                new ModuleUser{UserID=5,ModuleID=4041},
+                new ModuleUser{UserID=6,ModuleID=1045},
+                new ModuleUser{UserID=7,ModuleID=3141},
             };
-            CourseUser courseUser = new CourseUser();
-            courseUser.UserID = 1;
-            courseUser.CourseID = 1050;
-            context.CourseUsers.Add(courseUser);
+            ModuleUser ModuleUser = new ModuleUser();
+            ModuleUser.UserID = 1;
+            ModuleUser.ModuleID = 1050;
+            context.ModuleUsers.Add(ModuleUser);
             
-            foreach (CourseUser c in courseusers)
+            foreach (ModuleUser c in Moduleusers)
             {
-                context.CourseUsers.Add(c);
+                context.ModuleUsers.Add(c);
             }
             
             context.SaveChanges();

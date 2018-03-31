@@ -22,29 +22,29 @@ namespace AllocationApp.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<CourseUser>()
-                .HasKey(s => new { s.CourseID, s.UserID });
-            modelBuilder.Entity<CourseUser>()
-                .HasOne(m => m.Course)
+            modelBuilder.Entity<ModuleUser>()
+                .HasKey(s => new { s.ModuleID, s.UserID });
+            modelBuilder.Entity<ModuleUser>()
+                .HasOne(m => m.Module)
                 .WithMany(ma => ma.Users)
-                .HasForeignKey(m => m.CourseID);
-            modelBuilder.Entity<CourseUser>()
+                .HasForeignKey(m => m.ModuleID);
+            modelBuilder.Entity<ModuleUser>()
                 .HasOne(m => m.User)
-                .WithMany(ma => ma.Courses)
+                .WithMany(ma => ma.Modules)
                 .HasForeignKey(m => m.UserID);
             modelBuilder.Entity<SubordinateModule>()
                 .HasKey(s => new { s.ModuleID, s.SubordinateID });
             modelBuilder.Entity<Proposal>()
-                .HasKey(p => new { p.CourseID, p.UserID });
+                .HasKey(p => new { p.ModuleID, p.UserID });
 
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Course> Courses { get; set; }
+        public DbSet<Module> Modules { get; set; }
         public DbSet<Hour> Hours { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<CourseUser> CourseUsers { get; set; }
+        public DbSet<ModuleUser> ModuleUsers { get; set; }
         public DbSet<Module> Module { get; set; }
         public DbSet<Proposal> Proposal { get; set; }
         public DbSet<SubordinateModule> SubordinateModules { get; set; }

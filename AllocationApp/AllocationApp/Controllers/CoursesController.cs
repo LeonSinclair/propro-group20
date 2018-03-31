@@ -22,7 +22,7 @@ namespace AllocationApp.Controllers
         // GET: Courses
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Courses.ToListAsync());
+            return View(await _context.Modules.ToListAsync());
         }
 
         // GET: Courses/Details/5
@@ -33,8 +33,8 @@ namespace AllocationApp.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Courses
-                .SingleOrDefaultAsync(m => m.CourseID == id);
+            var course = await _context.Modules
+                .SingleOrDefaultAsync(m => m.ModuleID == id);
             if (course == null)
             {
                 return NotFound();
@@ -54,15 +54,15 @@ namespace AllocationApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CourseID,Name,Code")] Course course)
+        public async Task<IActionResult> Create([Bind("CourseID,Name,Code")] Module module)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(course);
+                _context.Add(module);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(course);
+            return View(module);
         }
 
         // GET: Courses/Edit/5
@@ -73,12 +73,12 @@ namespace AllocationApp.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Courses.SingleOrDefaultAsync(m => m.CourseID == id);
-            if (course == null)
+            var module = await _context.Modules.SingleOrDefaultAsync(m => m.ModuleID == id);
+            if (module == null)
             {
                 return NotFound();
             }
-            return View(course);
+            return View(module);
         }
 
         // POST: Courses/Edit/5
@@ -86,9 +86,9 @@ namespace AllocationApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CourseID,Name,Code")] Course course)
+        public async Task<IActionResult> Edit(int id, [Bind("CourseID,Name,Code")] Module module)
         {
-            if (id != course.CourseID)
+            if (id != module.ModuleID)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace AllocationApp.Controllers
             {
                 try
                 {
-                    _context.Update(course);
+                    _context.Update(module);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CourseExists(course.CourseID))
+                    if (!CourseExists(module.ModuleID))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace AllocationApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(course);
+            return View(module);
         }
 
         // GET: Courses/Delete/5
@@ -124,8 +124,8 @@ namespace AllocationApp.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Courses
-                .SingleOrDefaultAsync(m => m.CourseID == id);
+            var course = await _context.Modules
+                .SingleOrDefaultAsync(m => m.ModuleID == id);
             if (course == null)
             {
                 return NotFound();
@@ -139,15 +139,15 @@ namespace AllocationApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var course = await _context.Courses.SingleOrDefaultAsync(m => m.CourseID == id);
-            _context.Courses.Remove(course);
+            var course = await _context.Modules.SingleOrDefaultAsync(m => m.ModuleID == id);
+            _context.Modules.Remove(course);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CourseExists(int id)
         {
-            return _context.Courses.Any(e => e.CourseID == id);
+            return _context.Modules.Any(e => e.ModuleID == id);
         }
     }
 }
