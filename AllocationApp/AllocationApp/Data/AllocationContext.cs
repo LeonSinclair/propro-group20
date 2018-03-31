@@ -17,8 +17,7 @@ namespace AllocationApp.Data
         {
                 
         }
-        public DbSet<Subordinates> Subordinates { get; set; }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

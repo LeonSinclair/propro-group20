@@ -11,8 +11,8 @@ using System;
 namespace AllocationApp.Migrations
 {
     [DbContext(typeof(AllocationContext))]
-    [Migration("20180328144116_fix-proposal")]
-    partial class fixproposal
+    [Migration("20180331130931_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,63 +20,18 @@ namespace AllocationApp.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011");
 
-            modelBuilder.Entity("AllocationApp.Models.CheckboxViewModel", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("Checked");
-
-                    b.Property<string>("ModuleName");
-
-                    b.Property<int?>("SubordinatesID");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("SubordinatesID");
-
-                    b.ToTable("CheckboxViewModel");
-                });
-
-            modelBuilder.Entity("AllocationApp.Models.Course", b =>
-                {
-                    b.Property<int>("CourseID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Code");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("CourseID");
-
-                    b.ToTable("Courses");
-                });
-
-            modelBuilder.Entity("AllocationApp.Models.CourseUser", b =>
-                {
-                    b.Property<int>("CourseID");
-
-                    b.Property<int>("UserID");
-
-                    b.HasKey("CourseID", "UserID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("CourseUsers");
-                });
-
             modelBuilder.Entity("AllocationApp.Models.Hour", b =>
                 {
                     b.Property<int>("HourID")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CourseID");
 
                     b.Property<DateTime>("Date");
 
                     b.Property<string>("HourType");
 
                     b.Property<bool>("IsApproved");
+
+                    b.Property<int>("ModuleID");
 
                     b.Property<int>("PayRate");
 
@@ -94,6 +49,8 @@ namespace AllocationApp.Migrations
                     b.Property<int>("ModuleID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Code");
+
                     b.Property<string>("Name");
 
                     b.HasKey("ModuleID");
@@ -101,15 +58,28 @@ namespace AllocationApp.Migrations
                     b.ToTable("Module");
                 });
 
+            modelBuilder.Entity("AllocationApp.Models.ModuleUser", b =>
+                {
+                    b.Property<int>("ModuleID");
+
+                    b.Property<int>("UserID");
+
+                    b.HasKey("ModuleID", "UserID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("ModuleUsers");
+                });
+
             modelBuilder.Entity("AllocationApp.Models.Proposal", b =>
                 {
-                    b.Property<int>("CourseID");
+                    b.Property<int>("ModuleID");
 
                     b.Property<int>("UserID");
 
                     b.Property<bool>("Approved");
 
-                    b.HasKey("CourseID", "UserID");
+                    b.HasKey("ModuleID", "UserID");
 
                     b.HasIndex("UserID");
 
@@ -137,7 +107,7 @@ namespace AllocationApp.Migrations
                     b.Property<int>("SkillID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("CourseID");
+                    b.Property<int?>("ModuleID");
 
                     b.Property<string>("Name");
 
@@ -145,7 +115,7 @@ namespace AllocationApp.Migrations
 
                     b.HasKey("SkillID");
 
-                    b.HasIndex("CourseID");
+                    b.HasIndex("ModuleID");
 
                     b.HasIndex("UserID");
 
@@ -158,18 +128,18 @@ namespace AllocationApp.Migrations
 
                     b.Property<int>("SubordinateID");
 
-                    b.Property<int?>("SubordinatesID");
+                    b.Property<int?>("UsersUserID");
 
                     b.HasKey("ModuleID", "SubordinateID");
 
-                    b.HasIndex("SubordinatesID");
+                    b.HasIndex("UsersUserID");
 
                     b.ToTable("SubordinateModules");
                 });
 
-            modelBuilder.Entity("AllocationApp.Models.Subordinates", b =>
+            modelBuilder.Entity("AllocationApp.Models.User", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("UserID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("BankAddress");
@@ -184,50 +154,11 @@ namespace AllocationApp.Migrations
                     b.Property<string>("LastName")
                         .IsRequired();
 
-                    b.Property<string>("Occupation")
-                        .IsRequired();
-
                     b.Property<int>("SortCode");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Subordinates");
-                });
-
-            modelBuilder.Entity("AllocationApp.Models.User", b =>
-                {
-                    b.Property<int>("UserID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("FirstName")
-                        .IsRequired();
-
-                    b.Property<string>("LastName")
-                        .IsRequired();
 
                     b.HasKey("UserID");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("AllocationApp.Models.CheckboxViewModel", b =>
-                {
-                    b.HasOne("AllocationApp.Models.Subordinates")
-                        .WithMany("Modules")
-                        .HasForeignKey("SubordinatesID");
-                });
-
-            modelBuilder.Entity("AllocationApp.Models.CourseUser", b =>
-                {
-                    b.HasOne("AllocationApp.Models.Course", "Course")
-                        .WithMany("Users")
-                        .HasForeignKey("CourseID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("AllocationApp.Models.User", "User")
-                        .WithMany("Courses")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("AllocationApp.Models.Hour", b =>
@@ -238,11 +169,24 @@ namespace AllocationApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("AllocationApp.Models.ModuleUser", b =>
+                {
+                    b.HasOne("AllocationApp.Models.Module", "Module")
+                        .WithMany("Users")
+                        .HasForeignKey("ModuleID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AllocationApp.Models.User", "User")
+                        .WithMany("Modules")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("AllocationApp.Models.Proposal", b =>
                 {
-                    b.HasOne("AllocationApp.Models.Course", "Course")
+                    b.HasOne("AllocationApp.Models.Module", "Module")
                         .WithMany()
-                        .HasForeignKey("CourseID")
+                        .HasForeignKey("ModuleID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("AllocationApp.Models.User", "User")
@@ -254,16 +198,16 @@ namespace AllocationApp.Migrations
             modelBuilder.Entity("AllocationApp.Models.Role", b =>
                 {
                     b.HasOne("AllocationApp.Models.User")
-                        .WithMany("RoleType")
+                        .WithMany("Roles")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("AllocationApp.Models.Skill", b =>
                 {
-                    b.HasOne("AllocationApp.Models.Course")
+                    b.HasOne("AllocationApp.Models.Module")
                         .WithMany("SkillRequirements")
-                        .HasForeignKey("CourseID");
+                        .HasForeignKey("ModuleID");
 
                     b.HasOne("AllocationApp.Models.User")
                         .WithMany("Skills")
@@ -273,13 +217,13 @@ namespace AllocationApp.Migrations
             modelBuilder.Entity("AllocationApp.Models.SubordinateModule", b =>
                 {
                     b.HasOne("AllocationApp.Models.Module", "Module")
-                        .WithMany("SubordinateModules")
+                        .WithMany()
                         .HasForeignKey("ModuleID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("AllocationApp.Models.Subordinates", "Subordinates")
-                        .WithMany("SubordinateModules")
-                        .HasForeignKey("SubordinatesID");
+                    b.HasOne("AllocationApp.Models.User", "Users")
+                        .WithMany()
+                        .HasForeignKey("UsersUserID");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,6 +8,8 @@
     <Compile Remove="Data\Migrations\20180323021302_InitMySQL.cs" />
     <Compile Remove="Data\Migrations\20180323021302_InitMySQL.Designer.cs" />
     <Compile Remove="Controllers\SupervisorController.cs" />
+    <Compile Remove="Migrations\20180331130414_init.cs" />
+    <Compile Remove="Migrations\20180331130414_init.Designer.cs" />
     <Compile Remove="Models\Subordinates.cs" />
   </ItemGroup>
 

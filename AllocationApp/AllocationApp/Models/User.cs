@@ -20,7 +20,7 @@ namespace AllocationApp.Models
         [DisplayName("Roles")]
         public List<Role> Roles { get; set; }
 
-        public List<CourseUser> Courses { get; set; }
+        public List<ModuleUser> Modules { get; set; }
 
         public List<Hour> WorkHours { get; set; }
 
