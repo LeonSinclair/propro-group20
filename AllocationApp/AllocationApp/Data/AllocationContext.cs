@@ -35,7 +35,16 @@ namespace AllocationApp.Data
                 .HasKey(s => new { s.ModuleID, s.SubordinateID });
             modelBuilder.Entity<Proposal>()
                 .HasKey(p => new { p.ModuleID, p.UserID });
-
+            modelBuilder.Entity<UserRole>()
+                .HasKey(s => new { s.UserID, s.RoleID });
+            modelBuilder.Entity<UserRole>()
+                .HasOne(u => u.User)
+                .WithMany(ua => ua.Roles)
+                .HasForeignKey(u => u.UserID);
+            modelBuilder.Entity<UserRole>()
+                .HasOne(r => r.Role)
+                .WithMany(u => u.Users)
+                .HasForeignKey(r => r.RoleID);
         }
 
         public DbSet<User> Users { get; set; }
@@ -44,7 +53,7 @@ namespace AllocationApp.Data
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<ModuleUser> ModuleUsers { get; set; }
-        public DbSet<Module> Module { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Proposal> Proposal { get; set; }
         public DbSet<SubordinateModule> SubordinateModules { get; set; }
     }

@@ -21,7 +21,7 @@ namespace AllocationApp.Controllers
         [HttpGet("Modules")]
         public IActionResult Modules()
         {
-            var results = _context.Module.ToList();
+            var results = _context.Modules.ToList();
             return View(results);
         }
 
@@ -45,7 +45,7 @@ namespace AllocationApp.Controllers
             {
                 _context.Add(model);
                 await _context.SaveChangesAsync();
-                var results = _context.Module.ToList();
+                var results = _context.Modules.ToList();
                 return View("Index", results);
             }
             return View("Index", model);
@@ -168,6 +168,56 @@ namespace AllocationApp.Controllers
 
             return View(user);
         }
-        
+
+        [HttpGet]
+        public IActionResult AddDemonstratorToModule()
+        {
+            //var results = from users in _context.Users
+            //              join roles in _context.UserRoles on users.UserID equals  into userRole
+            //              from demonstrators in userRole
+            //              where demonstrators.RoleType == "Demonstrator"
+            //              select users;
+            //return View(results);
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult AddRole()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddRole(Role model)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(model);
+                await _context.SaveChangesAsync();
+                var results = _context.Roles.ToList();
+                return View("Roles", results);
+            }
+            return View("Roles", model);
+        }
+
+        [HttpGet]
+        public IActionResult AssignRoleToUser(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var roles = _context.Roles.ToList();
+            if (roles == null)
+            {
+                return NotFound();
+            }
+            AddUserToRoleView rolesAndUser = new AddUserToRoleView();
+            rolesAndUser.Roles = roles;
+            rolesAndUser.UserID = id;
+            return View(rolesAndUser);
+        }
+
     }
 }

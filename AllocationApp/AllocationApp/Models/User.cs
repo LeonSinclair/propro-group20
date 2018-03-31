@@ -18,7 +18,7 @@ namespace AllocationApp.Models
         public string LastName { get; set; }
 
         [DisplayName("Roles")]
-        public List<Role> Roles { get; set; }
+        public List<UserRole> Roles { get; set; }
 
         public List<ModuleUser> Modules { get; set; }
 

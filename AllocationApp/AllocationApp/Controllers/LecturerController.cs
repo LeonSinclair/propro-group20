@@ -58,7 +58,7 @@ namespace AllocationApp.Controllers
         public IActionResult ProposeDemonstrator(int id)
         {
            
-            var moduleQuery = from modules in _context.Module
+            var moduleQuery = from modules in _context.Modules
                          select modules;
             var user = from users in _context.Users
                              where users.UserID == id

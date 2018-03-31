@@ -10,6 +10,10 @@
     <Compile Remove="Controllers\SupervisorController.cs" />
     <Compile Remove="Migrations\20180331130414_init.cs" />
     <Compile Remove="Migrations\20180331130414_init.Designer.cs" />
+    <Compile Remove="Migrations\20180331130931_initial.cs" />
+    <Compile Remove="Migrations\20180331130931_initial.Designer.cs" />
+    <Compile Remove="Migrations\20180331133452_moduleFix.cs" />
+    <Compile Remove="Migrations\20180331133452_moduleFix.Designer.cs" />
     <Compile Remove="Models\Subordinates.cs" />
   </ItemGroup>
 

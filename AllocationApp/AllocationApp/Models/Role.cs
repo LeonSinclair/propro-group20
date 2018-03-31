@@ -5,14 +5,10 @@ using System.Threading.Tasks;
 
 namespace AllocationApp.Models
 {
-    public enum RoleNames
-    {
-        SUPERVISOR, LECTURER, DEMONSTRATOR, SUPERUSER /*, COURSEDIRECTOR*/
-    }
     public class Role
     {
         public int RoleID { get; set; }
-        public RoleNames RoleType { get; set; }
-        public int UserID { get; set; }
+        public String RoleType { get; set; }
+        public List<UserRole> Users { get; set; }
     }
 }

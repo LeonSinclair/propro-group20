@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace AllocationApp.Migrations
 {
-    public partial class initial : Migration
+    public partial class AddingM2MRoles : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Module",
+                name: "Modules",
                 columns: table => new
                 {
                     ModuleID = table.Column<int>(nullable: false)
@@ -19,7 +19,20 @@ namespace AllocationApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Module", x => x.ModuleID);
+                    table.PrimaryKey("PK_Modules", x => x.ModuleID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Roles",
+                columns: table => new
+                {
+                    RoleID = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
+                    RoleType = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Roles", x => x.RoleID);
                 });
 
             migrationBuilder.CreateTable(
@@ -75,9 +88,9 @@ namespace AllocationApp.Migrations
                 {
                     table.PrimaryKey("PK_ModuleUsers", x => new { x.ModuleID, x.UserID });
                     table.ForeignKey(
-                        name: "FK_ModuleUsers_Module_ModuleID",
+                        name: "FK_ModuleUsers_Modules_ModuleID",
                         column: x => x.ModuleID,
-                        principalTable: "Module",
+                        principalTable: "Modules",
                         principalColumn: "ModuleID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -100,33 +113,13 @@ namespace AllocationApp.Migrations
                 {
                     table.PrimaryKey("PK_Proposal", x => new { x.ModuleID, x.UserID });
                     table.ForeignKey(
-                        name: "FK_Proposal_Module_ModuleID",
+                        name: "FK_Proposal_Modules_ModuleID",
                         column: x => x.ModuleID,
-                        principalTable: "Module",
+                        principalTable: "Modules",
                         principalColumn: "ModuleID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Proposal_Users_UserID",
-                        column: x => x.UserID,
-                        principalTable: "Users",
-                        principalColumn: "UserID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Roles",
-                columns: table => new
-                {
-                    RoleID = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
-                    RoleType = table.Column<int>(nullable: false),
-                    UserID = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Roles", x => x.RoleID);
-                    table.ForeignKey(
-                        name: "FK_Roles_Users_UserID",
                         column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "UserID",
@@ -147,9 +140,9 @@ namespace AllocationApp.Migrations
                 {
                     table.PrimaryKey("PK_Skills", x => x.SkillID);
                     table.ForeignKey(
-                        name: "FK_Skills_Module_ModuleID",
+                        name: "FK_Skills_Modules_ModuleID",
                         column: x => x.ModuleID,
-                        principalTable: "Module",
+                        principalTable: "Modules",
                         principalColumn: "ModuleID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -172,9 +165,9 @@ namespace AllocationApp.Migrations
                 {
                     table.PrimaryKey("PK_SubordinateModules", x => new { x.ModuleID, x.SubordinateID });
                     table.ForeignKey(
-                        name: "FK_SubordinateModules_Module_ModuleID",
+                        name: "FK_SubordinateModules_Modules_ModuleID",
                         column: x => x.ModuleID,
-                        principalTable: "Module",
+                        principalTable: "Modules",
                         principalColumn: "ModuleID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -183,6 +176,30 @@ namespace AllocationApp.Migrations
                         principalTable: "Users",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserRoles",
+                columns: table => new
+                {
+                    UserID = table.Column<int>(nullable: false),
+                    RoleID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserRoles", x => new { x.UserID, x.RoleID });
+                    table.ForeignKey(
+                        name: "FK_UserRoles_Roles_RoleID",
+                        column: x => x.RoleID,
+                        principalTable: "Roles",
+                        principalColumn: "RoleID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserRoles_Users_UserID",
+                        column: x => x.UserID,
+                        principalTable: "Users",
+                        principalColumn: "UserID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -201,11 +218,6 @@ namespace AllocationApp.Migrations
                 column: "UserID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Roles_UserID",
-                table: "Roles",
-                column: "UserID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Skills_ModuleID",
                 table: "Skills",
                 column: "ModuleID");
@@ -219,6 +231,11 @@ namespace AllocationApp.Migrations
                 name: "IX_SubordinateModules_UsersUserID",
                 table: "SubordinateModules",
                 column: "UsersUserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserRoles_RoleID",
+                table: "UserRoles",
+                column: "RoleID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -233,16 +250,19 @@ namespace AllocationApp.Migrations
                 name: "Proposal");
 
             migrationBuilder.DropTable(
-                name: "Roles");
-
-            migrationBuilder.DropTable(
                 name: "Skills");
 
             migrationBuilder.DropTable(
                 name: "SubordinateModules");
 
             migrationBuilder.DropTable(
-                name: "Module");
+                name: "UserRoles");
+
+            migrationBuilder.DropTable(
+                name: "Modules");
+
+            migrationBuilder.DropTable(
+                name: "Roles");
 
             migrationBuilder.DropTable(
                 name: "Users");

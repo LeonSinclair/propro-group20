@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AllocationApp.Models.AddUserToRoleView>
+
+@{
+    ViewData["Title"] = "AssignRoleToUser";
+}
+
+<h2>AssignRoleToUser</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Roles)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Roles)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
