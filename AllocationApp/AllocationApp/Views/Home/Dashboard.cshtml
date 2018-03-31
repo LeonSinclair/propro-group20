@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AllocationApp.Models.Subordinates>
+﻿@model IEnumerable<AllocationApp.Models.User>
 
 @{
     ViewData["Title"] = "Dashboard";
@@ -27,7 +27,7 @@
           </div>
 
           <div class="section" id="actions">
-              <a asp-area="" asp-controller="Supervisor" asp-action="AddSubordinates">
+              <a asp-area="" asp-controller="User" asp-action="AddUser">
                 <div class="action_btn">ADD NEW USER TO SYSTEM</div>
               </a>
               <div class="action_btn">ADD NEW MODULE</div>
@@ -99,16 +99,16 @@
                 </thead>
                 <tbody>
                     @foreach (var item in Model) {
-                      if (item.Occupation == "Demonstrator") {
+                      if (item.FirstName == "Demonstrator") {
                         <tr>         
                         <th scope="row">
                         @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
                         </th>
                         <td>
-                        @Html.DisplayFor(modelItem => item.Occupation)
+                        @Html.DisplayFor(modelItem => item.Roles)
                         </td>
                         <td></td>
-                        <td><img class="modify_image"></td>   
+                        <td><a asp-controller="Supervisor" asp-action="Settings" asp-route-id="@item.UserID"><img class="modify_image"></a></td>   
                         </tr>         
 
                         }

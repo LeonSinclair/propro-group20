@@ -58,7 +58,7 @@
                                 <th scope="row">@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</th>
                                 <td>@Html.DisplayFor(modelItem => item.Skills)</td>
                                 <td><a asp-action="ProposeDemonstrator" asp-route-id="@item.UserID">Propose Module</a></td>
-                                <td><a asp-action="DemonstratorDetails" asp-route-id="@item.UserID">Details</a></td>
+                                <td><a asp-controller="User" asp-action="UserDetails" asp-route-id="@item.UserID">Details</a></td>
                             </tr>
 
                         }

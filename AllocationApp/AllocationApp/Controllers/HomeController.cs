@@ -46,7 +46,7 @@ namespace AllocationApp.Controllers
         [HttpGet("Dashboard")]
         public IActionResult Dashboard()
         {
-            var results = _context.Subordinates.ToList();
+            var results = _context.Users.ToList();
             return View(results);
         }
 

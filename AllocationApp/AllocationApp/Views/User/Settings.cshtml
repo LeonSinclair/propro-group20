@@ -1,4 +1,4 @@
-﻿@model Subordinates
+﻿@model User
 
 @{
     ViewData["Title"] = "Settings";
@@ -58,7 +58,7 @@
                     <span asp-validation-for="SortCode" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" asp-action="Settings" asp-route-id="@Model.ID">
+                    <input type="submit" value="Save" class="btn btn-primary" asp-action="Settings" asp-route-id="@Model.UserID">
                 </div>
             </form>
         </div>

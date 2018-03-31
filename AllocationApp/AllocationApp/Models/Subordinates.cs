@@ -42,8 +42,8 @@ namespace AllocationApp.Models
         //[DisplayName("Modules")]
         //public IList<String> ListOfModules { get; set; }
 
-        //[DisplayName("Skills")]
-        //public IList<String> ListOfSkills { get; set; }
+        // [DisplayName("Skills")]
+        // public IList<String> ListOfSkills { get; set; }
 
         public virtual ICollection<CheckboxViewModel> Modules { get; set; }
 
