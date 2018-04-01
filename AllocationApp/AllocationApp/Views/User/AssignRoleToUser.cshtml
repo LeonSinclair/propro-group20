@@ -8,45 +8,32 @@
 <div class="row">
     <div class="well col-md-6 col-md-offset-3">
         <form method="post">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(modelItem => modelItem.User.FirstName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(modelItem => modelItem.User.LastName)
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => modelItem.User.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => modelItem.User.LastName)
-                    </td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>Role Types</th>
-                </tr>
-                @foreach (var item in Model.Roles)
+            <div class="form-group">
+                <input type="hidden" value="@Model.User.UserID" name="UserID" />
+            </div>
+            <div class="form-group">
+                <label asp-for="User.FirstName">First Name:</label>
+                <div>@Model.User.FirstName</div>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.LastName">Surname:</label>
+                <div>@Model.User.LastName</div>
+            </div>
+            <div class="form-group">
+                <select name="RoleID">
+                    @foreach (var item in Model.Roles)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.RoleType)
-                        </td>
-                        <td>
-                            <a asp-action="AssignRoleToUser" >Add Role</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                    <option value="@item.RoleID" name="RoleID">@item.RoleType</option>
+                    @Html.DisplayFor(modelItem => item.RoleType)
+            }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary">
+            </div>
+        </form>
         <div>
             <a asp-action="Users">Cancel</a>
         </div>
-        </form>
     </div>
 </div>
