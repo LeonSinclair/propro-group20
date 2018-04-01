@@ -38,8 +38,8 @@
                     </td>
                     <td>
                         <a asp-action="UserDetails" asp-route-id="@item.UserID">Details</a> |
-                        <a asp-action="RemoveSubordinate" asp-route-id="@item.UserID">Remove</a>
-                        <a asp-action="">
+                        <a asp-action="RemoveSubordinate" asp-route-id="@item.UserID">Remove</a> |
+                        <a asp-action="AssignRoleToUser" asp-route-id="@item.UserID">Add to role</a>
                     </td>
                 </tr>
             }

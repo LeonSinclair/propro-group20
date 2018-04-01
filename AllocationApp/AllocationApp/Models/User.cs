@@ -10,11 +10,11 @@ namespace AllocationApp.Models
     {
         public int UserID { get; set; }
         [Required]
-        [DisplayName("First name")]
+        [DisplayName("First Name")]
         public string FirstName { get; set; }
 
         [Required]
-        [DisplayName("Last name")]
+        [DisplayName("Surname")]
         public string LastName { get; set; }
 
         [DisplayName("Roles")]

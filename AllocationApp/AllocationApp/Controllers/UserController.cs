@@ -184,7 +184,7 @@ namespace AllocationApp.Controllers
         [HttpGet]
         public IActionResult AddRole()
         {
-            return View();
+            return View("AddRole");
         }
 
         [HttpPost]
@@ -200,7 +200,7 @@ namespace AllocationApp.Controllers
             return View("Roles", model);
         }
 
-        [HttpGet]
+        [HttpGet("AssignRoleToUser")]
         public IActionResult AssignRoleToUser(int id)
         {
             if (id == null)
@@ -215,8 +215,38 @@ namespace AllocationApp.Controllers
             }
             AddUserToRoleView rolesAndUser = new AddUserToRoleView();
             rolesAndUser.Roles = roles;
-            rolesAndUser.UserID = id;
-            return View(rolesAndUser);
+            rolesAndUser.User = _context.Users.Find(id);
+            return View("AssignRoleToUser", rolesAndUser);
+        }
+
+        [HttpPost("AssignRoleToUser")]
+        public async Task<IActionResult> AssignRoleToUser(int UserID, int RoleID)
+        {
+            var role = from roles in _context.Roles
+                       where roles.RoleID == RoleID
+                       select roles;
+            var user = from users in _context.Users
+                       where users.UserID == UserID
+                       select users;
+
+            var userDisplay = from users in _context.UserRoles
+                              where users.RoleID == RoleID
+                              select users.User;
+            UserRole userRole = new UserRole();
+            userRole.UserID = UserID;
+            userRole.User = _context.Users.Find(UserID);
+            userRole.RoleID = RoleID;
+            userRole.Role = _context.Roles.Find(RoleID);
+            _context.Entry(userRole).State = EntityState.Added;
+            //TODO catch exception from them already demoing for the module
+            if (ModelState.IsValid)
+            {
+                _context.UserRoles.Add(userRole);
+                await _context.SaveChangesAsync();
+                //TODO query to find correct users
+                return View("UserDetails", _context.Users.Find(UserID));
+            }
+            return View("UserDetails", _context.Users.Find(UserID));
         }
 
     }

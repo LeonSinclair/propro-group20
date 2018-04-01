@@ -8,6 +8,6 @@ namespace AllocationApp.Models
     public class AddUserToRoleView
     {
         public List<Role> Roles { get; set; }
-        public int UserID { get; set; }
+        public User User { get; set; }
     }
 }

@@ -7,6 +7,10 @@ namespace AllocationApp.Models
 {
     public class UserRole
     {
+        public UserRole()
+        {
+
+        }
         public UserRole(int userID, User user, int roleID, Role role)
         {
             UserID = userID;
