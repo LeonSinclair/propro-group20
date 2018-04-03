@@ -22,7 +22,7 @@
 
                             <th scope="row">@Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)</th>
                             <td scope="row">@Html.DisplayFor(modelItem => item.Module.Code) @Html.DisplayFor(modelItem => item.Module.Name)</td>
-                            <td><a asp-action="ConfirmProposal" asp-route-userid="@item.UserID" asp-route-courseid="@item.ModuleID">Confirm Proposal</a></td>
+                            <td><a asp-action="ConfirmProposal" asp-route-userid="@item.UserID" asp-route-moduleid="@item.ModuleID">Confirm Proposal</a></td>
                             <td><a asp-action="DemonstratorDetails" asp-route-id="@item.UserID">Demonstrator Details</a></td>
                             <td><a asp-action="ModuleDetails" asp-route-id="@item.ModuleID">Module Details</a></td>
                         </tr>
