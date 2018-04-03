@@ -114,6 +114,9 @@ namespace AllocationApp.Controllers
             User tmpUser = _context.Users.Find(tmpProposal.UserID);
             Module tmpModule = _context.Modules.Find(tmpProposal.ModuleID);
             ModuleUser moduleUser = new ModuleUser(UserID, tmpUser, ModuleID, tmpModule);
+            var userDisplay = from users in _context.ModuleUsers
+                              where users.ModuleID == ModuleID
+                              select users.User;
             //TODO catch exception from them already demoing for the module
             if (ModelState.IsValid)
             {
@@ -122,9 +125,9 @@ namespace AllocationApp.Controllers
 
                 _context.ModuleUsers.Add(moduleUser);
                 await _context.SaveChangesAsync();
-                return View("ModuleDemonstrators", Tuple.Create(tmpModule, _context.Users.ToList()));
+                return View("ModuleDemonstrators", Tuple.Create(tmpModule, userDisplay.ToList()));
             }
-            return View("ModuleDemonstrators", Tuple.Create(tmpModule, _context.Users.ToList()));
+            return View("ModuleDemonstrators", Tuple.Create(tmpModule, userDisplay.ToList()));
         }
 
 
@@ -161,7 +164,11 @@ namespace AllocationApp.Controllers
         public IActionResult ViewProposals()
         {
 
-
+            foreach(var tmpProposal in _context.Proposal)
+            {
+                User tmpUser = _context.Users.Find(tmpProposal.UserID);
+                Module tmpModule = _context.Modules.Find(tmpProposal.ModuleID);
+            }
             return View(_context.Proposal.ToList());
         }
 
