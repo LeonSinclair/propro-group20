@@ -10,6 +10,8 @@ namespace AllocationApp.Models
     //This class represents the many-to-many relationship between modules ans users (demonstrators)
     public class UserModuleHours
     {
+        //primary key
+        public int ID { get; set; }
         //Foreign Key of User table
         [Required]
         public int UserID { get; set; }
