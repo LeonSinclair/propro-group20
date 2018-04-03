@@ -18,8 +18,9 @@
                     @foreach (var item in Model.Item1)
                     {
                         <div class="list-group-item list-group-item-action">
-                            @Html.ActionLink(@item.Code + " " +@item.Name, "ModuleDemonstrators", "Lecturer", new { moduleID = item.ModuleID }, null) 
+                            @Html.ActionLink(@item.Code + " " + @item.Name, "ModuleDemonstrators", "Lecturer", new { moduleID = item.ModuleID }, null)
                         </div>
+                        <a asp-action="AddSkillsToModule" asp-route-id="@item.ModuleID">Add Skill</a>
                     }
                 </div>
             </div>
