@@ -104,7 +104,6 @@ namespace AllocationApp.Controllers
 
         public async Task<IActionResult> ConfirmProposal(int UserID, int ModuleID)
         {
-            //TODO check input data here
             var proposal = from proposals in _context.Proposal
                            where proposals.UserID == UserID && proposals.ModuleID == ModuleID
                            select proposals;
@@ -114,17 +113,18 @@ namespace AllocationApp.Controllers
             User tmpUser = _context.Users.Find(tmpProposal.UserID);
             Module tmpModule = _context.Modules.Find(tmpProposal.ModuleID);
             ModuleUser moduleUser = new ModuleUser(UserID, tmpUser, ModuleID, tmpModule);
+            var userDisplay = from users in _context.ModuleUsers
+                              where users.ModuleID == ModuleID
+                              select users.User;
             //TODO catch exception from them already demoing for the module
             if (ModelState.IsValid)
             {
-                //TODO set this to send you to the module demonstrators page
-                //for now it sends you back to the index
-
+                
                 _context.ModuleUsers.Add(moduleUser);
                 await _context.SaveChangesAsync();
-                return View("ModuleDemonstrators", Tuple.Create(tmpModule, _context.Users.ToList()));
+                return View("ModuleDemonstrators", Tuple.Create(tmpModule, userDisplay.ToList()));
             }
-            return View("ModuleDemonstrators", Tuple.Create(tmpModule, _context.Users.ToList()));
+            return View("ModuleDemonstrators", Tuple.Create(tmpModule, userDisplay.ToList()));
         }
 
 
@@ -158,10 +158,52 @@ namespace AllocationApp.Controllers
             return View(_context.Users.ToList());
         }
 
+        [HttpGet("AddSkillsToModule")]
+        public IActionResult AddSkillsToModule(int id)
+        {
+            var module = from modules in _context.Modules
+                         where modules.ModuleID == id
+                         select modules;
+            return View(module.Single());
+        }
+        [HttpPost("AddSkillsToModule")]
+        public async Task<IActionResult> AddSkillsToModule(int moduleID, String skillName )
+        {
+            var module = from modules in _context.Modules
+                         where modules.ModuleID == moduleID
+                         select modules;
+            Skill newSkill;
+            try
+            {
+                newSkill = new Skill(_context.Skills.Last().SkillID + 1, skillName);
+            }
+            catch(Exception e)
+            {
+                newSkill = new Skill(1, skillName);
+            }
+            try
+            {
+                module.First().SkillRequirements.Add(newSkill);
+            }
+            catch(Exception e)
+            {
+                module.First().SkillRequirements = new List<Skill>();
+                module.First().SkillRequirements.Add(newSkill);
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
         public IActionResult ViewProposals()
         {
 
-
+            foreach(var tmpProposal in _context.Proposal)
+            {
+                User tmpUser = _context.Users.Find(tmpProposal.UserID);
+                Module tmpModule = _context.Modules.Find(tmpProposal.ModuleID);
+            }
             return View(_context.Proposal.ToList());
         }
 
