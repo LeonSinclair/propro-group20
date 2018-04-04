@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace AllocationApp.Migrations
 {
-    public partial class HoursFieldModuleUser : Migration
+    public partial class TestingMigrationsWork : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -56,6 +56,5 @@ namespace AllocationApp.Data
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Proposal> Proposal { get; set; }
         public DbSet<SubordinateModule> SubordinateModules { get; set; }
-        public DbSet<AllocationApp.Models.UserModuleHours> UserModuleHours { get; set; }
     }
 }

@@ -16,6 +16,8 @@
     <Compile Remove="Migrations\20180331133452_moduleFix.Designer.cs" />
     <Compile Remove="Migrations\20180331162655_AddingM2MRoles.cs" />
     <Compile Remove="Migrations\20180331162655_AddingM2MRoles.Designer.cs" />
+    <Compile Remove="Migrations\20180403124835_HoursFieldModuleUser.cs" />
+    <Compile Remove="Migrations\20180403124835_HoursFieldModuleUser.Designer.cs" />
     <Compile Remove="Models\Subordinates.cs" />
   </ItemGroup>
 

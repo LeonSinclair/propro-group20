@@ -286,6 +286,9 @@ namespace AllocationApp.Controllers
             userModule.User = _context.Users.Find(UserID);
             userModule.ModuleID = ModuleID;
             userModule.Module = _context.Modules.Find(ModuleID);
+            //default hours to be allocated is 6
+            userModule.HoursAllocated = 6.0;
+            userModule.HoursWorked = 0.0;
             _context.Entry(userModule).State = EntityState.Added;
             //TODO catch exception from them already demoing for the module
             if (ModelState.IsValid)

@@ -10,8 +10,8 @@ using System;
 namespace AllocationApp.Migrations
 {
     [DbContext(typeof(AllocationContext))]
-    [Migration("20180403124835_HoursFieldModuleUser")]
-    partial class HoursFieldModuleUser
+    [Migration("20180404123520_TestingMigrationsWork")]
+    partial class TestingMigrationsWork
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

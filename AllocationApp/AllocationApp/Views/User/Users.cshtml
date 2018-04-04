@@ -40,7 +40,8 @@
                         <a asp-action="UserDetails" asp-route-id="@item.UserID">Details</a> |
                         <a asp-action="RemoveSubordinate" asp-route-id="@item.UserID">Remove</a> |
                         <a asp-action="AssignRoleToUser" asp-route-id="@item.UserID">Add to role</a> |
-                        <a asp-action="AssignUserToModule" asp-route-id="@item.UserID">Add to module</a>
+                        <a asp-action="AssignUserToModule" asp-route-id="@item.UserID">Add to module</a> |
+                        <a asp-controller="Demonstrator"  asp-action="LogHoursModuleSelect" asp-route-id="@item.UserID">Log Hours</a>
                     </td>
                 </tr>
             }
