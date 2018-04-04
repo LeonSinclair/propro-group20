@@ -289,6 +289,8 @@ namespace AllocationApp.Controllers
             //default hours to be allocated is 6
             userModule.HoursAllocated = 6.0;
             userModule.HoursWorked = 0.0;
+            userModule.HoursPaid = 0.0;
+            userModule.HourlyPayRate = 21.50;
             _context.Entry(userModule).State = EntityState.Added;
             //TODO catch exception from them already demoing for the module
             if (ModelState.IsValid)
@@ -349,6 +351,72 @@ namespace AllocationApp.Controllers
             }
             return View("UserDetails", _context.Users.Find(UserID));
         }
+
+        [HttpGet("CalculatePay")]
+        public IActionResult CalculatePay(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var userModules = from modules in _context.ModuleUsers
+                              where modules.UserID == id
+                              select modules;
+            if (userModules == null)
+            {
+                return NotFound();
+            }
+            double total = 0.0;
+            foreach(var module in userModules)
+            {
+                if(module.HoursWorked > module.HoursPaid)
+                {
+                    double unPaidHours = module.HoursWorked - module.HoursPaid;
+                    total += (module.HourlyPayRate * unPaidHours);
+                }
+            }
+            UserPayView payView = new UserPayView();
+            payView.User = _context.Users.Find(id);
+            payView.UnPaidSum = total;
+            payView.UserID = id;
+            return View("AssignUserToModule");
+        }
+
+        //[HttpPost("AssignUserToModule")]
+        //public async Task<IActionResult> AssignUserToModule(int UserID, int ModuleID)
+        //{
+        //    var role = from modules in _context.Modules
+        //               where modules.ModuleID == ModuleID
+        //               select modules;
+        //    var user = from users in _context.Users
+        //               where users.UserID == UserID
+        //               select users;
+
+        //    var userDisplay = from users in _context.ModuleUsers
+        //                      where users.ModuleID == ModuleID
+        //                      select users.User;
+        //    ModuleUser userModule = new ModuleUser();//UserID, _context.Users.Find(UserID), ModuleID, _context.Modules.Find(ModuleID));
+        //    userModule.UserID = UserID;
+        //    userModule.User = _context.Users.Find(UserID);
+        //    userModule.ModuleID = ModuleID;
+        //    userModule.Module = _context.Modules.Find(ModuleID);
+        //    //default hours to be allocated is 6
+        //    userModule.HoursAllocated = 6.0;
+        //    userModule.HoursWorked = 0.0;
+        //    userModule.HoursPaid = 0.0;
+        //    userModule.HourlyPayRate = 21.50;
+        //    _context.Entry(userModule).State = EntityState.Added;
+        //    //TODO catch exception from them already demoing for the module
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.ModuleUsers.Add(userModule);
+        //        await _context.SaveChangesAsync();
+        //        //TODO query to find correct users
+        //        return View("UserDetails", _context.Users.Find(UserID));
+        //    }
+        //    return View("UserDetails", _context.Users.Find(UserID));
+        //}
 
         [HttpGet("ModuleDetails")]
         public async Task<IActionResult> ModuleDetails(int? id)

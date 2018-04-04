@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace AllocationApp.Migrations
 {
-    public partial class TestingMigrationsWork : Migration
+    public partial class PayRatesMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -83,7 +83,9 @@ namespace AllocationApp.Migrations
                 {
                     ModuleID = table.Column<int>(nullable: false),
                     UserID = table.Column<int>(nullable: false),
+                    HourlyPayRate = table.Column<double>(nullable: false),
                     HoursAllocated = table.Column<double>(nullable: false),
+                    HoursPaid = table.Column<double>(nullable: false),
                     HoursWorked = table.Column<double>(nullable: false)
                 },
                 constraints: table =>

@@ -13,7 +13,7 @@ namespace AllocationApp.Models
         public ModuleUser()
         {
         }
-        public ModuleUser(int userID, User user, int moduleID, Module module, double allocatedHours = 6, double hoursWorked = 0)
+        public ModuleUser(int userID, User user, int moduleID, Module module, double allocatedHours = 6, double hoursWorked = 0, double hourlyPayRate = 21.50, double hoursPaid = 0)
         {
             UserID = userID;
             this.User = user;
@@ -21,6 +21,8 @@ namespace AllocationApp.Models
             this.Module = module;
             HoursAllocated = allocatedHours;
             HoursWorked = hoursWorked;
+            HoursPaid = hoursPaid;
+            HourlyPayRate = hourlyPayRate;
         }
 
         public int UserID { get; set; }
@@ -31,5 +33,9 @@ namespace AllocationApp.Models
         public double HoursAllocated { get; set; }
         [DisplayName("Hours Worked")]
         public double HoursWorked { get; set; }
+        [DisplayName("Hourly Pay Rate")]
+        public double HourlyPayRate { get; set; }
+        [DisplayName("Hours Paid")]
+        public double HoursPaid { get; set; }
     }
 }

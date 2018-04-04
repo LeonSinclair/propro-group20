@@ -10,8 +10,8 @@ using System;
 namespace AllocationApp.Migrations
 {
     [DbContext(typeof(AllocationContext))]
-    [Migration("20180404123520_TestingMigrationsWork")]
-    partial class TestingMigrationsWork
+    [Migration("20180404214313_PayRatesMigration")]
+    partial class PayRatesMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,7 +63,11 @@ namespace AllocationApp.Migrations
 
                     b.Property<int>("UserID");
 
+                    b.Property<double>("HourlyPayRate");
+
                     b.Property<double>("HoursAllocated");
+
+                    b.Property<double>("HoursPaid");
 
                     b.Property<double>("HoursWorked");
 
