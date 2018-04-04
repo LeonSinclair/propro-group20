@@ -1,5 +1,4 @@
-﻿@model AllocationApp.Models.Course
-
+﻿@model AllocationApp.Models.Module
 @{
     ViewData["Title"] = "Details";
 }
@@ -22,9 +21,20 @@
         <dd>
             @Html.DisplayFor(model => model.Code)
         </dd>
+        @foreach (var item in Model.SkillRequirements)
+        {
+            <dt>
+                Skill Required:
+            </dt>
+            <dd>
+                @item.Name
+            </dd>
+
+        }
+
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.CourseID">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.ModuleID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

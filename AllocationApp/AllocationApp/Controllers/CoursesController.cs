@@ -40,6 +40,11 @@ namespace AllocationApp.Controllers
                 return NotFound();
             }
 
+            foreach(var skill in _context.Skills)
+            {
+                Skill tmp = _context.Skills.Find(skill);
+            }
+            List<Skill> skills = course.SkillRequirements;
             return View(course);
         }
 

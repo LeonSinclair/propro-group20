@@ -173,6 +173,7 @@ namespace AllocationApp.Controllers
                          where modules.ModuleID == moduleID
                          select modules;
             Skill newSkill;
+            //TODO check skill doesn't exist already
             try
             {
                 newSkill = new Skill(_context.Skills.Last().SkillID + 1, skillName);
@@ -183,13 +184,17 @@ namespace AllocationApp.Controllers
             }
             try
             {
-                module.First().SkillRequirements.Add(newSkill);
+                var tmp = module.First();
+                tmp.SkillRequirements.Add(newSkill);
+                _context.Entry(tmp).State = EntityState.Modified;
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 module.First().SkillRequirements = new List<Skill>();
                 module.First().SkillRequirements.Add(newSkill);
             }
+            _context.Skills.Add(newSkill);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
