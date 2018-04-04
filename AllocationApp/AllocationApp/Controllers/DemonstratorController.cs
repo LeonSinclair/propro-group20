@@ -27,11 +27,11 @@ namespace AllocationApp.Controllers
         // GET: Demonstrator/LogHours
         public IActionResult LogHours()
         {
-            var hour = _context.Hours;
+            var umh = _context.UserModuleHours.First();
             var userList = _context.Users.ToList();
             var moduleList = _context.Modules.ToList();
 
-            return View(Tuple.Create(hour, userList, moduleList));
+            return View(Tuple.Create(umh, userList, moduleList));
         }
 
         //welcome() method should be deleted from final version of project
