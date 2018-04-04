@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace AllocationApp.Migrations
 {
-    public partial class AddingM2MRoles : Migration
+    public partial class HoursFieldModuleUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -82,7 +82,9 @@ namespace AllocationApp.Migrations
                 columns: table => new
                 {
                     ModuleID = table.Column<int>(nullable: false),
-                    UserID = table.Column<int>(nullable: false)
+                    UserID = table.Column<int>(nullable: false),
+                    HoursAllocated = table.Column<double>(nullable: false),
+                    HoursWorked = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
