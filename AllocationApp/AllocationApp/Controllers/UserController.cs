@@ -298,6 +298,55 @@ namespace AllocationApp.Controllers
             return View("UserDetails", _context.Users.Find(UserID));
         }
 
+        [HttpGet("AssignModuleToUser")]
+        public IActionResult AssignModuleToUser(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var users = _context.Users.ToList();
+            if (users == null)
+            {
+                return NotFound();
+            }
+            AddModuleToUserView usersAndModules = new AddModuleToUserView();
+            usersAndModules.Users = users;
+            usersAndModules.Module = _context.Modules.Find(id);
+            return View("AssignModuleToUser", usersAndModules);
+        }
+
+        [HttpPost("AssignModuleToUser")]
+        public async Task<IActionResult> AssignModuleToUser(int UserID, int ModuleID)
+        {
+            var role = from modules in _context.Modules
+                       where modules.ModuleID == ModuleID
+                       select modules;
+            var user = from users in _context.Users
+                       where users.UserID == UserID
+                       select users;
+
+            var userDisplay = from users in _context.ModuleUsers
+                              where users.ModuleID == ModuleID
+                              select users.User;
+            ModuleUser userModule = new ModuleUser();//UserID, _context.Users.Find(UserID), ModuleID, _context.Modules.Find(ModuleID));
+            userModule.UserID = UserID;
+            userModule.User = _context.Users.Find(UserID);
+            userModule.ModuleID = ModuleID;
+            userModule.Module = _context.Modules.Find(ModuleID);
+            _context.Entry(userModule).State = EntityState.Added;
+            //TODO catch exception from them already demoing for the module
+            if (ModelState.IsValid)
+            {
+                _context.ModuleUsers.Add(userModule);
+                await _context.SaveChangesAsync();
+                //TODO query to find correct users
+                return View("UserDetails", _context.Users.Find(UserID));
+            }
+            return View("UserDetails", _context.Users.Find(UserID));
+        }
+
         [HttpGet("ModuleDetails")]
         public async Task<IActionResult> ModuleDetails(int? id)
         {
