@@ -22,7 +22,7 @@ namespace AllocationApp.Controllers
         public IActionResult Modules()
         {
             var results = _context.Modules.ToList();
-            return View(results);
+            return View("Modules", results);
         }
 
         [HttpGet("Users")]
@@ -296,6 +296,25 @@ namespace AllocationApp.Controllers
                 return View("UserDetails", _context.Users.Find(UserID));
             }
             return View("UserDetails", _context.Users.Find(UserID));
+        }
+
+        [HttpGet("ModuleDetails")]
+        public async Task<IActionResult> ModuleDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var module = _context.Modules
+               //.Include(i => i.UserModules)
+               .SingleOrDefault(m => m.ModuleID == id);
+            if (module == null)
+            {
+                return NotFound();
+            }
+
+            return View("ModuleDetails", module);
         }
 
     }

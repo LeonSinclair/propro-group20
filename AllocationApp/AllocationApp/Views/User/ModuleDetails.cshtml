@@ -1,0 +1,39 @@
+﻿@model AllocationApp.Models.Module
+
+@{
+    ViewData["Title"] = "Module Details";
+}
+
+<h2>ModuleDetails</h2>
+
+<div>
+    <h4>Module</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillRequirements)
+        </dt>
+        <dd>
+            @foreach (var skill in Model.SkillRequirements)
+            {
+                @Html.DisplayFor(model => skill.Name)
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ModuleID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
