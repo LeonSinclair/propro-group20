@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AllocationApp.Data;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -21,7 +22,7 @@ namespace AllocationApp
             host.Run();
         }
 
-        public static void InitDB(IWebHost h)
+        private static void InitDB(IWebHost h)
         {
             var host = h;
             using (var scope = host.Services.CreateScope())
@@ -30,7 +31,8 @@ namespace AllocationApp
                 try
                 {
                     var context = services.GetRequiredService<AllocationContext>();
-                    DbInitializer.Initialize(context);
+                    var seeder = scope.ServiceProvider.GetService<DbInitializer>();
+                    seeder.Initialize().Wait();
                 }
                 catch (Exception ex)
                 {

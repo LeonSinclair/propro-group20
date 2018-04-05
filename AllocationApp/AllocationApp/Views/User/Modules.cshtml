@@ -1,7 +1,19 @@
-﻿
+﻿@model Tuple<List<Module>, List<User>>
+            
 @{
     ViewData["Title"] = "Modules";
 }
 
-<h1>Modules</h1>
-
+<div class="section" id="modules">
+    <h4>Modules</h4>
+    <div class="object_box">
+        <div class="list-group list-group-flush">
+            @foreach (var item in Model.Item1)
+            {
+                <div class="list-group-item list-group-item-action">
+                    @Html.ActionLink(@item.Code + " " +@item.Name, "ModuleDemonstrators", "Lecturer", new { moduleID = item.ModuleID }, null) 
+                </div>
+            }
+        </div>
+    </div>
+</div>

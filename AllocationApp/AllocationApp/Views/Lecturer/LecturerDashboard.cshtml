@@ -18,8 +18,7 @@
             @foreach (var item in Model.Item1)
             {
                <a href="#" class="list-group-item list-group-item-action">
-                    @Html.DisplayFor(modelItem => item.Code)
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.Code) @Html.DisplayFor(modelItem => item.Name)
                </a>
             }
             </div>

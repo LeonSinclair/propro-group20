@@ -12,6 +12,7 @@ namespace AllocationApp.Models
         public ModuleUser()
         {
         }
+
         public ModuleUser(int userID, User user, int moduleID, Module module)
         {
             UserID = userID;

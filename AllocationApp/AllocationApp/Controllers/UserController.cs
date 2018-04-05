@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AllocationApp.Controllers
 {
@@ -21,12 +22,27 @@ namespace AllocationApp.Controllers
         [HttpGet("Modules")]
         public IActionResult Modules()
         {
-            var results = _context.Modules.ToList();
+            var tup = Tuple.Create(_context.Modules.ToList(), _context.Users.ToList());
+            return View(tup);
+        }
+
+        [Authorize]
+        [HttpGet("Users")]
+        public IActionResult Users()
+        {
+            var results = _context.Users.ToList();
             return View(results);
         }
 
-        [HttpGet("Users")]
-        public IActionResult Users()
+        [HttpGet("Demonstrator")]
+        public IActionResult Demonstrator()
+        {
+            var results = _context.Users.ToList();
+            return View(results);
+        }
+
+        [HttpGet("Superuser")]
+        public IActionResult Superuser()
         {
             var results = _context.Users.ToList();
             return View(results);

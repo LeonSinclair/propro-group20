@@ -1,48 +1,23 @@
 ﻿<Properties StartupConfiguration="{439B91E0-8BD0-4F6A-8FD7-D7E738C593C1}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Lecturer/LecturerDashboard.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Views/Home/Dashboard.cshtml" Line="111" Column="49" />
-      <File FileName="Models/Skill.cs" Line="9" Column="6" />
-      <File FileName="Models/User.cs" Line="42" Column="2" />
-      <File FileName="Models/CourseUser.cs" Line="24" Column="36" />
-      <File FileName="Data/AllocationContext.cs" Line="42" Column="30" />
-      <File FileName="Views/_ViewStart.cshtml" Line="9" Column="2" />
-      <File FileName="Models/Subordinates.cs" Line="20" Column="9" />
-      <File FileName="Controllers/SupervisorController.cs" Line="26" Column="30" />
-      <File FileName="Controllers/UserController.cs" Line="124" Column="30" />
-      <File FileName="Views/Supervisor/Users.cshtml" Line="40" Column="42" />
-      <File FileName="Views/Supervisor/UserDetails.cshtml" Line="57" Column="20" />
-      <File FileName="Views/Supervisor/AddUser.cshtml" Line="14" Column="44" />
-      <File FileName="Controllers/LecturerController.cs" Line="99" Column="34" />
-      <File FileName="Views/Supervisor/RemoveUser.cshtml" Line="32" Column="29" />
-      <File FileName="Migrations/20180324152817_Init.Designer.cs" Line="126" Column="38" />
-      <File FileName="Migrations/20180324152817_Init.cs" Line="39" Column="24" />
-      <File FileName="Migrations/20180325125725_Update.Designer.cs" Line="32" Column="39" />
-      <File FileName="Migrations/20180328143743_proposals.Designer.cs" Line="194" Column="32" />
-      <File FileName="Migrations/20180328144116_fix-proposal.Designer.cs" Line="282" Column="41" />
-      <File FileName="Migrations/20180330170236_Users.Designer.cs" Line="284" Column="36" />
-      <File FileName="Controllers/AccountController.cs" Line="24" Column="54" />
-      <File FileName="Views/Supervisor/AddSubordinate.cshtml" Line="14" Column="44" />
-      <File FileName="Views/User/AddUser.cshtml" Line="25" Column="23" />
-      <File FileName="AllocationApp.userprefs" Line="10" Column="22" />
-      <File FileName="Migrations/AllocationContextModelSnapshot.cs" Line="162" Column="43" />
-      <File FileName="Views/Supervisor/BankDetails.cshtml" Line="1" Column="12" />
-      <File FileName="Views/User/BankDetails.cshtml" Line="1" Column="12" />
-      <File FileName="Views/Supervisor/EditSubordinate.cshtml" Line="66" Column="25" />
-      <File FileName="Views/User/EditSubordinate.cshtml" Line="66" Column="25" />
-      <File FileName="Controllers/HomeController.cs" Line="54" Column="10" />
-      <File FileName="Views/Home/Index.cshtml" Line="9" Column="74" />
-      <File FileName="Models/Module.cs" Line="13" Column="55" />
-      <File FileName="Views/User/RemoveUser.cshtml" Line="32" Column="33" />
-      <File FileName="Views/User/Settings.cshtml" Line="61" Column="126" />
-      <File FileName="Models/SubordinateModule.cs" Line="8" Column="18" />
-      <File FileName="Models/Subordinates.cs.orig" Line="48" Column="36" />
-      <File FileName="Views/User/UserDetails.cshtml" Line="56" Column="8" />
-      <File FileName="Models/UserModuleHours.cs" Line="22" Column="37" />
-      <File FileName="Views/User/Users.cshtml" Line="41" Column="83" />
-      <File FileName="wwwroot/lib/jquery/dist/jquery.js" Line="3488" Column="35" />
-      <File FileName="Views/Lecturer/Index.cshtml" Line="1" Column="1" />
-      <File FileName="Views/Lecturer/LecturerDashboard.cshtml" Line="1" Column="1" />
+      <File FileName="Views/Shared/_Layout.cshtml" Line="32" Column="30" />
+      <File FileName="Data/DbInitializer.cs" Line="37" Column="19" />
+      <File FileName="Views/User/AddRole.cshtml" Line="15" Column="22" />
+      <File FileName="Controllers/AccountController.cs" Line="21" Column="21" />
+      <File FileName="Views/Account/Login.cshtml" Line="1" Column="8" />
+      <File FileName="Models/LoginViewModel.cs" Line="12" Column="26" />
+      <File FileName="Models/User.cs" Line="11" Column="6" />
+      <File FileName="Data/AllocationContext.cs" Line="45" Column="32" />
+      <File FileName="Controllers/UserController.cs" Line="29" Column="20" />
+      <File FileName="Models/ModuleUser.cs" Line="18" Column="23" />
+      <File FileName="Models/Module.cs" Line="1" Column="1" />
+      <File FileName="Models/User.cs.orig" Line="1" Column="1" />
+      <File FileName="Models/SupervisorUser.cs" Line="15" Column="1" />
+      <File FileName="Models/AppUser.cs" Line="14" Column="9" />
+      <File FileName="Models/CheckboxViewModel.cs" Line="1" Column="1" />
+      <File FileName="Program.cs" Line="30" Column="43" />
+      <File FileName="Startup.cs" Line="47" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

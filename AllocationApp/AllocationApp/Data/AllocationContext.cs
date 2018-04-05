@@ -4,10 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using AllocationApp.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using AllocationApp.Data.Entities;
 //using MySQL.Data.EntityFrameworkCore.Extensions;
+
 namespace AllocationApp.Data
 {
-    public class AllocationContext : DbContext
+    public class AllocationContext : IdentityDbContext<AppUser>
     {
         public AllocationContext(DbContextOptions options) : base(options)
         {

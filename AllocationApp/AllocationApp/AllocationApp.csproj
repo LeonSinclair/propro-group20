@@ -38,6 +38,7 @@
   <ItemGroup>
     <None Remove="Views\Supervisor\.DS_Store" />
     <None Remove="Models\Subordinates.cs.orig" />
+    <None Remove="Models\User.cs.orig" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Supervisor\AddSubordinate.cshtml" />
@@ -48,5 +49,6 @@
     <Content Remove="Views\Supervisor\RemoveSubordinate.cshtml" />
     <Content Remove="Views\Supervisor\SubordinateDetails.cshtml" />
     <Content Remove="Views\Supervisor\Subordinates.cshtml" />
+    <Content Remove="Views\User\Index.cshtml" />
   </ItemGroup>
 </Project>

@@ -2,15 +2,48 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AllocationApp.Data.Entities;
 using AllocationApp.Models;
+using Microsoft.AspNetCore.Identity;
+
 namespace AllocationApp.Data
 {
     public class DbInitializer
     {
-        public static void Initialize(AllocationContext context)
+        private readonly AllocationContext _context;
+        private readonly UserManager<AppUser> _userManager;
+
+        public DbInitializer(AllocationContext context, UserManager<AppUser> userManager) {
+            _context = context;
+            _userManager = userManager;
+        }
+
+        public async Task Initialize()
         {
-            context.Database.EnsureCreated();
-            if (context.Users.Any())
+            _context.Database.EnsureCreated();
+
+            /*
+             *  Initialise a user
+             */
+            var user = await _userManager.FindByEmailAsync("john@tcd.ie");
+
+            if (user == null) {
+                user = new AppUser()
+                {
+                    FirstName = "John",
+                    LastName = "Doe",
+                    UserName = "john@tcd.ie",
+                    Email = "john@tcd.ie"
+                };
+                var result = await _userManager.CreateAsync(user, "P@ssW0rd");
+                if (result != IdentityResult.Success)
+                {
+                    throw new InvalidOperationException("Failed to create default user.");
+                }
+            }
+
+
+            if (_context.Users.Any())
             {
                 return;
             }
@@ -34,9 +67,9 @@ namespace AllocationApp.Data
             };
             foreach (User u in users)
             {
-                context.Users.Add(u);
+                _context.Users.Add(u);
             }
-            context.SaveChanges();
+            _context.SaveChanges();
             var Modules = new Module[]
             {
             new Module{ModuleID=1050,Name="Chemistry"},
@@ -49,9 +82,9 @@ namespace AllocationApp.Data
             };
             foreach (Module c in Modules)
             {
-                context.Modules.Add(c);
+                _context.Modules.Add(c);
             }
-            context.SaveChanges();
+            _context.SaveChanges();
             var Moduleusers = new ModuleUser[]
             {
                          
@@ -70,14 +103,14 @@ namespace AllocationApp.Data
             ModuleUser ModuleUser = new ModuleUser();
             ModuleUser.UserID = 1;
             ModuleUser.ModuleID = 1050;
-            context.ModuleUsers.Add(ModuleUser);
+            _context.ModuleUsers.Add(ModuleUser);
             
             foreach (ModuleUser c in Moduleusers)
             {
-                context.ModuleUsers.Add(c);
+                _context.ModuleUsers.Add(c);
             }
             
-            context.SaveChanges();
+            _context.SaveChanges();
             var skills = new Skill[]
             {
                 new Skill(0, "Java"),
@@ -86,6 +119,8 @@ namespace AllocationApp.Data
                 new Skill(3, "ARM Assembly"),
                 new Skill(4, "Go"),
             };
+
+
         }
     }
 }
