@@ -26,7 +26,7 @@ namespace AllocationApp.Controllers
             return View(tup);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("Users")]
         public IActionResult Users()
         {
@@ -57,7 +57,7 @@ namespace AllocationApp.Controllers
         [HttpPost]
         public async Task<IActionResult> AddModule(Module model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _context.Add(model);
                 await _context.SaveChangesAsync();
@@ -95,7 +95,7 @@ namespace AllocationApp.Controllers
             }
 
             var user = _context.Users
-                //.Include(i => i.UserModules)
+               //.Include(i => i.UserModules)
                .SingleOrDefault(m => m.UserID == id);
             if (user == null)
             {
@@ -133,7 +133,7 @@ namespace AllocationApp.Controllers
                         "Try again, and if the problem persists, " +
                         "see your system administrator.");
                 }
-                return RedirectToAction("UserDetails", new {@id=id});
+                return RedirectToAction("UserDetails", new { @id = id });
             }
             //PopulateDepartmentsDropDownList(userToUpdate.DepartmentID);
 
@@ -384,9 +384,9 @@ namespace AllocationApp.Controllers
                 return NotFound();
             }
             double total = 0.0;
-            foreach(var module in userModules)
+            foreach (var module in userModules)
             {
-                if(module.HoursWorked > module.HoursPaid)
+                if (module.HoursWorked > module.HoursPaid)
                 {
                     double unPaidHours = module.HoursWorked - module.HoursPaid;
                     total += (module.HourlyPayRate * unPaidHours);
@@ -452,6 +452,40 @@ namespace AllocationApp.Controllers
 
             return View("ModuleDetails", module);
         }
+
+
+        [HttpGet("AddSkillToUser")]
+        public IActionResult AddSkillToUser(int id)
+        {
+            var skillList = from skills in _context.Skills
+                             select skills;
+            var skillFinalWorking = skillList.ToList<Skill>();
+            User user = _context.Users.Find(id);
+            return View(Tuple.Create(user, skillFinalWorking));
+        }
+
+        [HttpPost("AddSkillToUser")]
+        public async Task<IActionResult> AddSkillToUser(int userID, int SkillID)
+        {
+            var user = _context.Users.Find(userID);
+            Skill newSkill = _context.Skills.Find(SkillID);
+            try
+            {
+
+                user.Skills.Add(newSkill);
+                _context.Entry(user).State = EntityState.Modified;
+
+            }
+            catch (Exception e)
+            {
+                user.Skills = new List<Skill>();
+                user.Skills.Add(newSkill);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Users));
+        }
+
 
     }
 }

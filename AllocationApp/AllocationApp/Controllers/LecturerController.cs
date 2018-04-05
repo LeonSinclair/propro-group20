@@ -203,12 +203,7 @@ namespace AllocationApp.Controllers
 
         public IActionResult ViewProposals()
         {
-
-            foreach(var tmpProposal in _context.Proposal)
-            {
-                User tmpUser = _context.Users.Find(tmpProposal.UserID);
-                Module tmpModule = _context.Modules.Find(tmpProposal.ModuleID);
-            }
+            IList<Proposal> pList = _context.Proposal.Include(s => s.User).Include(m => m.Module).ToList<Proposal>();
             return View(_context.Proposal.ToList());
         }
 

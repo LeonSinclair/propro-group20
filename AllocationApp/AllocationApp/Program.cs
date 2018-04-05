@@ -31,8 +31,7 @@ namespace AllocationApp
                 try
                 {
                     var context = services.GetRequiredService<AllocationContext>();
-                    var seeder = scope.ServiceProvider.GetService<DbInitializer>();
-                    seeder.Initialize().Wait();
+                    DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)
                 {

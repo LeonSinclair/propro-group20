@@ -42,7 +42,8 @@
                         <a asp-action="AssignRoleToUser" asp-route-id="@item.UserID">Add to role</a> |
                         <a asp-action="AssignUserToModule" asp-route-id="@item.UserID">Add to module</a> |
                         <a asp-controller="Demonstrator" asp-action="LogHoursModuleSelect" asp-route-id="@item.UserID">Log Hours</a> |
-                        <a asp-action="CalculatePay" asp-route-id="@item.UserID">Calculate Pay</a>
+                        <a asp-action="CalculatePay" asp-route-id="@item.UserID">Calculate Pay</a> |
+                        <a asp-action="AddSkillToUser" asp-route-id="@item.UserID">Add Skill</a>
                     </td>
                 </tr>
             }

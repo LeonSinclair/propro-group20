@@ -13,12 +13,7 @@ namespace AllocationApp.Models
         public ModuleUser()
         {
         }
-<<<<<<< HEAD
-
-        public ModuleUser(int userID, User user, int moduleID, Module module)
-=======
         public ModuleUser(int userID, User user, int moduleID, Module module, double allocatedHours = 6, double hoursWorked = 0, double hourlyPayRate = 21.50, double hoursPaid = 0)
->>>>>>> 6a6f4afdbfa9c77efd7be68f700c2818045563d1
         {
             UserID = userID;
             this.User = user;

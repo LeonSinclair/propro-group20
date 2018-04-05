@@ -10,9 +10,10 @@ using System;
 namespace AllocationApp.Migrations
 {
     [DbContext(typeof(AllocationContext))]
-    partial class AllocationContextModelSnapshot : ModelSnapshot
+    [Migration("20180405111014_working")]
+    partial class working
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
