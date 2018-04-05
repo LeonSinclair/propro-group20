@@ -1,4 +1,4 @@
-using AllocationApp.Data;
+﻿using AllocationApp.Data;
 using AllocationApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -22,8 +22,13 @@ namespace AllocationApp.Controllers
         [HttpGet("Modules")]
         public IActionResult Modules()
         {
+<<<<<<< HEAD
             var tup = Tuple.Create(_context.Modules.ToList(), _context.Users.ToList());
             return View(tup);
+=======
+            var results = _context.Modules.ToList();
+            return View("Modules", results);
+>>>>>>> 6a6f4afdbfa9c77efd7be68f700c2818045563d1
         }
 
         [Authorize]

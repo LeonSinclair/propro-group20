@@ -7,6 +7,10 @@ namespace AllocationApp.Models
 {
     public class Skill
     {
+        public Skill()
+        {
+
+        }
         public Skill(int SkillID, String Name)
         {
             this.SkillID = SkillID;

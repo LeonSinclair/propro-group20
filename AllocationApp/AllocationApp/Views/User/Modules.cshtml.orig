@@ -1,8 +1,29 @@
-@model Tuple<List<Module>, List<User>>
+<<<<<<< HEAD
+﻿@model Tuple<List<Module>, List<User>>
             
+=======
+﻿@model IEnumerable<AllocationApp.Models.Module>
+>>>>>>> 6a6f4afdbfa9c77efd7be68f700c2818045563d1
 @{
     ViewData["Title"] = "Modules";
 }
+
+<<<<<<< HEAD
+<div class="section" id="modules">
+    <h4>Modules</h4>
+    <div class="object_box">
+        <div class="list-group list-group-flush">
+            @foreach (var item in Model.Item1)
+            {
+                <div class="list-group-item list-group-item-action">
+                    @Html.ActionLink(@item.Code + " " +@item.Name, "ModuleDemonstrators", "Lecturer", new { moduleID = item.ModuleID }, null) 
+                </div>
+            }
+        </div>
+    </div>
+</div>
+=======
+<h1>Modules</h1>
 
 <p>
     <input type="button" onclick="location.href='@Url.Action("AddModule", "User")'" value="Add new module" class="btn btn-primary">
@@ -39,3 +60,4 @@
     </table>
 </div>
 
+>>>>>>> 6a6f4afdbfa9c77efd7be68f700c2818045563d1

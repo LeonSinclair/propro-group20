@@ -1,0 +1,41 @@
+﻿@model IEnumerable<UserModuleHours>
+
+@{
+    ViewData["Title"] = "Demonstrator View";
+}
+<div id="body_container">
+
+    <div class="section" id="module">
+        
+        <h4>Modules</h4>
+
+        <!-- search box -->
+        <input type="text" placeholder="Type module and press enter" class="search">
+        <input type="button" class="button" value="Apply Filter">
+        <!-- /search box -->
+
+        @foreach (var item in Model)
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <a href="">
+                            @Html.DisplayFor(modelItem => item.ModuleID)
+                            @Html.DisplayFor(modelItem => item.HoursAllocated)
+                            @Html.DisplayFor(modelItem => item.HoursWorked)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<script language="javascript">
+
+    function DoPost() {
+        $.post("ModuleDemonstrators", { moduleId: "2041" });  //Your values here..
+    }
+
+</script>

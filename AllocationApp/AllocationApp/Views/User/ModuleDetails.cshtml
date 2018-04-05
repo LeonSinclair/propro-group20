@@ -1,12 +1,13 @@
 ﻿@model AllocationApp.Models.Module
+
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Module Details";
 }
 
-<h2>Details</h2>
+<h2>ModuleDetails</h2>
 
 <div>
-    <h4>Course</h4>
+    <h4>Module</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -21,17 +22,15 @@
         <dd>
             @Html.DisplayFor(model => model.Code)
         </dd>
-        @foreach (var item in Model.SkillRequirements)
-        {
-            <dt>
-                Skill Required:
-            </dt>
-            <dd>
-                @item.Name
-            </dd>
-
-        }
-
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillRequirements)
+        </dt>
+        <dd>
+            @foreach (var skill in Model.SkillRequirements)
+            {
+                @Html.DisplayFor(model => skill.Name)
+            }
+        </dd>
     </dl>
 </div>
 <div>

@@ -10,8 +10,8 @@ using System;
 namespace AllocationApp.Migrations
 {
     [DbContext(typeof(AllocationContext))]
-    [Migration("20180331162655_AddingM2MRoles")]
-    partial class AddingM2MRoles
+    [Migration("20180404214313_PayRatesMigration")]
+    partial class PayRatesMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -62,6 +62,14 @@ namespace AllocationApp.Migrations
                     b.Property<int>("ModuleID");
 
                     b.Property<int>("UserID");
+
+                    b.Property<double>("HourlyPayRate");
+
+                    b.Property<double>("HoursAllocated");
+
+                    b.Property<double>("HoursPaid");
+
+                    b.Property<double>("HoursWorked");
 
                     b.HasKey("ModuleID", "UserID");
 

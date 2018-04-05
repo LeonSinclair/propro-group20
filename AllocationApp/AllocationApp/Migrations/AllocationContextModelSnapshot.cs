@@ -116,6 +116,14 @@ namespace AllocationApp.Migrations
 
                     b.Property<int>("UserID");
 
+                    b.Property<double>("HourlyPayRate");
+
+                    b.Property<double>("HoursAllocated");
+
+                    b.Property<double>("HoursPaid");
+
+                    b.Property<double>("HoursWorked");
+
                     b.HasKey("ModuleID", "UserID");
 
                     b.HasIndex("UserID");
