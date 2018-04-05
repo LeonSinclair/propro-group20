@@ -396,7 +396,7 @@ namespace AllocationApp.Controllers
             payView.User = _context.Users.Find(id);
             payView.UnPaidSum = total;
             payView.UserID = id;
-            return View("AssignUserToModule");
+            return View("CalculatePay", payView);
         }
 
         //[HttpPost("AssignUserToModule")]

@@ -1,0 +1,20 @@
+﻿@model AllocationApp.Models.UserPayView
+
+@{
+    ViewData["Title"] = "Pay Outstanding " + Model.User.FirstName + " " + Model.User.LastName;
+}
+
+<h4 class="text-center">Pay Outstanding</h4>
+
+<div class="row">
+    <div class="well col-md-6 col-md-offset-3">
+        <dt>@Html.DisplayNameFor(model => model.User.FirstName)</dt>
+        <dd>@Html.DisplayFor(model => model.User.FirstName)</dd>
+        <dt>@Html.DisplayNameFor(model => model.User.LastName)</dt>
+        <dd>@Html.DisplayFor(model => model.User.LastName)</dd>
+        <dt>@Html.DisplayNameFor(model => model.UnPaidSum)</dt>
+        <dd>€ @Html.DisplayFor(model => model.UnPaidSum)</dd>
+        <hr>
+        <a asp-action="Users">Back to Users</a>
+    </div>
+</div>
