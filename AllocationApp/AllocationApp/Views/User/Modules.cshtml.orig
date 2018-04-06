@@ -1,0 +1,63 @@
+<<<<<<< HEAD
+﻿@model Tuple<List<Module>, List<User>>
+            
+=======
+﻿@model IEnumerable<AllocationApp.Models.Module>
+>>>>>>> 6a6f4afdbfa9c77efd7be68f700c2818045563d1
+@{
+    ViewData["Title"] = "Modules";
+}
+
+<<<<<<< HEAD
+<div class="section" id="modules">
+    <h4>Modules</h4>
+    <div class="object_box">
+        <div class="list-group list-group-flush">
+            @foreach (var item in Model.Item1)
+            {
+                <div class="list-group-item list-group-item-action">
+                    @Html.ActionLink(@item.Code + " " +@item.Name, "ModuleDemonstrators", "Lecturer", new { moduleID = item.ModuleID }, null) 
+                </div>
+            }
+        </div>
+    </div>
+</div>
+=======
+<h1>Modules</h1>
+
+<p>
+    <input type="button" onclick="location.href='@Url.Action("AddModule", "User")'" value="Add new module" class="btn btn-primary">
+</p>
+<div class="well">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a asp-action="ModuleDetails" asp-route-id="@item.ModuleID">Details</a> |
+                        <a asp-action="AssignUserToModule" asp-route-id="@item.ModuleID">Add demonstrator</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+>>>>>>> 6a6f4afdbfa9c77efd7be68f700c2818045563d1

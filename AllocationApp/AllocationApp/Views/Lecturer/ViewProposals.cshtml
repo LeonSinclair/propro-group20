@@ -1,0 +1,38 @@
+﻿@model List<Proposal>
+
+<div class="container">
+    <div class="object_box">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Module</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    @if (!item.Approved)
+                    {
+                        <tr>
+
+                            <th scope="row">@Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)</th>
+                            <td scope="row">@Html.DisplayFor(modelItem => item.Module.Code) @Html.DisplayFor(modelItem => item.Module.Name)</td>
+                            <td><a asp-action="ConfirmProposal" asp-route-userid="@item.UserID" asp-route-moduleid="@item.ModuleID">Confirm Proposal</a></td>
+                            <td><a asp-action="DemonstratorDetails" asp-route-id="@item.UserID">Demonstrator Details</a></td>
+                            <td><a asp-action="ModuleDetails" asp-route-id="@item.ModuleID">Module Details</a></td>
+                        </tr>
+
+                    }
+
+
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>

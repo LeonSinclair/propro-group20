@@ -1,0 +1,41 @@
+@model Tuple<List<Module>, List<User>>
+            
+@{
+    ViewData["Title"] = "Modules";
+}
+
+<p>
+    <input type="button" onclick="location.href='@Url.Action("AddModule", "User")'" value="Add new module" class="btn btn-primary">
+</p>
+<div class="well">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Code)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a asp-action="ModuleDetails" asp-route-id="@item.ModuleID">Details</a> |
+                        <a asp-action="AssignUserToModule" asp-route-id="@item.ModuleID">Add demonstrator</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

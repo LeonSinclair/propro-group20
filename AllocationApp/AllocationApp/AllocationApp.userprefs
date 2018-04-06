@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{439B91E0-8BD0-4F6A-8FD7-D7E738C593C1}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+    <Files>
+      <File FileName="Views/Shared/_Layout.cshtml" Line="32" Column="30" />
+      <File FileName="Data/DbInitializer.cs" Line="37" Column="19" />
+      <File FileName="Views/User/AddRole.cshtml" Line="15" Column="22" />
+      <File FileName="Controllers/AccountController.cs" Line="21" Column="21" />
+      <File FileName="Views/Account/Login.cshtml" Line="1" Column="8" />
+      <File FileName="Models/LoginViewModel.cs" Line="12" Column="26" />
+      <File FileName="Models/User.cs" Line="11" Column="6" />
+      <File FileName="Data/AllocationContext.cs" Line="45" Column="32" />
+      <File FileName="Controllers/UserController.cs" Line="29" Column="20" />
+      <File FileName="Models/ModuleUser.cs" Line="18" Column="23" />
+      <File FileName="Models/Module.cs" Line="1" Column="1" />
+      <File FileName="Models/User.cs.orig" Line="1" Column="1" />
+      <File FileName="Models/SupervisorUser.cs" Line="15" Column="1" />
+      <File FileName="Models/AppUser.cs" Line="14" Column="9" />
+      <File FileName="Models/CheckboxViewModel.cs" Line="1" Column="1" />
+      <File FileName="Program.cs" Line="30" Column="43" />
+      <File FileName="Startup.cs" Line="47" Column="13" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.AllocationApp PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>

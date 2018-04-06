@@ -1,0 +1,51 @@
+﻿@model Tuple<Module, List<User> >
+
+@{
+        ViewData["Title"] = "Module Demonstrators";
+}
+
+<div class="well">
+    <h4>
+        @Html.DisplayFor(model => model.Item1.Name)
+    </h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                   First Name
+                </th>
+                <th>
+                   Last Name
+                </th>
+                <th>
+                   Skills
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Item2)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Skills)
+                    </td>
+                    <td>
+                        <a asp-action="DemonstratorDetails" asp-route-id="@Model.Item1.ModuleID">Details</a> |
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    
+    <a asp-action="Index">Back to List</a>
+</div>

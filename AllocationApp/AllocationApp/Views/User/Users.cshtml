@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AllocationApp.Models.User>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<p>
+    <input type="button" onclick="location.href='@Url.Action("AddUser", "User")'" value="Add new user" class="btn btn-primary">
+</p>
+<div class="well">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Roles)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Roles)
+                    </td>
+                    <td>
+                        <a asp-action="UserDetails" asp-route-id="@item.UserID">Details</a> |
+                        <a asp-action="RemoveSubordinate" asp-route-id="@item.UserID">Remove</a> |
+                        <a asp-action="AssignRoleToUser" asp-route-id="@item.UserID">Add to role</a> |
+                        <a asp-action="AssignUserToModule" asp-route-id="@item.UserID">Add to module</a> |
+                        <a asp-controller="Demonstrator" asp-action="LogHoursModuleSelect" asp-route-id="@item.UserID">Log Hours</a> |
+                        <a asp-action="CalculatePay" asp-route-id="@item.UserID">Calculate Pay</a> |
+                        <a asp-action="AddSkillToUser" asp-route-id="@item.UserID">Add Skill</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

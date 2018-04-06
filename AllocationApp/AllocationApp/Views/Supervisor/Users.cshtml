@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AllocationApp.Models.Users>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<p>
+    <input type="button" onclick="location.href='@Url.Action("AddUser", "User")'" value="Add new subordinate" class="btn btn-primary">
+</p>
+<div class="well">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Occupation)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Occupation)
+                    </td>
+                    <td>
+                        <a asp-action="SubordinateDetails" asp-route-id="@item.ID">Details</a> |
+                        <a asp-action="RemoveSubordinate" asp-route-id="@item.ID">Remove</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

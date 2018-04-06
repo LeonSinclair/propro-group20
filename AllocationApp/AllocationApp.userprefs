@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{9370E992-E172-4E8D-BC5B-3DE1FF855D9F}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AllocationApp/wwwroot/css/site.min.css">
+    <Files>
+      <File FileName="AllocationApp/Views/Shared/_Layout.cshtml" Line="17" Column="21" />
+      <File FileName="AllocationApp/Views/Home/Index.cshtml" Line="7" Column="68" />
+      <File FileName="AllocationApp/wwwroot/css/site.css" Line="17" Column="26" />
+      <File FileName="AllocationApp/wwwroot/css/site.min.css" Line="19" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.AllocationApp PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>

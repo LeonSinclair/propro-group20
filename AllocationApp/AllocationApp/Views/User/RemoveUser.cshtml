@@ -1,0 +1,31 @@
+﻿@model AllocationApp.Models.User
+
+@{
+    ViewData["Title"] = "Remove Subordinate";
+}
+
+<h3>Are you sure you want to remove this subordinate?</h3>
+<div>
+    <div class="well">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+        </dl>
+    </div>
+
+    <form asp-action="RemoveUser">
+        <input type="hidden" asp-for="UserID" />
+        <input type="submit" value="Delete" class="btn btn-warning" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

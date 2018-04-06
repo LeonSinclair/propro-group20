@@ -1,0 +1,58 @@
+@model User
+
+@{
+    ViewData["Title"] = "Subordinate Details";
+}
+
+<div class="well">
+    <h4>Subordinate</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Occupation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Occupation)
+        </dd>
+         <dt>
+            @Html.DisplayNameFor(model => model.BankName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BankName)
+        </dd>
+         <dt>
+            @Html.DisplayNameFor(model => model.BankAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BankAddress)
+        </dd>
+         <dt>
+            @Html.DisplayNameFor(model => model.IBAN)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IBAN)
+        </dd>
+         <dt>
+            @Html.DisplayNameFor(model => model.SortCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SortCode)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Settings" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Subordinates">Back to List</a>
+</div>
